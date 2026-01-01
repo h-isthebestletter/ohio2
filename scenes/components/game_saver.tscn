@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dubccbjee82oc"]
+
+[ext_resource type="Script" uid="uid://cgap4g0qf6hpp" path="res://scripts/game_saver.gd" id="1_wpdpy"]
+
+[node name="GameSaver" type="Node"]
+script = ExtResource("1_wpdpy")

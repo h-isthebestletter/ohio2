@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckt4oyamumy6s"]
+
+[ext_resource type="Script" uid="uid://b6v4fervugswl" path="res://scripts/settings.gd" id="1_5p8wc"]
+[ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_r6d6q"]
+[ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_6wm04"]
+[ext_resource type="PackedScene" uid="uid://fon3rmsdc3jp" path="res://scenes/components/back_button.tscn" id="4_f4mfi"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p8wc")
+bgm = ExtResource("2_r6d6q")
+chinese_bgm = ExtResource("3_6wm04")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_f4mfi")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+scene_path = "res://scenes/title.tscn"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

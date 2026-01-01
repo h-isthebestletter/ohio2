@@ -1,35 +1,41 @@
 extends Control
 
 var current_scene: Node
-var _next_scene: Node
+var current_level_id
+var _next_scene_resporce_path := ""
+var _next_cutscene_target_level_id := -1
 
 func _ready() -> void:
 	Signals.request_change_scene.connect(replace_scene_with_animation)
 	Signals.request_change_bgm.connect(replace_bgm)
 	Signals.request_load_cutscene.connect(_on_request_load_cutscene)
 	Signals.request_load_level.connect(_on_request_load_level)
+	Signals.level_won.connect(_on_level_won)
 	
-	replace_scene(preload("res://scenes/title.tscn").instantiate())
+	replace_scene("res://scenes/title.tscn")
 
-func replace_scene(new_scene: Scene) -> void:
-	if get_child_count() > 3:
+func replace_scene_with_animation(new_scene_resource_path: String) -> void:
+	if _next_scene_resporce_path != "": return
+	_next_scene_resporce_path = new_scene_resource_path
+	%AnimationPlayer.play(&"fade_in")
+
+func replace_scene(new_scene_resource_path: String) -> void:
+	if get_child_count() > 4:
 		current_scene.get_tree().paused = false
 		remove_child(current_scene)
 		current_scene.queue_free()
 	
-	current_scene = new_scene
-	Signals.request_change_bgm.emit(current_scene.bgm)
+	current_scene = load(new_scene_resource_path).instantiate() as Scene
+	if _next_cutscene_target_level_id != -1:
+		(current_scene as CutsceneBase).story_id = _next_cutscene_target_level_id
+	_next_cutscene_target_level_id = -1
+	Signals.request_change_bgm.emit(current_scene.get_correct_bgm_stream())
 	add_child(current_scene)
 
 func replace_scene_with_next() -> void:
-	replace_scene(_next_scene)
-	_next_scene = null
+	replace_scene(_next_scene_resporce_path)
+	_next_scene_resporce_path = ""
 	%AnimationPlayer.play(&"fade_out")
-
-func replace_scene_with_animation(new_scene: Scene) -> void:
-	if _next_scene != null: return
-	_next_scene = new_scene
-	%AnimationPlayer.play(&"fade_in")
 
 func replace_bgm(new_bgm: AudioStream) -> void:
 	var new_bgm_resource_path = new_bgm.resource_path if new_bgm else null
@@ -47,13 +53,17 @@ func replace_bgm(new_bgm: AudioStream) -> void:
 		%AudioStreamPlayer.play()
 
 func _on_request_load_cutscene(cutscene_id: int) -> void:
-	var scene: CutsceneBase = preload("res://scenes/cutscene_base.tscn").instantiate()
-	scene.story_id = cutscene_id
-	replace_scene_with_animation(scene)
+	_next_cutscene_target_level_id = cutscene_id
+	replace_scene_with_animation("res://scenes/cutscene_base.tscn")
 
 func _on_request_load_level(level_id: int) -> void:
+	current_level_id = level_id
 	var path = "res://scenes/levels/{id}.tscn".format({
 		"id": level_id
 	})
-	replace_scene_with_animation(load(path).instantiate())
-	
+	replace_scene_with_animation(path)
+
+func _on_level_won() -> void:
+	if current_level_id != null:
+		GameSaver.mark_level_as_completed(current_level_id)
+		current_level_id = null

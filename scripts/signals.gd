@@ -50,7 +50,7 @@ signal level_lost(
 
 # SCENE
 signal request_change_scene(
-	new_scene: Node,
+	new_scene_resource_path: String,
 )
 signal request_load_cutscene(
 	cutscene_id: int,
@@ -60,4 +60,13 @@ signal request_load_level(
 )
 signal request_change_bgm(
 	new_bgm: AudioStream,
+)
+signal use_chinese_bgm(
+	chinese: bool
+)
+
+# SETTINGS
+signal settings_key_updated(
+	key: String,
+	new_value: Variant,
 )

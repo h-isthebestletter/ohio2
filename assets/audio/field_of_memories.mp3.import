@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/field_of_memories.mp3-bd8828a887e595f7ad3b19d
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

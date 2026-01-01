@@ -1,7 +1,6 @@
 extends Control
 
 var timeout := 4.0
-var level_select := preload("res://scenes/level_select.tscn")
 
 signal confirmed
 
@@ -9,13 +8,17 @@ func won_lost(won: bool) -> void:
 	visible = true
 	if won:
 		%LevelWon.visible = true
-		%LevelWonAudio.play()
+		Signals.request_change_bgm.emit(
+			Utils.load_looping_mp3("res://assets/audio/sound_effects/ohmygod.mp3")
+		)
 	else:
 		%LevelLost.visible = true
-		%LevelLostAudio.play()
+		Signals.request_change_bgm.emit(
+			Utils.load_looping_mp3("res://assets/audio/sound_effects/fnaf2.mp3")
+		)
 		
 	await confirmed
-	Signals.request_change_scene.emit(level_select.instantiate())
+	Signals.request_change_scene.emit("res://scenes/level_select.tscn")
 
 func _ready() -> void:
 	Signals.level_won.connect(won_lost.bind(true))

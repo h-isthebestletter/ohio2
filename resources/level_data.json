@@ -2,6 +2,16 @@
 	{
 		"name": "STAGE TEST",
 		"description": "stage test 1",
-		"label": "TEST",
+		"label": "TEST-1",
+	},
+	{
+		"name": "STAGE TEST 2",
+		"description": "stage test 2",
+		"label": "TEST-2",
+	},
+	{
+		"name": "STAGE TEST 3",
+		"description": "stage test 3",
+		"label": "TEST-3",
 	}
 ]

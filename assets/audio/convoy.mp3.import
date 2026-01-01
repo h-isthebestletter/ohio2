@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/convoy.mp3-2e65f41576d0bc29f82dc5c3c87b1af3.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

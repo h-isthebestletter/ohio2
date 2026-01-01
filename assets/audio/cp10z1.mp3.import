@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/cp10z1.mp3-89ea2aaeac3ec38d641fd180634399a3.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -44,7 +44,10 @@ func _process(delta: float) -> void:
 
 	self_modulate = Color.WHITE
 	# if projectile has overshot the target position, stop moving
-	if (internal_position - from).dot(internal_position - final_target_position) > 0:
+	if (
+		(internal_position - from).dot(internal_position - final_target_position) > 0
+		or internal_position == final_target_position
+	):
 		detonate()
 		return
 

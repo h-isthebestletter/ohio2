@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxstg1doud1d3"]
+[gd_scene load_steps=8 format=3 uid="uid://cxstg1doud1d3"]
 
 [ext_resource type="Script" uid="uid://de5ej5udsg04v" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dubccbjee82oc" path="res://scenes/components/game_saver.tscn" id="2_0xm2m"]
 
 [sub_resource type="Animation" id="Animation_0xm2m"]
 length = 0.001
@@ -27,33 +28,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_h2yge"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/TransitionFadeOut:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 2),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/TransitionFadeOut:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ig7tw"]
@@ -96,6 +70,33 @@ tracks/2/keys = {
 "args": [],
 "method": &"replace_scene_with_next"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_h2yge"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/TransitionFadeOut:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/TransitionFadeOut:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2yge"]
@@ -145,3 +146,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ig7tw")
+
+[node name="GameSaver" parent="." instance=ExtResource("2_0xm2m")]

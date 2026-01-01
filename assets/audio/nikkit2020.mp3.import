@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/nikkit2020.mp3-c73a2c6ff4598511a7c490f36b9a1b
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

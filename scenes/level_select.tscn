@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://duce4xq0dcdkf"]
+[gd_scene load_steps=15 format=3 uid="uid://duce4xq0dcdkf"]
 
 [ext_resource type="Script" uid="uid://coept2654spo8" path="res://scripts/level_select.gd" id="1_r77uv"]
 [ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="1_rif6e"]
 [ext_resource type="Script" uid="uid://dxdic2j78gicg" path="res://scripts/level_select_map.gd" id="2_chg43"]
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_ckc44"]
 [ext_resource type="PackedScene" uid="uid://b8d3geo843qq6" path="res://scenes/components/level_select_level_button.tscn" id="3_chg43"]
+[ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_o2xx4"]
 [ext_resource type="Script" uid="uid://y2gr44xlxrvl" path="res://scripts/level_select_level_details.gd" id="5_r77uv"]
 [ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="6_4nqmc"]
 [ext_resource type="FontFile" uid="uid://bdnke3q8dg81c" path="res://assets/fonts/Roboto_Condensed-Regular.ttf" id="6_r77uv"]
 [ext_resource type="Texture2D" uid="uid://dqluo1g0gf22d" path="res://assets/images/level_play_bg.png" id="8_ckc44"]
+[ext_resource type="PackedScene" uid="uid://fon3rmsdc3jp" path="res://scenes/components/back_button.tscn" id="11_htctk"]
 
 [sub_resource type="Gradient" id="Gradient_rif6e"]
 colors = PackedColorArray(0, 0, 0, 0.431373, 0, 0, 0, 1)
@@ -30,6 +32,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_r77uv")
 bgm = ExtResource("2_ckc44")
+chinese_bgm = ExtResource("3_o2xx4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -10
@@ -49,12 +52,28 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_chg43")
 
-[node name="LevelSelectLevelButton" parent="Map" instance=ExtResource("3_chg43")]
+[node name="0" parent="Map" instance=ExtResource("3_chg43")]
 layout_mode = 0
 offset_left = 341.0
 offset_top = 246.0
 offset_right = 632.0
 offset_bottom = 347.0
+
+[node name="1" parent="Map" instance=ExtResource("3_chg43")]
+layout_mode = 0
+offset_left = 778.0
+offset_top = 416.0
+offset_right = 1069.0
+offset_bottom = 517.0
+level_id = 1
+
+[node name="2" parent="Map" instance=ExtResource("3_chg43")]
+layout_mode = 0
+offset_left = 1310.0
+offset_top = 565.0
+offset_right = 1601.0
+offset_bottom = 666.0
+level_id = 2
 
 [node name="LevelDetails" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -124,3 +143,16 @@ grow_vertical = 2
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" parent="MarginContainer" instance=ExtResource("11_htctk")]
+layout_mode = 2
+scene_path = "res://scenes/title.tscn"

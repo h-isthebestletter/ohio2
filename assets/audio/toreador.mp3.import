@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/toreador.mp3-25e0deb0bd596ba6e256589eed5cc13b
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

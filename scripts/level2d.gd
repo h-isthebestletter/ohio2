@@ -42,14 +42,17 @@ func get_all_enemy_summons() -> Array[EnemySummon2D]:
 	return get_children().filter(func (x): return x is EnemySummon2D)
 
 func _ready() -> void:
+	super()
 	Signals.level_loaded.emit(
 		enemy_count
 	)
-	Signals.request_change_bgm.emit(bgm)
-	Signals.level_won.connect(_on_level_won_or_lost)
-	Signals.level_lost.connect(_on_level_won_or_lost)
+	Signals.level_won.connect(_on_level_won)
+	Signals.level_lost.connect(_on_level_lost)
 	# player has to outlive enemy, spawn player first
 	spawn_player()
 
-func _on_level_won_or_lost() -> void:
+func _on_level_won() -> void:
+	get_tree().paused = true
+
+func _on_level_lost() -> void:
 	get_tree().paused = true

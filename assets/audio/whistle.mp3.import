@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/whistle.mp3-f43a9fe48fd3a176a90822dff245e3b6.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

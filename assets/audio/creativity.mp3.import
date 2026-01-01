@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/creativity.mp3-c16e4fcbdaf0d15626a4270084cf76
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

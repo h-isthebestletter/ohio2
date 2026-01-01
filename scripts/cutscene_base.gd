@@ -46,6 +46,7 @@ func advance_dialogue() -> bool:
 	return false
 
 func _ready() -> void:
+	super()
 	# load first thing
 	finished = advance_dialogue()
 

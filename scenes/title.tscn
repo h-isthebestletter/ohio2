@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxowjn26h81uo"]
+[gd_scene load_steps=6 format=3 uid="uid://cxowjn26h81uo"]
 
 [ext_resource type="Script" uid="uid://befykui5swnt6" path="res://scripts/title.gd" id="1_p6dhs"]
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_b3w7a"]
 [ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="2_pyl7j"]
+[ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_4rr2b"]
 [ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="3_b3w7a"]
 
 [node name="Control" type="Control"]
@@ -16,6 +17,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_p6dhs")
 bgm = ExtResource("2_b3w7a")
+chinese_bgm = ExtResource("3_4rr2b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

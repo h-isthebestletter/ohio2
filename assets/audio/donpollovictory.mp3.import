@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/donpollovictory.mp3-70e39ef8aed90476355832291
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

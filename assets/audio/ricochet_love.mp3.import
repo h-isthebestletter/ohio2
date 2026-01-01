@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/ricochet_love.mp3-4413a21884be372e5a1f5165a9c
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
