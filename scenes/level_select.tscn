@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://duce4xq0dcdkf"]
+[gd_scene load_steps=13 format=3 uid="uid://duce4xq0dcdkf"]
 
 [ext_resource type="Script" uid="uid://coept2654spo8" path="res://scripts/level_select.gd" id="1_r77uv"]
 [ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="1_rif6e"]
 [ext_resource type="Script" uid="uid://dxdic2j78gicg" path="res://scripts/level_select_map.gd" id="2_chg43"]
+[ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_ckc44"]
 [ext_resource type="PackedScene" uid="uid://b8d3geo843qq6" path="res://scenes/components/level_select_level_button.tscn" id="3_chg43"]
 [ext_resource type="Script" uid="uid://y2gr44xlxrvl" path="res://scripts/level_select_level_details.gd" id="5_r77uv"]
 [ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="6_4nqmc"]
@@ -28,6 +29,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_r77uv")
+bgm = ExtResource("2_ckc44")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -10

@@ -3,6 +3,5 @@
 		"name": "STAGE TEST",
 		"description": "stage test 1",
 		"label": "TEST",
-		"scene_path": "res://scenes/levels/stage_test.tscn"
 	}
 ]

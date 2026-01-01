@@ -2,52 +2,55 @@ extends EnemySummon2D
 
 var from: Vector2
 var to: Vector2
+var player_velocity: Vector2
 var speed: float
 var atk: int
 var attack_speed: float
 
-
+var final_target_position
 var internal_position: Vector2
-var time := 0.0
+var time: float
 
-func _ready() -> void:
-	var to = level.player.global_position
+func aim_ahead(target_position: Vector2, target_velocity: Vector2) -> Vector2:
+	var travel_time = (from - to).length() / speed
+	var target_extra_displacement = travel_time * player_velocity
+	return target_position + target_extra_displacement
+
+func initialize(args: Dictionary[String, Variant]) -> void:
 	from = args["from"]
+	to = args["to"]
+	player_velocity = args["player_velocity"]
 	speed = args["speed"]
 	atk = args["atk"]
 	attack_speed = args["attack_speed"]
 	
 	global_position = from
 	internal_position = from
+	final_target_position = null
+	time = 0.0
 	
-	var travel_time = (from - to).length() / speed
-	var target_extra_displacement = travel_time * level.player.velocity
-	to += target_extra_displacement
-	
-	$AttackWarn.global_position = to
-
+	$AttackWarn.global_position = aim_ahead(to, player_velocity)
 
 func _process(delta: float) -> void:
 	time += delta
 	# only fire the grenade after 0.8s
 	# (sync with Osama's attack animation)
 	if time < 0.8 / attack_speed:
-		to = level.player.global_position
-		var travel_time = (from - to).length() / speed
-		var target_extra_displacement = travel_time * level.player.velocity
-		to += target_extra_displacement
-		$AttackWarn.global_position = to
+		$AttackWarn.global_position = aim_ahead(to, player_velocity)
 		return
+	
+	if final_target_position == null:
+		final_target_position = aim_ahead(to, player_velocity)
 
 	self_modulate = Color.WHITE
 	# if projectile has overshot the target position, stop moving
-	if (internal_position - from).dot(internal_position - to) > 0:
+	if (internal_position - from).dot(internal_position - final_target_position) > 0:
 		detonate()
 		return
 
-	internal_position += (to - from).normalized() * speed * delta
+	internal_position += (final_target_position - from).normalized() * speed * delta
 	
-	var extra_height = (internal_position - from).length() * (internal_position - to).length() * 0.0005
+	var extra_height = (internal_position - from).length() * (internal_position - final_target_position).length() * 0.0005
 	global_position = internal_position + Vector2(0, -extra_height)
 
 func detonate() -> void:
@@ -57,4 +60,4 @@ func detonate() -> void:
 			body.take_damage(atk)
 			break
 	
-	queue_free()
+	request_become_unused.emit(self)

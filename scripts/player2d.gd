@@ -63,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	)
 	velocity = input_direction * stats.movement_speed
 	move_and_slide()
+	Signals.player_moved.emit(global_position, velocity)
 
 func _input(event: InputEvent) -> void:
 	if state != State.ALIVE: return

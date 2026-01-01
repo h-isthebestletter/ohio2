@@ -43,12 +43,14 @@ signal _stun_ended
 		var old_health = health
 		if val < 0:
 			health = 0
-			_emit_signal_died()
+			Signals.entity_died.emit(self)
+			if self is Player2D:
+				Signals.level_lost.emit()
 		else:
 			health = min(stats.max_health, val)
 			
 		if health != old_health:
-			_emit_signal_health_changed(health)
+			Signals.entity_health_changed.emit(self, health)
 
 # each number corresponds to the duration of that status effect left
 var status_effects: Array[float] = [
@@ -69,7 +71,7 @@ func _process(delta: float) -> void:
 		# emit a signal to resume enemy logic
 		_stun_ended.emit()
 	
-	_emit_signal_status_effects_changed(status_effects)
+	Signals.entity_status_effects_changed.emit(self, status_effects)
 	
 	stats = get_current_stats()
 	
@@ -138,8 +140,8 @@ func attack() -> void:
 	# abstract function
 	pass
 
-func create_summon(summon_scene: Summon2D, args: Dictionary[String, Variant]) -> void:
-	Signals.entity_request_create_summon.emit(summon_scene, args)
+func create_summon(summon_scene_path: String, args: Dictionary[String, Variant]) -> void:
+	Signals.entity_request_create_summon.emit(summon_scene_path, args)
 
 func take_damage(atk: int) -> void:
 	if has_status_effect(StatusEffect.Kind.Invincible):
@@ -150,14 +152,3 @@ func take_damage(atk: int) -> void:
 
 func take_healing(atk: int) -> void:
 	health += atk
-
-# TODO: if these methods aren't needed (no more complicated logic
-# separating player and enemy signals), remove these methods
-func _emit_signal_health_changed(new_health: float) -> void:
-	Signals.entity_health_changed.emit(self, new_health)
-
-func _emit_signal_status_effects_changed(new_status_effects: Array[float]) -> void:
-	Signals.entity_status_effects_changed.emit(self, new_status_effects)
-
-func _emit_signal_died() -> void:
-	Signals.entity_died.emit(self)

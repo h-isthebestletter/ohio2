@@ -15,8 +15,26 @@ enum State {
 }
 var state := State.Spawning
 var target_position := Vector2(0, 0)
+var target_velocity := Vector2(0, 0)
 
-func _play_animation_according_to_state() -> void:
+# handles updating state machine
+# called after current animation ends
+func _think(_anim_name: StringName = &"") -> void:
+	# reset any animation speed scales because only attack animations
+	# should receive it.
+	animation_player.speed_scale = 1.0
+	
+	if state == State.Dying:
+		queue_free()
+	elif health == 0:
+		state = State.Dying
+	else:
+		update_state_machine()
+	
+	_act()
+
+# handles actions based on current state
+func _act() -> void:
 	if state == State.Spawning:
 		animation_player.play("spawning")
 	elif state == State.Idle:
@@ -29,6 +47,7 @@ func _play_animation_according_to_state() -> void:
 		if not has_status_effect(StatusEffect.Kind.Stunned):
 			# Instead the attack function will handle all attack logic,
 			# including playing animations.
+			# Assume the attack() function will play an animation.
 			attack()
 			# when stunned, the enemy will never
 			# attack again, even after the enemy gets unstunned.
@@ -46,9 +65,11 @@ func _play_animation_according_to_state() -> void:
 
 func _ready() -> void:
 	super()
-	_play_animation_according_to_state()
-	animation_player.animation_finished.connect(_internal_update_state_machine)
-	_stun_ended.connect(_internal_update_state_machine)
+	_act()
+	animation_player.animation_finished.connect(_think)
+	# resume thinking after stun ends
+	_stun_ended.connect(_think)
+	Signals.player_moved.connect(_on_player_moved)
 
 func _physics_process(delta: float) -> void:
 	if state == State.Moving:
@@ -58,23 +79,12 @@ func _physics_process(delta: float) -> void:
 		).normalized() * stats.movement_speed
 		move_and_slide()
 
-# called after current animation ends
-func _internal_update_state_machine(_anim_name: StringName = &"") -> void:
-	# reset any animation speed scales because only attack animations
-	# should receive it.
-	animation_player.speed_scale = 1.0
-	
-	if state == State.Dying:
-		queue_free()
-	elif health == 0:
-		state = State.Dying
-	else:
-		update_state_machine()
-	
-	_play_animation_according_to_state()
-
 func update_state_machine() -> void:
 	# putting the rest of the logic in a function
 	# meant to be overwritten prevents core logic
 	# (e.g. die when health == 0) being removed
 	pass
+
+func _on_player_moved(new_position: Vector2, new_velocity: Vector2) -> void:
+	target_position = new_position
+	target_velocity = new_velocity

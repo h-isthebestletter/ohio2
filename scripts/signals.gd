@@ -2,7 +2,7 @@ extends Node
 
 # GENERAL ENTITY
 signal entity_request_create_summon(
-	summon_scene: Summon2D,
+	summon_scene_path: String,
 	args: Dictionary[String, Variant],
 )
 signal entity_health_changed(
@@ -26,6 +26,7 @@ signal player_spawned(
 )
 signal player_moved(
 	new_position: Vector2,
+	new_velocity: Vector2,
 )
 signal player_skill_point_changed(
 	new_skill_point: int,
@@ -37,6 +38,9 @@ signal enemy_spawned(
 )
 
 # LEVEL
+signal level_loaded(
+	total_enemy_count: int,
+)
 signal level_won(
 	
 )

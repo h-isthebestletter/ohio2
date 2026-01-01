@@ -1,11 +1,10 @@
 extends Scene
-class_name LevelLoader2D
+class_name Level2D
 
 @export var player_scene: PackedScene
 @export var player_initial_position: Vector2
 @export var enemy_scenes: Array[PackedScene]
 @export var timeline: AnimationPlayer
-@export var bgm: AudioStream
 @export var enemy_count: int
 
 var player: Player2D
@@ -43,21 +42,14 @@ func get_all_enemy_summons() -> Array[EnemySummon2D]:
 	return get_children().filter(func (x): return x is EnemySummon2D)
 
 func _ready() -> void:
+	Signals.level_loaded.emit(
+		enemy_count
+	)
 	Signals.request_change_bgm.emit(bgm)
+	Signals.level_won.connect(_on_level_won_or_lost)
+	Signals.level_lost.connect(_on_level_won_or_lost)
 	# player has to outlive enemy, spawn player first
 	spawn_player()
-	
-	Signals.entity_died.connect(_on_entity_died)
-	Signals.entity_request_create_summon.connect(_on_request_create_summon)
 
-func _on_entity_died(entity: Entity2D) -> void:
-	if entity == player:
-		pass
-
-func _on_request_create_summon(
-	summon_scene: Summon2D,
-	args: Dictionary[String, Variant]
-) -> void:
-	summon_scene.level = self
-	summon_scene.args = args
-	add_child(summon_scene)
+func _on_level_won_or_lost() -> void:
+	get_tree().paused = true

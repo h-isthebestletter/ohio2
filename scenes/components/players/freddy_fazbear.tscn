@@ -252,8 +252,9 @@ drag_top_margin = 0.02
 drag_right_margin = 0.02
 drag_bottom_margin = 0.02
 
-[node name="LevelEntityStatusEffectIndicator" parent="." instance=ExtResource("4_ppehj")]
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_ppehj")]
 position = Vector2(0, -43)
+target = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

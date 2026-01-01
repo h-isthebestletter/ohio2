@@ -1,5 +1,9 @@
 extends Player2D
 
+#func _ready() -> void:
+	#super()
+	#receive_status_effect(StatusEffect.Kind.Invincible, INF)
+
 func attack() -> void:
 	super()
 	animation_player.play("attacking_normal")

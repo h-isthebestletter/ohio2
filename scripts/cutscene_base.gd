@@ -11,6 +11,7 @@ var active_slot := 1
 var slots := [null, null]
 
 var finished := false
+var next_scene_requested := false
 
 func load_image_onto_slot(file_path) -> void:
 	if file_path == null: return
@@ -52,5 +53,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		if not finished:
 			finished = advance_dialogue()
-		else:
+		elif not next_scene_requested:
 			Signals.request_load_level.emit(story_id)
+			next_scene_requested = true

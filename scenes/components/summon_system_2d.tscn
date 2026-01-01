@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dded8567w36tp"]
+
+[ext_resource type="Script" uid="uid://doan82y8ui0kp" path="res://scripts/summon_system_2d.gd" id="1_cymci"]
+
+[node name="SummonSystem2D" type="Node2D"]
+script = ExtResource("1_cymci")

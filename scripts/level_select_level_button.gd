@@ -2,7 +2,7 @@ extends TextureButton
 class_name LevelSelectLevelButton
 
 @export var level_id: int
-@export var level_data: Array = load("res://resources/level_data.json").data
+@onready var level_data: Array = load("res://resources/level_data.json").data
 
 signal level_selected(level_id: int)
 

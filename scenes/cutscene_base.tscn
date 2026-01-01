@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://be0tutwtu0qrt"]
+[gd_scene load_steps=4 format=3 uid="uid://be0tutwtu0qrt"]
 
 [ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="1_hicj7"]
 [ext_resource type="Script" uid="uid://4jaem1xr3yd8" path="res://scripts/cutscene_base.gd" id="1_jnmei"]
+[ext_resource type="AudioStream" uid="uid://rcxp38hiv4p0" path="res://assets/audio/creativity.mp3" id="2_sgbo0"]
 
 [node name="CutsceneBase" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jnmei")
 story_id = 17
+bgm = ExtResource("2_sgbo0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
