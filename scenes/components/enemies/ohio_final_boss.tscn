@@ -444,13 +444,11 @@ ohio_bankai_initial_cooldown = 1e+06
 ohio_bankai_cooldown = 1e+06
 sigma_stare_initial_cooldown = 1e+06
 sigma_stare_cooldown = 1e+06
-star_platinum_initial_cooldown = 0.0
-star_platinum_cooldown = 5.0
-freeze_duration = 2.0
-wonder_of_ohio_initial_cooldown = 1e+06
-wonder_of_ohio_cooldown = 1e+06
+wonder_of_ohio_initial_cooldown = 0.0
+wonder_of_ohio_cooldown = 5.0
 navigation_agent = NodePath("NavigationAgent2D")
 character_name = "Ohio Final Boss"
+_atk = 1e+08
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 

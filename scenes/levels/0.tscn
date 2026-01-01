@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dmwpyi1ibgqta" path="res://scenes/components/enemies/dababy_convertible.tscn" id="20_jq08h"]
 [ext_resource type="PackedScene" uid="uid://d4bht3vmyp1h1" path="res://scenes/components/enemies/cluster_strike.tscn" id="21_0jl6j"]
 [ext_resource type="PackedScene" uid="uid://6vb4xwa8jvy7" path="res://scenes/components/enemies/ohio_final_boss.tscn" id="22_35c4k"]
-[ext_resource type="AudioStream" uid="uid://dq4ht3tgyebtt" path="res://assets/audio/the_hot_wind_blowing.mp3" id="22_qw6mt"]
-[ext_resource type="AudioStream" uid="uid://djsl08vs3jele" path="res://assets/audio/sszyh.mp3" id="23_0yj4v"]
+[ext_resource type="AudioStream" uid="uid://3n4rr60yllvl" path="res://assets/audio/the_hot_wind_blowing.ogg" id="22_qw6mt"]
+[ext_resource type="AudioStream" uid="uid://yvch42kxiakp" path="res://assets/audio/sszyh.ogg" id="23_0yj4v"]
 [ext_resource type="Shader" uid="uid://cdunlpljajhj6" path="res://assets/shaders/level_desert.gdshader" id="24_n1qqs"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="25_76amn"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="26_1ft85"]
@@ -97,7 +97,7 @@ enemy_spawn_points = [NodePath("SpawnPoints/EnemySpawn1"), NodePath("SpawnPoints
 enemy_scenes = Array[PackedScene]([ExtResource("3_sikc3"), ExtResource("4_3y4pe"), ExtResource("5_k8nic"), ExtResource("6_uko7y"), ExtResource("7_c3tqq"), ExtResource("8_a5ylg"), ExtResource("9_frvj0"), ExtResource("10_d62j2"), ExtResource("11_3gj0y"), ExtResource("12_l6qxm"), ExtResource("13_oqsfr"), ExtResource("14_e5vxr"), ExtResource("15_qf8v7"), ExtResource("16_mfh77"), ExtResource("17_n13iu"), ExtResource("18_4p525"), ExtResource("19_l43ru"), ExtResource("20_jq08h"), ExtResource("21_0jl6j"), ExtResource("22_35c4k")])
 paths = [NodePath("Paths/CarPath1")]
 timeline = NodePath("Timeline")
-enemy_count = 4
+enemy_count = 1
 bgm = ExtResource("22_qw6mt")
 chinese_bgm = ExtResource("23_0yj4v")
 

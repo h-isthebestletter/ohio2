@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 		animation_player.animation_finished.connect(func (_anim_name: StringName):
 			# MUST NOT CALL queue_free() ON PLAYER!!
 			state = State.DEAD
+			Signals.level_lost.emit()
 		)
 	
 	for i in range(len(skills_duration)):

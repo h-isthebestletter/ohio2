@@ -1,3 +1,5 @@
+# UNUSED SCRIPT, KEPT HERE BECAUSE I PUT A LOT OF EFFORT INTO IT (lol)
+
 extends MultiMeshInstance2D
 class_name ProjectileSystem2D
 

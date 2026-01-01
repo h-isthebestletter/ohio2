@@ -46,8 +46,6 @@ func _set_health(val: float) -> void:
 	if val < 0:
 		health = 0
 		Signals.entity_died.emit(self)
-		if self is Player2D:
-			Signals.level_lost.emit()
 	else:
 		health = min(stats.max_health, val)
 		

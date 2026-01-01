@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckt4oyamumy6s"]
 
 [ext_resource type="Script" uid="uid://b6v4fervugswl" path="res://scripts/settings.gd" id="1_5p8wc"]
-[ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_r6d6q"]
-[ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_6wm04"]
+[ext_resource type="AudioStream" uid="uid://0sxjoehwy80x" path="res://assets/audio/ricochet_love.ogg" id="2_r6d6q"]
+[ext_resource type="AudioStream" uid="uid://bxhhf6kgktg7s" path="res://assets/audio/wsqszsq.ogg" id="3_6wm04"]
 [ext_resource type="PackedScene" uid="uid://fon3rmsdc3jp" path="res://scenes/components/back_button.tscn" id="4_f4mfi"]
 [ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="5_es4n0"]
 

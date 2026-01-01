@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://be0tutwtu0qrt"]
 
-[ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="1_hicj7"]
+[ext_resource type="Texture2D" uid="uid://cnwpxwkgfdon1" path="res://icon.svg" id="1_hicj7"]
 [ext_resource type="Script" uid="uid://4jaem1xr3yd8" path="res://scripts/cutscene_base.gd" id="1_jnmei"]
-[ext_resource type="AudioStream" uid="uid://rcxp38hiv4p0" path="res://assets/audio/creativity.mp3" id="2_sgbo0"]
-[ext_resource type="AudioStream" uid="uid://40br0wgynmyx" path="res://assets/audio/tzxygq.mp3" id="3_rccli"]
+[ext_resource type="AudioStream" uid="uid://rvx0atiyl5fs" path="res://assets/audio/creativity.ogg" id="2_sgbo0"]
+[ext_resource type="AudioStream" uid="uid://5loiqg4k38iq" path="res://assets/audio/tzxygq.ogg" id="3_rccli"]
 
 [node name="CutsceneBase" type="Control"]
 layout_mode = 3

@@ -21,5 +21,7 @@ func _ready() -> void:
 			redraw()
 			
 			if enemies_dead == total_enemies:
+				if entity.animation_player.is_playing():
+					await entity.animation_player.animation_finished
 				Signals.level_won.emit()
 	)
