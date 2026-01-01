@@ -13,8 +13,10 @@ var player: Player2D
 
 func spawn_player() -> Player2D:
 	player = player_scene.instantiate()
-	add_child(player)
+	player.level = self
 	player.global_position = player_spawn.global_position
+	
+	add_child(player)
 	
 	Signals.player_spawned.emit(
 		player.character_name,
@@ -27,6 +29,7 @@ func spawn_player() -> Player2D:
 
 func spawn_enemy(enemy_id: int, spawn_point_index: int) -> Enemy2D:
 	var enemy: Enemy2D = enemy_scenes[enemy_id].instantiate()
+	enemy.level = self
 	enemy.player = player
 	enemy.paths = paths
 	enemy.global_position = enemy_spawn_points[spawn_point_index].global_position

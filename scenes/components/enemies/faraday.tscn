@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxjmfyk0wnps3"]
+[gd_scene load_steps=29 format=3 uid="uid://cxjmfyk0wnps3"]
 
 [ext_resource type="Script" uid="uid://dm7nih5gg8n14" path="res://scripts/enemies/faraday.gd" id="1_onnqq"]
 [ext_resource type="Texture2D" uid="uid://dxk5kfouotv2t" path="res://assets/images/sprites/faraday.png" id="2_lgpjp"]
@@ -125,6 +125,9 @@ tracks/8/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_onnqq"]
+resource_name = "attacking_eddy_current"
+
 [sub_resource type="Animation" id="Animation_mn02q"]
 resource_name = "attacking_made_in_ohio"
 length = 0.5
@@ -170,6 +173,9 @@ tracks/2/keys = {
 "method": &"mark_end_sword_attack"
 }]
 }
+
+[sub_resource type="Animation" id="Animation_lgpjp"]
+resource_name = "attacking_magnetic_flux_cutting"
 
 [sub_resource type="Animation" id="Animation_40otd"]
 resource_name = "attacking_normal"
@@ -457,16 +463,14 @@ tracks/5/keys = {
 "values": [38.1983, 38.1983, 0.499164]
 }
 
-[sub_resource type="Animation" id="Animation_onnqq"]
-resource_name = "attacking_eddy_current"
-
-[sub_resource type="Animation" id="Animation_lgpjp"]
-resource_name = "attacking_magnetic_flux_cutting"
+[sub_resource type="Animation" id="Animation_wg1e2"]
+resource_name = "attacking_faraday_cage"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0gkv8"]
 _data = {
 &"RESET": SubResource("Animation_0gkv8"),
 &"attacking_eddy_current": SubResource("Animation_onnqq"),
+&"attacking_faraday_cage": SubResource("Animation_wg1e2"),
 &"attacking_made_in_ohio": SubResource("Animation_mn02q"),
 &"attacking_magnetic_flux_cutting": SubResource("Animation_lgpjp"),
 &"attacking_normal": SubResource("Animation_40otd"),
@@ -566,3 +570,6 @@ collision_mask = 3
 unique_name_in_owner = true
 points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(1, 0.987333, 0.62, 1)
+
+[node name="CageSpawnChecker" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true

@@ -41,6 +41,8 @@ class Stats:
 # signal meant for internal use
 signal _stun_ended
 
+var level: Level2D
+
 func _set_health(val: float) -> void:
 	var old_health = health
 	if val < 0:

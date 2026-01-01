@@ -41,14 +41,19 @@ extends Enemy2D
 @export_category("Magnetic Flux Cutting")
 @export var magnetic_flux_cutting_initial_cooldown := 60.0
 @export var magnetic_flux_cutting_cooldown := 90.0
-## Ratio of healing rate (in HP/s) against player speed (in pixels/s)
-@export var magnetic_flux_cutting_effect_strength := 30.0
+## Ratio of healing rate (in HP/s) against player speed (in pixels/s).
+## Keep in mind that the default player speed is 800 pixels/s.
+## This means that, if this value is set to 0.5, Faraday will receive 400 HP/s
+## if the player is moving at full speed.
+@export var magnetic_flux_cutting_effect_strength := 1.0
 @export var magnetic_flux_cutting_effect_duration := 8.0
 
 @export_category("Faraday Cage")
 @export var faraday_cage_initial_cooldown := 40.0
 @export var faraday_cage_cooldown := 40.0
 @export var faraday_cage_duration := 10.0
+## HP loss per second if the player is not in the Faraday Cage.
+@export var faraday_cage_strength := 200.0
 
 @onready var cooldowns: Dictionary[String, float] = {
 	"normal_attack": 0.0,
@@ -65,7 +70,8 @@ extends Enemy2D
 var using_sword_attack := false
 ## Debounce the player collision during sword-based attacks
 var hit_player := false
-var cutting_magnetic_flux := false
+
+var cutting_magnetic_flux_time := INF
 
 func _ready() -> void:
 	super()
@@ -96,6 +102,11 @@ func _process(delta: float) -> void:
 		player.receive_status_effect(StatusEffect.Kind.Poisoned, 0.0)
 		%SigmaStareRay.points[1] = Vector2.ZERO
 		%SigmaStareRaycast.enabled = false
+	
+	cutting_magnetic_flux_time += delta
+	
+	if cutting_magnetic_flux_time <= magnetic_flux_cutting_effect_duration:
+		health += player.velocity.length() * magnetic_flux_cutting_effect_strength * delta
 
 func update_state_machine() -> void:
 	#print("thinking")
@@ -147,9 +158,11 @@ func attack() -> void:
 			eddy_current()
 			cooldowns.eddy_current = eddy_current_cooldown
 		"magnetic_flux_cutting":
-			pass
+			magnetic_flux_cutting()
+			cooldowns.magnetic_flux_cutting = magnetic_flux_cutting_cooldown
 		"faraday_cage":
-			pass
+			faraday_cage()
+			cooldowns.faraday_cage = faraday_cage_cooldown
 
 func mark_using_sword_attack() -> void:
 	using_sword_attack = true
@@ -221,8 +234,21 @@ func eddy_current() -> void:
 	player.receive_status_effect(StatusEffect.Kind.Slowed, eddy_current_effect_duration)
 
 func magnetic_flux_cutting() -> void:
-	cutting_magnetic_flux = true
+	cutting_magnetic_flux_time = 0.0
 	animation_player.play("attacking_magnetic_flux_cutting")
 	
 func faraday_cage() -> void:
-	pass
+	var region: NavigationRegion2D = level.get_children().filter(func (x): return x is NavigationRegion2D)[0]
+	var point := NavigationServer2D.region_get_random_point(region.get_rid(), 1, true)
+	
+	create_summon(
+		"res://scenes/components/enemy_summons/faraday_cage.tscn",
+		{
+			"to": point,
+			"duration": faraday_cage_duration,
+			"player": player,
+			"strength": faraday_cage_strength,
+		}
+	)
+	
+	animation_player.play("attacking_faraday_cage")

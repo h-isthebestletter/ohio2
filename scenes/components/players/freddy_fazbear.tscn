@@ -223,6 +223,7 @@ motion_mode = 1
 script = ExtResource("1_0foew")
 skills_sp_cost = Array[int]([8, 18, 24])
 character_name = "Freddy Fazbear"
+_max_health = 1e+08
 _atk = 3600.0
 _def = 400.0
 animation_player = NodePath("AnimationPlayer")
