@@ -48,6 +48,7 @@ func skill_1_effect() -> void:
 
 func use_skill_2() -> void:
 	super()
+	set_skill_duration(2, retarding_field_duration)
 	create_summon(
 		"res://scenes/components/player_summons/retarding_field.tscn",
 		{

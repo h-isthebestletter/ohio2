@@ -58,7 +58,7 @@ tracks/1/keys = {
 "args": [1, 4, 10, 64.0, 0.0],
 "method": &"spawn_enemy"
 }, {
-"args": [1, 5, 200, 30.0, 128.0],
+"args": [1, 5, 60, 30.0, 128.0],
 "method": &"spawn_enemy"
 }]
 }
@@ -75,7 +75,7 @@ player_spawn = NodePath("PlayerSpawn")
 enemy_spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4"), NodePath("Marker2D5"), NodePath("Marker2D6")]
 enemy_scenes = Array[PackedScene]([ExtResource("3_10ji3"), ExtResource("4_dacd6")])
 timeline = NodePath("AnimationPlayer")
-enemy_count = 230
+enemy_count = 90
 bgm = ExtResource("5_10ji3")
 chinese_bgm = ExtResource("6_dacd6")
 

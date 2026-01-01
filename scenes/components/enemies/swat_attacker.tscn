@@ -70,12 +70,14 @@ size = Vector2(48, 48)
 
 [node name="SwatAttacker" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite", "damage_tile_hitbox")]
 collision_layer = 4
+collision_mask = 33
 motion_mode = 1
 script = ExtResource("1_twotn")
+def_boost = 800.0
 navigation_agent = NodePath("NavigationAgent2D")
 character_name = "SWAT Attacker"
 _max_health = 6000.0
-_atk = 700.0
+_atk = 500.0
 _def = 500.0
 _movement_speed = 600.0
 animation_player = NodePath("AnimationPlayer")

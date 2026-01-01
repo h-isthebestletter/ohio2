@@ -78,6 +78,7 @@ _data = {
 
 [node name="MagmaCube" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
+collision_mask = 33
 motion_mode = 1
 script = ExtResource("1_lu78g")
 navigation_agent = NodePath("NavigationAgent2D")

@@ -227,6 +227,7 @@ size = Vector2(48, 48)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_0foew")
+retarding_field_strength = 0.4
 skills_sp_cost = Array[int]([8, 18, 40])
 character_name = "Freddy Fazbear"
 _atk = 2000.0
