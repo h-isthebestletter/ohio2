@@ -2395,10 +2395,15 @@
 	  "lines": [
 		"Everything presented here is a work of fiction.",
 		"Please don't actually believe in anything presented in this game.",
-		"And please don't ask me any questions about the plot. It was made to be ridiculous.",
-		"",
-		"Credits",
-		"…"
+		"And please don't ask any questions about the plot. It was made to be ridiculous.",
+		"Credits:",
+		"Idea: Jia Heng",
+		"Plot: Jia Heng",
+		"Level design: Shao Yu",
+		"Enemy design: Shao Yu",
+		"Code: Jia Heng",
+		"Textures: Luanti (formerly Minetest) (we stole them (don't tell them (please)))",
+		"We have a YouTube playlist of all the music we used, feel free to inspect. (Yes we stole those too!)"
 	  ]
 	},
 	{

@@ -21,6 +21,8 @@ class Setting:
 }
 
 @export var level_completion: Array[bool] = [
-	# allocate enough space for 10 levels first
+	# allocate enough space for 30 levels
+	false, false, false, false, false, false, false, false, false, false,
+	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
 ]
