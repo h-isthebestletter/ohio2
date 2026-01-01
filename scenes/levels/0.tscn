@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://nqx4wgn7rvba"]
+[gd_scene load_steps=38 format=4 uid="uid://nqx4wgn7rvba"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_adcy7"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="1_cwocv"]
@@ -18,6 +18,15 @@
 [ext_resource type="PackedScene" uid="uid://wgm6he3kjbtp" path="res://scenes/components/enemies/magma_cube.tscn" id="10_6kgux"]
 [ext_resource type="PackedScene" uid="uid://d3u11i0aubdbl" path="res://scenes/components/enemies/magma_cube_small.tscn" id="11_5dpwo"]
 [ext_resource type="PackedScene" uid="uid://ue5u07ixbfwq" path="res://scenes/components/enemies/magma_cube_large.tscn" id="12_4v5sm"]
+[ext_resource type="PackedScene" uid="uid://c3wigp72r86jh" path="res://scenes/components/enemies/markiplier.tscn" id="13_4v5sm"]
+[ext_resource type="PackedScene" uid="uid://bhcj4ooxui064" path="res://scenes/components/enemies/nikocado_avocado.tscn" id="14_y7jes"]
+[ext_resource type="PackedScene" uid="uid://ehwf860e0qfu" path="res://scenes/components/enemies/pompeii.tscn" id="15_ab0bd"]
+[ext_resource type="PackedScene" uid="uid://bbrllfbb66k6d" path="res://scenes/components/enemies/swat_attacker.tscn" id="16_xrdcs"]
+[ext_resource type="PackedScene" uid="uid://dw2dnt7cwkhpa" path="res://scenes/components/enemies/swat_defender.tscn" id="17_ix5ig"]
+[ext_resource type="PackedScene" uid="uid://cx5kaq6xccuhl" path="res://scenes/components/enemies/car.tscn" id="18_ix5ig"]
+[ext_resource type="PackedScene" uid="uid://ckotx0tbfksxe" path="res://scenes/components/enemies/optimus_prime.tscn" id="19_vhnyl"]
+[ext_resource type="PackedScene" uid="uid://dmwpyi1ibgqta" path="res://scenes/components/enemies/dababy_convertible.tscn" id="20_35c4k"]
+[ext_resource type="PackedScene" uid="uid://d4bht3vmyp1h1" path="res://scenes/components/enemies/cluster_strike.tscn" id="21_jxjte"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bjs1v"]
 
@@ -51,7 +60,7 @@ agent_radius = 48.0
 [sub_resource type="Animation" id="Animation_2v7b3"]
 resource_name = "level_test_timeline"
 length = 60.0
-step = 1.0
+step = 0.2
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.966667),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [5, 1],
+"args": [18, 1],
 "method": &"spawn_enemy"
 }]
 }
@@ -72,13 +81,20 @@ _data = {
 &"level_test_timeline": SubResource("Animation_2v7b3")
 }
 
-[node name="StageTest" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn_points", "timeline")]
+[sub_resource type="Curve2D" id="Curve2D_xrdcs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5546, 1531, 0, 0, 0, 0, 3879, 1655, 0, 0, 0, 0, 2917, 1710, 0, 0, 0, 0, 2873, 2666, 0, 0, 0, 0, 1133, 2767, 0, 0, 0, 0, 1210, 2311, 0, 0, 0, 0, 1933, 2188, 0, 0, 0, 0, 2228, 1938, 0, 0, 0, 0, 1900, 1632, 0, 0, 0, 0, 1505, 1994, 0, 0, 0, 0, 1422, 2144, 0, 0, 0, 0, 1110, 2177, 0, 0, 0, 0, 888, 2583, 0, 0, 0, 0, 1511, 2639, 0, 0, 0, 0, 2739, 2494, 0, 0, 0, 0, 2712, 1621, 0, 0, 0, 0, 4463, 1438, 0, 0, 0, 0, 5569, 1143, 0, 0, 0, 0, 5546, 1531)
+}
+point_count = 19
+
+[node name="StageTest" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn_points", "paths", "timeline")]
 texture_filter = 1
 script = ExtResource("1_adcy7")
 player_scene = ExtResource("2_2fkbp")
 player_spawn = NodePath("SpawnPoints/PlayerSpawn")
 enemy_spawn_points = [NodePath("SpawnPoints/EnemySpawn1"), NodePath("SpawnPoints/EnemySpawn2")]
-enemy_scenes = Array[PackedScene]([ExtResource("3_bjs1v"), ExtResource("4_i6aa5"), ExtResource("5_2kv86"), ExtResource("6_rc0dk"), ExtResource("7_rc0dk"), ExtResource("8_jf0s2"), ExtResource("9_vv56a"), ExtResource("10_6kgux"), ExtResource("11_5dpwo"), ExtResource("12_4v5sm")])
+enemy_scenes = Array[PackedScene]([ExtResource("3_bjs1v"), ExtResource("4_i6aa5"), ExtResource("5_2kv86"), ExtResource("6_rc0dk"), ExtResource("7_rc0dk"), ExtResource("8_jf0s2"), ExtResource("9_vv56a"), ExtResource("10_6kgux"), ExtResource("11_5dpwo"), ExtResource("12_4v5sm"), ExtResource("13_4v5sm"), ExtResource("14_y7jes"), ExtResource("15_ab0bd"), ExtResource("16_xrdcs"), ExtResource("17_ix5ig"), ExtResource("18_ix5ig"), ExtResource("19_vhnyl"), ExtResource("20_35c4k"), ExtResource("21_jxjte")])
+paths = [NodePath("Paths/CarPath1")]
 timeline = NodePath("Timeline")
 enemy_count = 4
 bgm = ExtResource("2_u5gin")
@@ -111,7 +127,9 @@ tile_set = ExtResource("1_cwocv")
 initial_object_count = Dictionary[String, int]({
 "res://scenes/components/enemy_summons/evocator_fireball.tscn": 10,
 "res://scenes/components/enemy_summons/grenade.tscn": 3,
-"res://scenes/components/enemy_summons/molotov.tscn": 10
+"res://scenes/components/enemy_summons/molotov.tscn": 10,
+"res://scenes/components/enemy_summons/pompeii_fireball.tscn": 3,
+"res://scenes/components/enemy_summons/rocket.tscn": 40
 })
 level = NodePath("..")
 
@@ -136,3 +154,8 @@ position = Vector2(1906, 1889)
 
 [node name="EnemySpawn2" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(3676, 2428)
+
+[node name="Paths" type="Node2D" parent="."]
+
+[node name="CarPath1" type="Path2D" parent="Paths"]
+curve = SubResource("Curve2D_xrdcs")

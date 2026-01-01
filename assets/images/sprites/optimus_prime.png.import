@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufejboavndvr"
-path="res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"
+uid="uid://dqku20lbpiw16"
+path="res://.godot/imported/optimus_prime.png-1d9d45d32decfb5b6068833cf373411a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/saturn_v.png"
-dest_files=["res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"]
+source_file="res://assets/images/sprites/optimus_prime.png"
+dest_files=["res://.godot/imported/optimus_prime.png-1d9d45d32decfb5b6068833cf373411a.ctex"]
 
 [params]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7cc7yoiad7r"]
+
+[ext_resource type="Texture2D" uid="uid://cc786oc4hlgex" path="res://assets/images/sprites/items/fire_charge.png" id="1_f0rfj"]
+[ext_resource type="Script" uid="uid://dp56pfnqdtwwm" path="res://scripts/enemy_summons/pompeii_fireball.gd" id="2_27xer"]
+[ext_resource type="Texture2D" uid="uid://3mkfqogo2ef1" path="res://assets/images/attack_aoe_warn.png" id="3_3jm34"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdtng"]
+radius = 197.023
+
+[node name="PompeiiFireball" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_f0rfj")
+script = ExtResource("2_27xer")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jdtng")
+
+[node name="AttackWarn" type="Sprite2D" parent="."]
+self_modulate = Color(0.956, 0.302, 0.359, 1)
+top_level = true
+scale = Vector2(0.595703, 0.595703)
+texture = ExtResource("3_3jm34")

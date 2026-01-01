@@ -6,6 +6,7 @@ class_name Enemy2D
 @export var navigation_agent: NavigationAgent2D
 
 var player: Player2D
+var paths: Array[Path2D]
 
 # state machine
 enum State {

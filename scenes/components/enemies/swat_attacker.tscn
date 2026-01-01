@@ -1,0 +1,125 @@
+[gd_scene load_steps=15 format=3 uid="uid://bbrllfbb66k6d"]
+
+[ext_resource type="Script" uid="uid://bubq3cc6rd4m2" path="res://scripts/enemies/swat_attacker.gd" id="1_twotn"]
+[ext_resource type="Texture2D" uid="uid://biki23xsl5173" path="res://assets/images/sprites/swat_gun.png" id="2_xqu4r"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_f6cof"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_h56v8"]
+[ext_resource type="Texture2D" uid="uid://oj6cgp1ax2vp" path="res://assets/images/sprites/items/ohio2/assets/images/sprites/items/atk_boost_aoe.png" id="5_xqu4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce38v"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_x3oc4"]
+resource_name = "attacking"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Node2D/Line2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 0.420448),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4wgtx"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_islel"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_aun5t"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_cxomr"]
+resource_name = "spawning"
+
+[sub_resource type="Animation" id="Animation_twotn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Node2D/Line2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d0r7v"]
+_data = {
+&"RESET": SubResource("Animation_twotn"),
+&"attacking": SubResource("Animation_x3oc4"),
+&"dying": SubResource("Animation_4wgtx"),
+&"idle": SubResource("Animation_islel"),
+&"moving": SubResource("Animation_aun5t"),
+&"spawning": SubResource("Animation_cxomr")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxomr"]
+radius = 169.434
+
+[node name="SwatAttacker" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_twotn")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "SWAT Attacker"
+_max_health = 6000.0
+_atk = 700.0
+_def = 500.0
+_movement_speed = 600.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="ATKBoostAOE" type="Sprite2D" parent="."]
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("5_xqu4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xqu4r")
+
+[node name="Node2D" type="Node2D" parent="Sprite2D"]
+position = Vector2(23, -1)
+
+[node name="Line2D" type="Line2D" parent="Sprite2D/Node2D"]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 0, 0)
+width = 4.0
+default_color = Color(0.980392, 0.984314, 0.760784, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ce38v")
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_f6cof")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_h56v8")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d0r7v")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="TeamingCircle" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeamingCircle"]
+shape = SubResource("CircleShape2D_cxomr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3

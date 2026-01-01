@@ -1,5 +1,7 @@
 extends Enemy2D
 
+@export var fireball_speed := 700.0
+
 func update_state_machine() -> void:
 	if state == State.Attacking:
 		state = State.Moving
@@ -13,6 +15,6 @@ func attack() -> void:
 	create_summon("res://scenes/components/enemy_summons/evocator_fireball.tscn", {
 		"from": global_position,
 		"target": player,
-		"speed": 700.0,
+		"speed": fireball_speed,
 		"atk": stats.atk,
 	})

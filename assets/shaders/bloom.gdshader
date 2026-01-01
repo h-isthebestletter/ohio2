@@ -14,9 +14,9 @@ void fragment() {
 	vec4 col1 = sample_glow_pixel(SCREEN_TEXTURE, SCREEN_UV + vec2(ps.x, 0));
 	vec4 col2 = sample_glow_pixel(SCREEN_TEXTURE, SCREEN_UV + vec2(0, -ps.y));
 	vec4 col3 = sample_glow_pixel(SCREEN_TEXTURE, SCREEN_UV + vec2(0, ps.y));
-	
+
 	vec4 col = texture(SCREEN_TEXTURE, SCREEN_UV);
 	vec4 glowing_col = 0.25 * (col0 + col1 + col2 + col3);
-	
+
 	COLOR = vec4(col.rgb + glowing_col.rgb, col.a);
 }

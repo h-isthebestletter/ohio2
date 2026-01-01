@@ -41,19 +41,21 @@ class Stats:
 # signal meant for internal use
 signal _stun_ended
 
+func _set_health(val: float) -> void:
+	var old_health = health
+	if val < 0:
+		health = 0
+		Signals.entity_died.emit(self)
+		if self is Player2D:
+			Signals.level_lost.emit()
+	else:
+		health = min(stats.max_health, val)
+		
+	if health != old_health:
+		Signals.entity_health_changed.emit(self, health)
+
 @onready var health := _max_health:
-	set(val):
-		var old_health = health
-		if val < 0:
-			health = 0
-			Signals.entity_died.emit(self)
-			if self is Player2D:
-				Signals.level_lost.emit()
-		else:
-			health = min(stats.max_health, val)
-			
-		if health != old_health:
-			Signals.entity_health_changed.emit(self, health)
+	set = _set_health
 
 # each number corresponds to the duration of that status effect left
 var status_effects: Array[float] = [
@@ -146,12 +148,12 @@ func attack() -> void:
 func create_summon(summon_scene_path: String, args: Dictionary[String, Variant]) -> void:
 	Signals.entity_request_create_summon.emit(summon_scene_path, args)
 
-func take_damage(atk: int) -> void:
+func take_damage(atk: float) -> void:
 	if has_status_effect(StatusEffect.Kind.Invincible):
 		# don't take damage when invincible
 		return
 
-	health -= (atk - stats.def)
+	health -= max(atk - stats.def, 0.0)
 
-func take_healing(atk: int) -> void:
+func take_healing(atk: float) -> void:
 	health += atk

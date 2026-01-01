@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1lr2wp17wdgn"]
+
+[ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="1_tyyhg"]
+[ext_resource type="Script" uid="uid://c5prt0i006tx8" path="res://scripts/shockwave.gd" id="2_tyyhg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwlyq"]
+resource_local_to_scene = true
+shader = ExtResource("1_tyyhg")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fwlyq"]
+size = Vector2(100, 100)
+
+[node name="LevelBossEntrance" type="Polygon2D"]
+material = SubResource("ShaderMaterial_fwlyq")
+texture = SubResource("PlaceholderTexture2D_fwlyq")
+polygon = PackedVector2Array(-320, -320, 320, -320, 320, 320, -320, 320)
+uv = PackedVector2Array(7.62939e-06, 0, 100, 0, 100, 100, 7.62939e-06, 100)
+script = ExtResource("2_tyyhg")

@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://bhcj4ooxui064"]
+
+[ext_resource type="Script" uid="uid://cjacqnpeuat1s" path="res://scripts/enemies/nikocado_avocado.gd" id="1_nbwmj"]
+[ext_resource type="Texture2D" uid="uid://bsje3ygmqsi38" path="res://assets/images/sprites/nikocado_avocado.png" id="2_m5x27"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_4kxce"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_5lu3x"]
+[ext_resource type="PackedScene" uid="uid://c1lr2wp17wdgn" path="res://scenes/components/shockwave.tscn" id="5_5lu3x"]
+[ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="6_frrhc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3ttt"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_5lu3x"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_frrhc"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_liee1"]
+resource_name = "attacking"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(0.378929, 8.87655, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -60), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8mrxk"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_hmd1b"]
+resource_name = "spawning"
+
+[sub_resource type="Animation" id="Animation_m32ej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p72i2"]
+_data = {
+&"RESET": SubResource("Animation_m32ej"),
+&"attacking": SubResource("Animation_liee1"),
+&"dying": SubResource("Animation_8mrxk"),
+&"idle": SubResource("Animation_5lu3x"),
+&"moving": SubResource("Animation_frrhc"),
+&"spawning": SubResource("Animation_hmd1b")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_liee1"]
+resource_local_to_scene = true
+shader = ExtResource("6_frrhc")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mrxk"]
+radius = 320.077
+
+[node name="NikocadoAvocado" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_nbwmj")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Nikocado Avocado"
+_max_health = 4000.0
+_atk = 3800.0
+_movement_speed = 300.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m5x27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a3ttt")
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_4kxce")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_5lu3x")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_p72i2")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Shockwave" parent="." instance=ExtResource("5_5lu3x")]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_liee1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8mrxk")

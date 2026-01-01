@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufejboavndvr"
-path="res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"
+uid="uid://bttk157hpsicj"
+path="res://.godot/imported/dababy_convertible.png-b8c01a02da24b71f845849f55ef41ccd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/saturn_v.png"
-dest_files=["res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"]
+source_file="res://assets/images/sprites/dababy_convertible.png"
+dest_files=["res://.godot/imported/dababy_convertible.png-b8c01a02da24b71f845849f55ef41ccd.ctex"]
 
 [params]
 

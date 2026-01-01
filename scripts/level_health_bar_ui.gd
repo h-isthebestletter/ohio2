@@ -17,9 +17,9 @@ func redraw() -> void:
 	label.text = "{target_name} HP: {current}/{maximum} ({percentage}%)".format(
 		{
 			"target_name": target_name,
-			"current": health,
+			"current": "%.2f" % health,
 			"maximum": progress_bar.max_value,
-			"percentage": (health / progress_bar.max_value) * 100
+			"percentage": "%.2f" % ((health / progress_bar.max_value) * 100)
 		}
 	)
 

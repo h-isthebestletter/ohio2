@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufejboavndvr"
-path="res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"
+uid="uid://cs7ylfii4sqgh"
+path="res://.godot/imported/def_boost_aoe.png-86815c0a665bb5df0b080c9b5595504a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/saturn_v.png"
-dest_files=["res://.godot/imported/saturn_v.png-70e998ddf20bf41deb2cafa5addf941d.ctex"]
+source_file="res://assets/images/sprites/items/def_boost_aoe.png"
+dest_files=["res://.godot/imported/def_boost_aoe.png-86815c0a665bb5df0b080c9b5595504a.ctex"]
 
 [params]
 

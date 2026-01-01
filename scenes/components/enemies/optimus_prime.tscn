@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckotx0tbfksxe"]
+
+[ext_resource type="Script" uid="uid://bwyx28ybu6o71" path="res://scripts/enemies/car.gd" id="1_nafhq"]
+[ext_resource type="Texture2D" uid="uid://dqku20lbpiw16" path="res://assets/images/sprites/optimus_prime.png" id="2_nafhq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukn7x"]
+size = Vector2(120, 95)
+
+[sub_resource type="Animation" id="Animation_33jea"]
+resource_name = "attacking"
+
+[sub_resource type="Animation" id="Animation_ugl7v"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_me1fm"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_ukn7x"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_j1ne7"]
+resource_name = "spawning"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukn7x"]
+_data = {
+&"attacking": SubResource("Animation_33jea"),
+&"dying": SubResource("Animation_ugl7v"),
+&"idle": SubResource("Animation_me1fm"),
+&"moving": SubResource("Animation_ukn7x"),
+&"spawning": SubResource("Animation_j1ne7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1oly"]
+size = Vector2(120, 95)
+
+[node name="OptimusPrime" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
+collision_layer = 4
+script = ExtResource("1_nafhq")
+character_name = "OptimusPrime"
+_max_health = 5000.0
+_movement_speed = 1500.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nafhq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ukn7x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ukn7x")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d1oly")

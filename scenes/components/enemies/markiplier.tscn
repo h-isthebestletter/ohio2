@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3wigp72r86jh"]
+
+[ext_resource type="Script" uid="uid://dalsrd40r6dtw" path="res://scripts/enemies/markiplier.gd" id="1_csg5j"]
+[ext_resource type="Texture2D" uid="uid://bhbsrfwa01eit" path="res://assets/images/sprites/markiplier.png" id="2_csg5j"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_2qfo2"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_fggi3"]
+[ext_resource type="Texture2D" uid="uid://bb0u70jocmmfy" path="res://assets/images/sprites/items/fist.png" id="5_2qfo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqv5"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_csg5j"]
+resource_name = "spawning"
+
+[sub_resource type="Animation" id="Animation_2qfo2"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_fggi3"]
+resource_name = "attacking"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FistOf87:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(0.068922, 0.233258, 1),
+"update": 0,
+"values": [Vector2(-13.37, -9.955), Vector2(-4.305, -4.74), Vector2(-13.37, -9.955)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6iqv5"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_nkfso"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_rjx7w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/FistOf87:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rjx7w"]
+_data = {
+&"RESET": SubResource("Animation_rjx7w"),
+&"attacking": SubResource("Animation_fggi3"),
+&"dying": SubResource("Animation_nkfso"),
+&"idle": SubResource("Animation_6iqv5"),
+&"moving": SubResource("Animation_2qfo2"),
+&"spawning": SubResource("Animation_csg5j")
+}
+
+[node name="Markiplier" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_csg5j")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Markiplier"
+_max_health = 3000.0
+_atk = 1400.0
+_def = 400.0
+_movement_speed = 750.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_csg5j")
+
+[node name="FistOf87" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-10, -8)
+rotation = 0.532325
+texture = ExtResource("5_2qfo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6iqv5")
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_2qfo2")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_fggi3")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rjx7w")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
