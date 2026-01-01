@@ -477,20 +477,28 @@ shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
 shader_parameter/ADJUSTED_TIME = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40otd"]
-radius = 590.054
+radius = 712.001
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onnqq"]
-radius = 91.0
+radius = 73.0616
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lgpjp"]
-radius = 92.1358
+radius = 72.0069
 
 [node name="OhioFinalBoss" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_i13cl")
+made_in_ohio_cooldown = 10.0
+ohio_bankai_initial_cooldown = 10.0
+ohio_bankai_cooldown = 5.0
+star_platinum_initial_cooldown = 5.0
+star_platinum_cooldown = 5.0
+wonder_of_ohio_initial_cooldown = 1.0
+wonder_of_ohio_cooldown = 2.0
 navigation_agent = NodePath("NavigationAgent2D")
 character_name = "Ohio Final Boss"
+_max_health = 20000.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 

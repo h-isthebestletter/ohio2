@@ -42,7 +42,7 @@ class EnemySpawner:
 			
 		time += delta
 		var time_between_enemy_spawns := duration / float(count)
-		if time_between_enemy_spawns * float(spawned + 1) >= time:
+		while time_between_enemy_spawns * float(spawned + 1) <= time and spawned <= count:
 			spawned += 1
 			spawner.call(enemy_id, at, distance_offset)
 			
@@ -65,7 +65,7 @@ func spawn_enemy(enemy_id: int, spawn_point_index: int, count: int = 1, duration
 	enemy_spawners.push_back(EnemySpawner.new(enemy_id, spawn_point_index, _actually_spawn_enemy, count, duration, distance_offset))
 
 func _actually_spawn_enemy(enemy_id: int, spawn_point_index: int, distance: float) -> void:
-	var offset := Vector2.from_angle(randf_range(0, TAU)) * distance
+	var offset := Vector2.from_angle(randf_range(0, TAU)) * randf_range(0.0, distance)
 	
 	var enemy: Enemy2D = enemy_scenes[enemy_id].instantiate()
 	enemy.level = self

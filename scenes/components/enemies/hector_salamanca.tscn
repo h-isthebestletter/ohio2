@@ -11,7 +11,7 @@
 radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7rbq0"]
-radius = 312.006
+radius = 56.1427
 
 [sub_resource type="Animation" id="Animation_jgtb6"]
 resource_name = "RESET"
@@ -101,7 +101,7 @@ script = ExtResource("1_6qe1o")
 navigation_agent = NodePath("NavigationAgent2D")
 character_name = "HectorSalamanca"
 _max_health = 300.0
-_atk = 4800.0
+_atk = 2500.0
 _def = 100.0
 _movement_speed = 750.0
 animation_player = NodePath("AnimationPlayer")
