@@ -1,7 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7fxv7certs07"]
+[gd_scene load_steps=9 format=3 uid="uid://b7fxv7certs07"]
 
 [ext_resource type="Texture2D" uid="uid://bufejboavndvr" path="res://assets/images/sprites/saturn_v.png" id="1_27xio"]
 [ext_resource type="Script" uid="uid://cmcdhqu1lah1a" path="res://scripts/enemy_summons/rocket.gd" id="2_27xio"]
+[ext_resource type="PackedScene" uid="uid://c1lr2wp17wdgn" path="res://scenes/components/shockwave.tscn" id="3_8xiun"]
+[ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="4_geqvh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o05d7"]
+resource_local_to_scene = true
+shader = ExtResource("4_geqvh")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_27xio"]
 radius = 330.0
@@ -10,6 +25,10 @@ radius = 330.0
 texture = ExtResource("1_27xio")
 script = ExtResource("2_27xio")
 metadata/_custom_type_script = "uid://cu7nyaoa7wula"
+
+[node name="Shockwave" parent="." instance=ExtResource("3_8xiun")]
+visible = false
+material = SubResource("ShaderMaterial_o05d7")
 
 [node name="Area2D" type="Area2D" parent="."]
 top_level = true

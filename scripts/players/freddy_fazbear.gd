@@ -25,6 +25,7 @@ func normal_attack_deal_damage() -> void:
 
 func use_skill_1() -> void:
 	super()
+	set_skill_duration(1, 3.0)
 	animation_player.play("skill_1")
 
 func skill_1_effect() -> void:
@@ -60,6 +61,7 @@ func use_skill_2() -> void:
 
 func use_skill_3() -> void:
 	super()
+	set_skill_duration(3, 3.0)
 	for body in %Skill3AttackHitbox.get_overlapping_bodies():
 		if body is Enemy2D:
 			# WAS THAT THE BITE OF 87????

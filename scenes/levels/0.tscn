@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=4 uid="uid://cvvcyh7cnnvwp"]
+[gd_scene load_steps=27 format=4 uid="uid://cvvcyh7cnnvwp"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_8fg7k"]
-[ext_resource type="PackedScene" uid="uid://fmcbus76veia" path="res://scenes/components/players/don_pollo.tscn" id="2_jxjte"]
+[ext_resource type="PackedScene" uid="uid://btutgu38itlyg" path="res://scenes/components/players/saul_goodman.tscn" id="2_jf0s2"]
+[ext_resource type="PackedScene" uid="uid://brn5hva8lou5h" path="res://scenes/components/enemies/nikocado_avocado_huge.tscn" id="5_jf0s2"]
 [ext_resource type="PackedScene" uid="uid://cx5kaq6xccuhl" path="res://scenes/components/cars/car.tscn" id="18_4p525"]
 [ext_resource type="PackedScene" uid="uid://ckotx0tbfksxe" path="res://scenes/components/cars/optimus_prime.tscn" id="19_l43ru"]
 [ext_resource type="PackedScene" uid="uid://dmwpyi1ibgqta" path="res://scenes/components/cars/dababy_convertible.tscn" id="20_jq08h"]
@@ -60,7 +61,7 @@ tracks/0/keys = {
 "args": [0, 1],
 "method": &"spawn_enemy"
 }, {
-"args": [1, 1],
+"args": [1, 0],
 "method": &"spawn_enemy"
 }]
 }
@@ -91,10 +92,10 @@ point_count = 5
 [node name="StageTest" type="Node2D" node_paths=PackedStringArray("player_spawn", "enemy_spawn_points", "timeline")]
 texture_filter = 1
 script = ExtResource("1_8fg7k")
-player_scene = ExtResource("2_jxjte")
+player_scene = ExtResource("2_jf0s2")
 player_spawn = NodePath("SpawnPoints/PlayerSpawn")
 enemy_spawn_points = [NodePath("SpawnPoints/EnemySpawn1"), NodePath("SpawnPoints/EnemySpawn2")]
-enemy_scenes = Array[PackedScene]([ExtResource("25_02js3"), ExtResource("21_0jl6j")])
+enemy_scenes = Array[PackedScene]([ExtResource("25_02js3"), ExtResource("21_0jl6j"), ExtResource("5_jf0s2")])
 timeline = NodePath("Timeline")
 enemy_count = 2
 bgm = ExtResource("22_qw6mt")
@@ -150,7 +151,7 @@ position = Vector2(4961, 1513)
 position = Vector2(1906, 1889)
 
 [node name="EnemySpawn2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(3676, 2428)
+position = Vector2(3204, 5207)
 
 [node name="Paths" type="Node2D" parent="."]
 

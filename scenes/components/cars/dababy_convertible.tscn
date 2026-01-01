@@ -34,9 +34,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1oly"]
 size = Vector2(120, 62)
 
-[node name="DababyConvertible" type="CharacterBody2D"]
+[node name="DababyConvertible" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 4
 script = ExtResource("1_80rfb")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_80rfb")

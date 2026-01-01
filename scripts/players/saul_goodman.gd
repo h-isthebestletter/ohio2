@@ -16,7 +16,6 @@ extends Player2D
 @export_category("Skill 3")
 @export var skill_3_atk_multiplier := 1.8
 
-var skill_1_time := INF
 var skill_1_receive_sp_time := INF
 
 func _ready() -> void:
@@ -25,9 +24,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	skill_1_time += delta
 	skill_1_receive_sp_time += delta
-	if skill_1_time < skill_1_duration:
+	if is_skill_active(1):
 		if skill_1_receive_sp_time > (1 / skill_1_sp_generation_rate):
 			skill_points += 1
 			skill_1_receive_sp_time = 0.0
@@ -43,7 +41,7 @@ func normal_attack_damage_enemy() -> void:
 
 func use_skill_1() -> void:
 	super()
-	skill_1_time = 0.0
+	set_skill_duration(1, skill_1_duration)
 	receive_status_effect(StatusEffect.Kind.Frozen, skill_1_freeze_duration)
 
 func use_skill_2() -> void:

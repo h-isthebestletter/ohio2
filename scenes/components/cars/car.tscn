@@ -31,9 +31,10 @@ _data = {
 &"spawning": SubResource("Animation_j1ne7")
 }
 
-[node name="Car" type="CharacterBody2D"]
+[node name="Car" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 4
 script = ExtResource("1_j1ne7")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_j1ne7")

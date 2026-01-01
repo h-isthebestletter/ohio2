@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://baf5egd0oi0t"]
+[gd_scene load_steps=16 format=3 uid="uid://baf5egd0oi0t"]
 
 [ext_resource type="Script" uid="uid://dy5pb6p000iw7" path="res://scripts/enemies/creeper.gd" id="1_6qe1o"]
 [ext_resource type="Texture2D" uid="uid://ve7ieitjxqaj" path="res://assets/images/sprites/hector_salamanca.png" id="2_6qe1o"]
 [ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_e6ind"]
 [ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_uu57p"]
 [ext_resource type="AudioStream" uid="uid://cnonbtlwru78d" path="res://assets/audio/sound_effects/ding.mp3" id="5_gwlg1"]
+[ext_resource type="AudioStream" uid="uid://2ds8lmgbardp" path="res://assets/audio/sound_effects/i_need_to_see_your_balls.mp3" id="6_e6ind"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwlg1"]
 radius = 24.0
@@ -134,7 +135,12 @@ target = NodePath("..")
 position = Vector2(0, -43)
 target = NodePath("..")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="Ding" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_gwlg1")
 volume_db = 16.0
+autoplay = true
+
+[node name="Cabron" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e6ind")
+volume_db = 18.0
 autoplay = true

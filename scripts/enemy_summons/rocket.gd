@@ -7,6 +7,7 @@ var speed: float
 var atk: float
 
 var from: Vector2
+var detonated: bool
 
 func random_offset(magnitude: float) -> Vector2:
 	# create a vector with random length first
@@ -29,19 +30,27 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	$Area2D.global_position = args["to"]
 	global_position = from
 	rotation = approach_angle
+	self_modulate = Color.WHITE
+	
+	detonated = false
 	
 func _process(delta: float) -> void:
-	global_position += (to - from).normalized() * speed * delta
-	
-	if (to - global_position).dot(from - global_position) > 0 or to == from:
+	if not detonated and ((to - global_position).dot(from - global_position) > 0 or to == from):
 		detonate()
-		return
+	elif not detonated:
+		global_position += (to - from).normalized() * speed * delta
 
 func detonate() -> void:
+	detonated = true
+	self_modulate = Color.TRANSPARENT
+	
 	var bodies = $Area2D.get_overlapping_bodies()
 	for body in bodies:
 		if body is Player2D:
 			body.take_damage(atk)
 			break
-			
-	request_become_unused.emit(self)
+	
+	$Shockwave.animation_completed.connect(func ():
+		request_become_unused.emit(self)
+	)
+	$Shockwave.start_animation()

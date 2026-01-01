@@ -14,10 +14,8 @@ extends Player2D
 
 var target: Enemy2D
 
-var skill_1_time := INF
 var original_base_movement_speed: float
 
-var destreza_time := 0.0
 var times_used_destreza := 0
 var original_base_atk: float
 var original_base_attack_speed: float
@@ -31,17 +29,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	skill_1_time += delta
-	if skill_1_time < skill_1_duration:
+	if is_skill_active(1):
 		base_stats.movement_speed = original_base_movement_speed * skill_1_movement_speed_multiplier
 	else:
 		base_stats.movement_speed = original_base_movement_speed
-	
-	destreza_time += delta
+
 	if times_used_destreza == 1:
 		%NormalAttackRangeIndicator.hide()
 		%DestrezaAttackRangeIndicator.show()
-		if destreza_time < destreza_first_time_duration:
+		if is_skill_active(3):
 			base_stats.atk = original_base_atk * 1.6
 			base_stats.attack_speed = original_base_attack_speed * 1.25
 		else:
@@ -97,7 +93,7 @@ func attack() -> void:
 				target = body
 	
 	# has destreza
-	if not is_attack_melee and target == null and (times_used_destreza == 2 or destreza_time < destreza_first_time_duration):
+	if not is_attack_melee and target == null and is_skill_active(3):
 		for body in %DestrezaHitbox.get_overlapping_bodies():
 			if target == null and body is Enemy2D:
 				target = body
@@ -115,7 +111,7 @@ func melee_attack_deal_damage() -> void:
 func ranged_attack_create_summon() -> void:
 	var atk_multiplier: float
 	# has destreza
-	if times_used_destreza == 2 or destreza_time < destreza_first_time_duration:
+	if is_skill_active(3):
 		atk_multiplier = 1.0
 	else:
 		atk_multiplier = 0.8
@@ -139,7 +135,7 @@ func ranged_attack_create_summon() -> void:
 
 func use_skill_1() -> void:
 	super()
-	skill_1_time = 0.0
+	set_skill_duration(1, skill_1_duration)
 
 func use_skill_2() -> void:
 	super()
@@ -153,5 +149,9 @@ func use_skill_2() -> void:
 	
 func use_skill_3() -> void:
 	super()
-	destreza_time = 0.0
+	if times_used_destreza == 0:
+		set_skill_duration(3, destreza_first_time_duration)
+	else:
+		set_skill_duration(3, INF)
+		
 	times_used_destreza += 1

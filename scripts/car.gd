@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Car
 
+@export var sprite: Sprite2D
 @export var speed := 3600.0
 @export var atk := 2000.0
 @export var path: Path2D
@@ -15,6 +16,12 @@ func _ready() -> void:
 	path_follow = PathFollow2D.new()
 	path.add_child(path_follow)
 	global_position = path_follow.global_position
+
+func _process(delta: float) -> void:
+	if velocity.x < 0.0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func _physics_process(delta: float) -> void:
 	time_since_last_collision += delta

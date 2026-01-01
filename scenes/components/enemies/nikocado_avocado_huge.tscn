@@ -95,7 +95,8 @@ shader_parameter/ADJUSTED_TIME = 0.0
 radius = 2363.13
 
 [node name="NikocadoAvocadoHuge" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
-collision_layer = 4
+collision_layer = 5
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_jo4to")
 navigation_agent = NodePath("NavigationAgent2D")
