@@ -1931,7 +1931,7 @@ player_spawn = NodePath("PlayerSpawn")
 enemy_spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
 enemy_scenes = Array[PackedScene]([ExtResource("3_fnalb"), ExtResource("4_sipdq"), ExtResource("5_ci58i"), ExtResource("6_sipdq")])
 timeline = NodePath("AnimationPlayer")
-enemy_count = 1248
+enemy_count = 624
 bgm = ExtResource("6_fnalb")
 chinese_bgm = ExtResource("7_sipdq")
 

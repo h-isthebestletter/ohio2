@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_cyd5r"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="2_h2wta"]
-[ext_resource type="AudioStream" uid="uid://daekg2kchc0f8" path="res://assets/audio/convoy.ogg" id="2_ih23e"]
 [ext_resource type="PackedScene" uid="uid://btutgu38itlyg" path="res://scenes/components/players/saul_goodman.tscn" id="2_j0vbj"]
 [ext_resource type="PackedScene" uid="uid://i1ks8a8ou02h" path="res://scenes/components/enemies/osama.tscn" id="3_l2for"]
 [ext_resource type="AudioStream" uid="uid://bq7j0nukvxbd5" path="res://assets/audio/zzggs.ogg" id="3_wy0ks"]
 [ext_resource type="PackedScene" uid="uid://cxjmfyk0wnps3" path="res://scenes/components/enemies/faraday.tscn" id="4_ymjon"]
 [ext_resource type="PackedScene" uid="uid://bi1sp6m6yaj47" path="res://scenes/components/enemies/ohio_final_boss.tscn" id="5_j7ydk"]
+[ext_resource type="AudioStream" uid="uid://edvx7jywi2u3" path="res://assets/audio/fnaf2.ogg" id="6_ymjon"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="9_l2for"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="10_ymjon"]
 
@@ -77,7 +77,7 @@ enemy_spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Mar
 enemy_scenes = Array[PackedScene]([ExtResource("3_l2for"), ExtResource("4_ymjon"), ExtResource("5_j7ydk")])
 timeline = NodePath("AnimationPlayer")
 enemy_count = 3
-bgm = ExtResource("2_ih23e")
+bgm = ExtResource("6_ymjon")
 chinese_bgm = ExtResource("3_wy0ks")
 
 [node name="Ground" type="TileMapLayer" parent="."]

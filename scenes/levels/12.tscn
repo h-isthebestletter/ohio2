@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bkx1wlyqlbq05"]
+[gd_scene load_steps=16 format=4 uid="uid://bkx1wlyqlbq05"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_2r80v"]
 [ext_resource type="PackedScene" uid="uid://i1ks8a8ou02h" path="res://scenes/components/enemies/osama.tscn" id="2_jel50"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dw2dnt7cwkhpa" path="res://scenes/components/enemies/swat_defender.tscn" id="7_pcvip"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="7_rp2w8"]
 [ext_resource type="AudioStream" uid="uid://3n4rr60yllvl" path="res://assets/audio/the_hot_wind_blowing.ogg" id="8_km583"]
+[ext_resource type="AudioStream" uid="uid://blit02h2gdpuj" path="res://assets/audio/sht.ogg" id="9_r8tnu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y0lrp"]
 vertices = PackedVector2Array(3490, 1698, 3358, 1698, 3358, 1566, 3490, 1566, 4002, -162, 4002, 2914, 3934, 2590, 3934, 1762, 1246, 1758, 1378, 1826, 1122, 1826, 1122, 1758, 3870, 1630, 3870, 1186, 2978, 1438, 2978, 1826, 2910, 1758, 2910, 1570, 2402, 1826, 2334, 1758, 2334, 2142, 2402, 2014, 1378, 1378, 1246, 1186, 2146, 1438, 2462, 1506, 3742, 1762, 3742, 1698, 3746, 1630, 1122, 2210, 1122, 2338, 862, 2270, 930, 2142, 354, 2338, 290, 2270, -98, -162, 1378, 1186, 1378, 1310, 1762, 1310, 1762, 1378, 1634, 1378, 1566, 1502, 1634, 1502, 1502, 2078, 1566, 1378, 98, 1186, -98, 2914, 98, 1502, 222, 1502, 222, 1310, 1122, 1310, 930, 1378, 1122, 1890, 1054, 1890, 1054, 1378, 930, 1634, 98, 1634, 1246, 2142, 1246, 1950, 1378, 1950, 1378, 2078, 1502, 1502, 1762, 1502, 1762, 2206, 1502, 2146, 1886, 2206, 1886, 2142, 2142, 2142, 2142, 2018, 1886, 2018, 1886, 1822, 2014, 1822, 2014, 1634, 1950, 1634, 1950, 1570, 1886, 1570, 1886, 1566, 1950, 1566, 1950, 1442, 1886, 1442, 1886, 1438, 1950, 1438, 1950, 1374, 2014, 1374, 2014, 1310, 2082, 1310, 2082, 1374, 2146, 1374, 2462, 1570, 2210, 1506, 2210, 1570, 2146, 1570, 2146, 1634, 2082, 1634, 2082, 1822, 2146, 1822, 2146, 1886, 2210, 1886, 2210, 2142, 3106, 2018, 3038, 2014, 3038, 1950, 3102, 1950, 3170, 2018, 3678, 1698, 3678, 1378, 3746, 1310, 3102, 1310, 3170, 1378, 3106, 2082, 2978, 2082, 2978, 2146, 2914, 2146, 2914, 2210, 2658, 2210, 2658, 2338, 1886, 2338, 1886, 2274, 1502, 2274, 1378, 2398, 1634, 2398, 1634, 2526, 1438, 2530, 1374, 2530, 1374, 2466, 2146, 2718, 2274, 2718, 2274, 2782, 2014, 2718, 2146, 2526, 2014, 2594, 1438, 2594, 1310, 2466, 1310, 2402, 1378, 2146, 1246, 2402, 1246, 2210, 3550, 2782, 3550, 2718, 3614, 2718, 3614, 2654, 3742, 2654, 3742, 2590, 994, 2718, 862, 1826, 930, 1758, 222, 1758, 290, 1826, 222, 2594, 354, 2462, 862, 2594, 994, 2462, 862, 2718, 98, 2718)
@@ -87,7 +88,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("2_jel50"), ExtResource("3_sqryg"
 timeline = NodePath("AnimationPlayer")
 enemy_count = 16
 bgm = ExtResource("8_km583")
-chinese_bgm = ExtResource("8_km583")
+chinese_bgm = ExtResource("9_r8tnu")
 metadata/_edit_vertical_guides_ = [-669.0]
 
 [node name="Ground" type="TileMapLayer" parent="."]

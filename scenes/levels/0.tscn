@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://co8ebwssnuv4p" path="res://scenes/components/enemies/reed_the_flame_shadow.tscn" id="3_i6aa5"]
 [ext_resource type="PackedScene" uid="uid://d37ldxf51ffy8" path="res://scenes/components/enemies/alcoholic.tscn" id="4_8r72r"]
 [ext_resource type="PackedScene" uid="uid://bbvgks10oid0m" path="res://scenes/components/enemies/holy_cow.tscn" id="5_2kv86"]
-[ext_resource type="AudioStream" uid="uid://dfxo2od2y83fx" path="res://assets/audio/talulah.ogg" id="6_i6aa5"]
+[ext_resource type="AudioStream" uid="uid://cyferfh4bvc3n" path="res://assets/audio/nikkit2020.ogg" id="6_i6aa5"]
 [ext_resource type="AudioStream" uid="uid://dcviuv83iundr" path="res://assets/audio/jsy.ogg" id="7_8r72r"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="7_rc0dk"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="8_jf0s2"]
