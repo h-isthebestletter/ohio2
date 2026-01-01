@@ -33,6 +33,23 @@ extends Enemy2D
 @export_range(0.0, 360.0, 0.01, "degrees") var planet_approach_angle := 100.0
 @export var planet_speed := 3600.0
 
+@export_category("Eddy Current")
+@export var eddy_current_initial_cooldown := 5.0
+@export var eddy_current_cooldown := 15.0
+@export var eddy_current_effect_duration := 8.0
+
+@export_category("Magnetic Flux Cutting")
+@export var magnetic_flux_cutting_initial_cooldown := 60.0
+@export var magnetic_flux_cutting_cooldown := 90.0
+## Ratio of healing rate (in HP/s) against player speed (in pixels/s)
+@export var magnetic_flux_cutting_effect_strength := 30.0
+@export var magnetic_flux_cutting_effect_duration := 8.0
+
+@export_category("Faraday Cage")
+@export var faraday_cage_initial_cooldown := 40.0
+@export var faraday_cage_cooldown := 40.0
+@export var faraday_cage_duration := 10.0
+
 @onready var cooldowns: Dictionary[String, float] = {
 	"normal_attack": 0.0,
 	"made_in_ohio": made_in_ohio_initial_cooldown,
@@ -40,11 +57,15 @@ extends Enemy2D
 	"sigma_stare": sigma_stare_initial_cooldown,
 	"star_platinum": star_platinum_initial_cooldown,
 	"wonder_of_ohio": wonder_of_ohio_initial_cooldown,
+	"eddy_current": eddy_current_initial_cooldown,
+	"magnetic_flux_cutting": magnetic_flux_cutting_initial_cooldown,
+	"faraday_cage": faraday_cage_initial_cooldown,
 }
 
 var using_sword_attack := false
 ## Debounce the player collision during sword-based attacks
 var hit_player := false
+var cutting_magnetic_flux := false
 
 func _ready() -> void:
 	super()
@@ -122,6 +143,13 @@ func attack() -> void:
 		"wonder_of_ohio":
 			wonder_of_ohio()
 			cooldowns.wonder_of_ohio = wonder_of_ohio_cooldown
+		"eddy_current":
+			eddy_current()
+			cooldowns.eddy_current = eddy_current_cooldown
+		"magnetic_flux_cutting":
+			pass
+		"faraday_cage":
+			pass
 
 func mark_using_sword_attack() -> void:
 	using_sword_attack = true
@@ -187,3 +215,14 @@ func wonder_of_ohio() -> void:
 			"atk": stats.atk * wonder_of_ohio_damage_multiplier,
 		}
 	)
+
+func eddy_current() -> void:
+	animation_player.play("attacking_eddy_current")
+	player.receive_status_effect(StatusEffect.Kind.Slowed, eddy_current_effect_duration)
+
+func magnetic_flux_cutting() -> void:
+	cutting_magnetic_flux = true
+	animation_player.play("attacking_magnetic_flux_cutting")
+	
+func faraday_cage() -> void:
+	pass

@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://6vb4xwa8jvy7"]
+[gd_scene load_steps=28 format=3 uid="uid://cxjmfyk0wnps3"]
 
-[ext_resource type="Script" uid="uid://ccjhk4v0hn40h" path="res://scripts/enemies/ohio_final_boss.gd" id="1_i13cl"]
-[ext_resource type="Texture2D" uid="uid://edmbc5pkycgp" path="res://assets/images/sprites/ohio_final_boss.png" id="2_isvvn"]
-[ext_resource type="Texture2D" uid="uid://c6bm0otcg2ti3" path="res://assets/images/sprites/items/sword_of_ohio.png" id="3_40otd"]
-[ext_resource type="PackedScene" uid="uid://4tm6aprqxxfe" path="res://scenes/components/level_boss_entrance.tscn" id="3_uwlox"]
-[ext_resource type="Shader" uid="uid://dd7rmd8sh3kcx" path="res://assets/shaders/level_boss_entrance_effect.gdshader" id="4_40otd"]
-[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="5_kt67k"]
-[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="6_n74a0"]
+[ext_resource type="Script" uid="uid://dm7nih5gg8n14" path="res://scripts/enemies/faraday.gd" id="1_onnqq"]
+[ext_resource type="Texture2D" uid="uid://dxk5kfouotv2t" path="res://assets/images/sprites/faraday.png" id="2_lgpjp"]
+[ext_resource type="Texture2D" uid="uid://c6bm0otcg2ti3" path="res://assets/images/sprites/items/sword_of_ohio.png" id="3_wg1e2"]
+[ext_resource type="PackedScene" uid="uid://4tm6aprqxxfe" path="res://scenes/components/level_boss_entrance.tscn" id="4_ufl10"]
+[ext_resource type="Shader" uid="uid://dd7rmd8sh3kcx" path="res://assets/shaders/level_boss_entrance_effect.gdshader" id="5_2h1i8"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="6_6norq"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="7_elvlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40otd"]
 size = Vector2(607.645, 32.28)
@@ -457,10 +457,18 @@ tracks/5/keys = {
 "values": [38.1983, 38.1983, 0.499164]
 }
 
+[sub_resource type="Animation" id="Animation_onnqq"]
+resource_name = "attacking_eddy_current"
+
+[sub_resource type="Animation" id="Animation_lgpjp"]
+resource_name = "attacking_magnetic_flux_cutting"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0gkv8"]
 _data = {
 &"RESET": SubResource("Animation_0gkv8"),
+&"attacking_eddy_current": SubResource("Animation_onnqq"),
 &"attacking_made_in_ohio": SubResource("Animation_mn02q"),
+&"attacking_magnetic_flux_cutting": SubResource("Animation_lgpjp"),
 &"attacking_normal": SubResource("Animation_40otd"),
 &"attacking_ohio_bankai": SubResource("Animation_4jgel"),
 &"attacking_sigma_stare": SubResource("Animation_fi4m1"),
@@ -481,20 +489,19 @@ noise = SubResource("FastNoiseLite_mn02q")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fi4m1"]
 resource_local_to_scene = true
-shader = ExtResource("4_40otd")
+shader = ExtResource("5_2h1i8")
 shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
 shader_parameter/ADJUSTED_TIME = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40otd"]
 radius = 590.054
 
-[node name="OhioFinalBoss" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[node name="Faraday" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
 motion_mode = 1
-script = ExtResource("1_i13cl")
-catch_up_distance = 800.0
+script = ExtResource("1_onnqq")
 navigation_agent = NodePath("NavigationAgent2D")
-character_name = "Ohio Final Boss"
+character_name = "Faraday"
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
@@ -502,13 +509,13 @@ sprite = NodePath("Sprite2D")
 visible = false
 modulate = Color(3, 3, 3, 1)
 position = Vector2(0.1, 0.1)
-texture = ExtResource("2_isvvn")
+texture = ExtResource("2_lgpjp")
 
 [node name="SwordOfOhio" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(23, 27)
 rotation = 0.499164
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_40otd")
+texture = ExtResource("3_wg1e2")
 offset = Vector2(240, -3.05176e-05)
 
 [node name="SwordCollider" type="Area2D" parent="Sprite2D/SwordOfOhio"]
@@ -530,15 +537,15 @@ libraries = {
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="LevelBossEntrance" parent="." instance=ExtResource("3_uwlox")]
+[node name="LevelBossEntrance" parent="." instance=ExtResource("4_ufl10")]
 visible = false
 material = SubResource("ShaderMaterial_fi4m1")
 
-[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_kt67k")]
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_6norq")]
 position = Vector2(0, 33)
 target = NodePath("..")
 
-[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_n74a0")]
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_elvlf")]
 position = Vector2(0, -43)
 target = NodePath("..")
 

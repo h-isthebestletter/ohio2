@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq3hcced41sbp"]
+
+[ext_resource type="Texture2D" uid="uid://66a7u1rexmaq" path="res://assets/images/sprites/items/minecraft_spawner.png" id="1_hxjx5"]
+[ext_resource type="Script" uid="uid://cu7nyaoa7wula" path="res://scripts/enemy_summon_2d.gd" id="1_njuqk"]
+
+[node name="FaradayCage" type="Sprite2D"]
+texture = ExtResource("1_hxjx5")
+script = ExtResource("1_njuqk")
+metadata/_custom_type_script = "uid://cu7nyaoa7wula"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -179, 161, -99, 161, 98, 0, 179, -161, 99, -161, -99)
