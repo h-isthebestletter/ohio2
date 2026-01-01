@@ -11,8 +11,8 @@ func _ready() -> void:
 	for button in level_buttons:
 		if button is LevelSelectLevelButton:
 			button.level_selected.connect(func (selected_level_id: int):
-				level_details.open()
 				level_details.set_level(selected_level_id)
+				level_details.open()
 				level_id = selected_level_id
 			)
 	

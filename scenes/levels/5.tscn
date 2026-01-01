@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btutgu38itlyg" path="res://scenes/components/players/saul_goodman.tscn" id="2_ljm8n"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="2_wb7uw"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="3_n313d"]
-[ext_resource type="AudioStream" uid="uid://cxy6nxfc88hfv" path="res://assets/audio/whistle.ogg" id="4_p5xfs"]
+[ext_resource type="AudioStream" uid="uid://edvx7jywi2u3" path="res://assets/audio/fnaf2.ogg" id="4_p5xfs"]
 [ext_resource type="AudioStream" uid="uid://bxhhf6kgktg7s" path="res://assets/audio/wsqszsq.ogg" id="5_csx81"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ljm8n"]

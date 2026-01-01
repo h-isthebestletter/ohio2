@@ -10,6 +10,7 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	multiplier = args["multiplier"]
 	global_position = args["to"]
 	exploded = false
+	self_modulate = Color.WHITE
 
 func explode() -> void:
 	if exploded: return

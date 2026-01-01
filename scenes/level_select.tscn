@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://duce4xq0dcdkf"]
+[gd_scene load_steps=18 format=3 uid="uid://duce4xq0dcdkf"]
 
 [ext_resource type="Script" uid="uid://coept2654spo8" path="res://scripts/level_select.gd" id="1_r77uv"]
 [ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="1_rif6e"]
@@ -19,6 +19,134 @@ gradient = SubResource("Gradient_rif6e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r77uv"]
 texture = SubResource("GradientTexture1D_chg43")
+
+[sub_resource type="Animation" id="Animation_o2xx4"]
+resource_name = "open"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [1.0, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [1.5, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_htctk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s6tf7"]
+resource_name = "close"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:anchor_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:anchor_right")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.4, 1),
+"update": 0,
+"values": [1.0, 1.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4mbh"]
+_data = {
+&"RESET": SubResource("Animation_htctk"),
+&"close": SubResource("Animation_s6tf7"),
+&"open": SubResource("Animation_o2xx4")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -274,13 +402,11 @@ level_id = 25
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = -1
 anchor_left = 1.0
-anchor_right = 1.0
+anchor_right = 1.5
 anchor_bottom = 1.0
-offset_left = -360.0
-grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_r77uv")
 script = ExtResource("5_r77uv")
 
@@ -305,13 +431,14 @@ autowrap_mode = 3
 [node name="Description" type="RichTextLabel" parent="LevelDetails/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 bbcode_enabled = true
 text = "Description"
+fit_content = true
 
 [node name="Play" type="TextureButton" parent="LevelDetails/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 10
 texture_normal = ExtResource("8_ckc44")
 stretch_mode = 0
 
@@ -325,6 +452,11 @@ grow_vertical = 2
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelDetails"]
+libraries = {
+&"": SubResource("AnimationLibrary_u4mbh")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0

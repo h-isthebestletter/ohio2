@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_k03vk"]
 [ext_resource type="PackedScene" uid="uid://cky3g0tnsog07" path="res://scenes/components/players/freddy_fazbear.tscn" id="2_3klgn"]
-[ext_resource type="AudioStream" uid="uid://daekg2kchc0f8" path="res://assets/audio/convoy.ogg" id="2_8phci"]
 [ext_resource type="PackedScene" uid="uid://d37ldxf51ffy8" path="res://scenes/components/enemies/alcoholic.tscn" id="3_6haa8"]
 [ext_resource type="AudioStream" uid="uid://bq7j0nukvxbd5" path="res://assets/audio/zzggs.ogg" id="3_spdq5"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="4_2r8qp"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://co8ebwssnuv4p" path="res://scenes/components/enemies/reed_the_flame_shadow.tscn" id="19_7h2lp"]
 [ext_resource type="PackedScene" uid="uid://bbrllfbb66k6d" path="res://scenes/components/enemies/swat_attacker.tscn" id="20_knwbc"]
 [ext_resource type="PackedScene" uid="uid://dw2dnt7cwkhpa" path="res://scenes/components/enemies/swat_defender.tscn" id="21_0fiyv"]
+[ext_resource type="AudioStream" uid="uid://cyferfh4bvc3n" path="res://assets/audio/nikkit2020.ogg" id="22_6haa8"]
 
 [sub_resource type="Animation" id="Animation_l2for"]
 resource_name = "new_animation"
@@ -317,7 +317,7 @@ enemy_spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 enemy_scenes = Array[PackedScene]([ExtResource("3_6haa8"), ExtResource("4_oc7u3"), ExtResource("5_mg210"), ExtResource("6_t0q4w"), ExtResource("7_wlah5"), ExtResource("8_ywm4l"), ExtResource("9_bu2d7"), ExtResource("10_5jml1"), ExtResource("11_0k2q7"), ExtResource("12_hs34p"), ExtResource("13_tjps1"), ExtResource("14_3mo7f"), ExtResource("15_3qofg"), ExtResource("16_e3amc"), ExtResource("17_fvgle"), ExtResource("18_jlsqj"), ExtResource("19_7h2lp"), ExtResource("20_knwbc"), ExtResource("21_0fiyv")])
 timeline = NodePath("AnimationPlayer")
 enemy_count = 19
-bgm = ExtResource("2_8phci")
+bgm = ExtResource("22_6haa8")
 chinese_bgm = ExtResource("3_spdq5")
 
 [node name="Ground" type="TileMapLayer" parent="."]

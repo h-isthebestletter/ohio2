@@ -61,7 +61,7 @@ Here's a list of enemies you will encounter along with their abilities:
 - Alcoholic
 	- Throws molotovs at you (can miss)
 
-- Car
+- Car (unused)
 	- Moves along a predefined path
 	- Deals damage by running you over
 	- Cannot be killed and not counted towards enemy kill count
@@ -92,6 +92,7 @@ Here's a list of enemies you will encounter along with their abilities:
 	- Can only perform melee attacks
 	- Unlike the real magma cube from the popular video game "Minecraft", this one will not split into smaller ones upon death
 		- However there are still 3 size variants which vary in speed and attack strength
+	- Will not take damage from fire and lava
 
 - Markiplier
 	- Throws hands
@@ -99,11 +100,14 @@ Here's a list of enemies you will encounter along with their abilities:
 
 - Nikocado Avocado
 	- Jumps up and down, sending shockwaves
+	- A very large version of him may appear. You cannot walk through this version.
 
 - Pompeii
 	- Shoots fireballs that inflict poison (continuously lose HP)
+	- Will not take damage from fire and lava
 
 - Reed the Flame Shadow
+	- Will not take damage from fire and lava
 	- Considerably lags the game and destroys framer[ERROR] Uncaught exception: 999ms since last physics tick
 [ERROR] Cannot sync physics server with CPU tick, retrying...
 [ERROR] Physics server is uncontactable (forcibly shut down)
@@ -127,6 +131,7 @@ Boss enemies include:
 	- Gets enraged (gains attack speed) when HP drops below certain percentage
 
 - Ohio Final Boss
+	- Will not take damage from fire and lava
 	- Thrusts with sword
 	- Made in Ohio: teleports behind you and slashes
 	- Ohio Bankai: sword enlarges and performs a wide slash
@@ -135,6 +140,7 @@ Boss enemies include:
 	- Wonder of Ohio: crashes a planet into the ground (can miss)
 
 - Faraday
+	- Will not take damage from fire and lava
 	- Thrusts with sword
 	- Made in Ohio: teleports behind you and slashes
 	- Ohio Bankai: sword enlarges and performs a wide slash

@@ -13,6 +13,7 @@ class Pool:
 		
 		for i in range(count):
 			var new_summon: Summon2D = packed_scene.instantiate()
+			
 			new_summon.request_become_unused.connect(add_to_pool)
 			parent.add_child(new_summon)
 			add_to_pool(new_summon)
@@ -40,6 +41,7 @@ class Pool:
 		summon.set_physics_process(false)
 
 		unused.push_back(summon)
+
 
 @export var initial_object_count: Dictionary[String, int] = {}
 @export var level: Level2D

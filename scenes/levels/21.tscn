@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bq7j0nukvxbd5" path="res://assets/audio/zzggs.ogg" id="3_wy0ks"]
 [ext_resource type="PackedScene" uid="uid://cxjmfyk0wnps3" path="res://scenes/components/enemies/faraday.tscn" id="4_ymjon"]
 [ext_resource type="PackedScene" uid="uid://bi1sp6m6yaj47" path="res://scenes/components/enemies/ohio_final_boss.tscn" id="5_j7ydk"]
-[ext_resource type="AudioStream" uid="uid://edvx7jywi2u3" path="res://assets/audio/fnaf2.ogg" id="6_ymjon"]
+[ext_resource type="AudioStream" uid="uid://daekg2kchc0f8" path="res://assets/audio/convoy.ogg" id="6_ymjon"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="9_l2for"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="10_ymjon"]
 

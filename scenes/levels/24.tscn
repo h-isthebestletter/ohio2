@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://bfu8d25iv7s6r"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_ms37o"]
-[ext_resource type="AudioStream" uid="uid://daekg2kchc0f8" path="res://assets/audio/convoy.ogg" id="2_opoft"]
 [ext_resource type="PackedScene" uid="uid://cky3g0tnsog07" path="res://scenes/components/players/freddy_fazbear.tscn" id="2_wmbh5"]
 [ext_resource type="AudioStream" uid="uid://bq7j0nukvxbd5" path="res://assets/audio/zzggs.ogg" id="3_de13f"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="4_ks55n"]
+[ext_resource type="AudioStream" uid="uid://bngaw4ysl2nny" path="res://assets/audio/field_of_memories.ogg" id="4_u616c"]
 [ext_resource type="PackedScene" uid="uid://co8ebwssnuv4p" path="res://scenes/components/enemies/reed_the_flame_shadow.tscn" id="19_wwnga"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="25_0sni1"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="26_eq1oi"]
@@ -47,7 +47,7 @@ enemy_spawn_points = [NodePath("Marker2D")]
 enemy_scenes = Array[PackedScene]([ExtResource("19_wwnga")])
 timeline = NodePath("AnimationPlayer")
 enemy_count = 400
-bgm = ExtResource("2_opoft")
+bgm = ExtResource("4_u616c")
 chinese_bgm = ExtResource("3_de13f")
 
 [node name="Ground" type="TileMapLayer" parent="."]

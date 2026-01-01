@@ -67,7 +67,8 @@ func _on_request_load_level(level_id: int) -> void:
 	var path = "res://scenes/levels/{id}.tscn".format({
 		"id": level_id
 	})
-	if FileAccess.file_exists(path):
+
+	if ResourceLoader.exists(path):
 		replace_scene_with_animation(path)
 	else:
 		# count stage as completed since there's no level

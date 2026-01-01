@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=4 uid="uid://csmdc68bsllqf"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_h2fyb"]
-[ext_resource type="AudioStream" uid="uid://daekg2kchc0f8" path="res://assets/audio/convoy.ogg" id="2_3tdmx"]
 [ext_resource type="PackedScene" uid="uid://cky3g0tnsog07" path="res://scenes/components/players/freddy_fazbear.tscn" id="2_tajks"]
 [ext_resource type="AudioStream" uid="uid://bq7j0nukvxbd5" path="res://assets/audio/zzggs.ogg" id="3_3da2n"]
 [ext_resource type="PackedScene" uid="uid://baf5egd0oi0t" path="res://scenes/components/enemies/hector_salamanca.tscn" id="3_8pbm2"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="4_3e7mg"]
 [ext_resource type="PackedScene" uid="uid://v7g2b4vyohs5" path="res://scenes/components/enemies/creeper.tscn" id="4_revlo"]
+[ext_resource type="AudioStream" uid="uid://dk077qenb872f" path="res://assets/audio/toreador.ogg" id="5_8pbm2"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="7_revlo"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="8_weppc"]
 
@@ -62,7 +62,7 @@ enemy_spawn_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 enemy_scenes = Array[PackedScene]([ExtResource("3_8pbm2"), ExtResource("4_revlo")])
 timeline = NodePath("AnimationPlayer")
 enemy_count = 20000
-bgm = ExtResource("2_3tdmx")
+bgm = ExtResource("5_8pbm2")
 chinese_bgm = ExtResource("3_3da2n")
 
 [node name="Ground" type="TileMapLayer" parent="."]

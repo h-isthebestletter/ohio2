@@ -6,6 +6,7 @@ var player_velocity: Vector2
 var speed: float
 var atk: int
 var attack_speed: float
+var poison_duration: float
 
 var final_target_position
 var internal_position: Vector2
@@ -23,6 +24,7 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	speed = args["speed"]
 	atk = args["atk"]
 	attack_speed = args["attack_speed"]
+	poison_duration = args["poison_duration"]
 	
 	global_position = from
 	internal_position = from
@@ -34,7 +36,6 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 func _process(delta: float) -> void:
 	time += delta
 	# only fire the grenade after 0.8s
-	# (sync with Osama's attack animation)
 	if time < 0.8 / attack_speed:
 		$AttackWarn.global_position = aim_ahead(to, player_velocity)
 		return
@@ -61,7 +62,7 @@ func detonate() -> void:
 	for body in bodies:
 		if body is Player2D:
 			body.take_damage(atk)
-			body.receive_status_effect(StatusEffect.Kind.Poisoned, 5.0, false)
+			body.receive_status_effect(StatusEffect.Kind.Poisoned, poison_duration, false)
 			break
 	
 	request_become_unused.emit(self)

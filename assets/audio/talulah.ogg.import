@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/talulah.ogg-6ecff717ba6cd6f71a2908247aa8d6ff.
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
