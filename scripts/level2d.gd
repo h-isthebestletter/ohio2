@@ -40,13 +40,13 @@ func spawn_enemy(enemy_id: int, spawn_point_index: int) -> Enemy2D:
 	
 	return enemy
 
-func get_all_enemies() -> Array[Enemy2D]:
+func get_all_enemies() -> Array:
 	return get_children().filter(func (x): return x is Enemy2D)
 
-func get_all_player_summons() -> Array[PlayerSummon2D]:
+func get_all_player_summons() -> Array:
 	return get_children().filter(func (x): return x is PlayerSummon2D)
 
-func get_all_enemy_summons() -> Array[EnemySummon2D]:
+func get_all_enemy_summons() -> Array:
 	return get_children().filter(func (x): return x is EnemySummon2D)
 
 func _ready() -> void:

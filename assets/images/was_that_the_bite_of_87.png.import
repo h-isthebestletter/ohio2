@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drgh0leld43go"
-path="res://.godot/imported/charges.svg-759d4df17bf5ddcf2d5f451471141462.ctex"
+uid="uid://14elqs0hnxve"
+path="res://.godot/imported/was_that_the_bite_of_87.png-5f264127794a4f5ce7849dfe7c5a1b23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/items/charges.svg"
-dest_files=["res://.godot/imported/charges.svg-759d4df17bf5ddcf2d5f451471141462.ctex"]
+source_file="res://assets/images/was_that_the_bite_of_87.png"
+dest_files=["res://.godot/imported/was_that_the_bite_of_87.png-5f264127794a4f5ce7849dfe7c5a1b23.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

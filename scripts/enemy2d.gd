@@ -76,7 +76,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super(delta)
-	if health == 0 and state != State.Dying:
+	if health <= 0.0 and state != State.Dying:
 		animation_player.stop()
 		state = State.Dying
 		_act()

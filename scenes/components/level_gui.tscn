@@ -11,6 +11,7 @@
 [node name="LevelGUI" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3

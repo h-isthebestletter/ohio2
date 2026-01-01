@@ -1,4 +1,5 @@
 extends Enemy2D
+class_name Markiplier
 
 func update_state_machine() -> void:
 	if player.global_position.distance_to(global_position) < 60.0:

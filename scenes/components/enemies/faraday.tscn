@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cxjmfyk0wnps3"]
+[gd_scene load_steps=30 format=3 uid="uid://cxjmfyk0wnps3"]
 
 [ext_resource type="Script" uid="uid://dm7nih5gg8n14" path="res://scripts/enemies/faraday.gd" id="1_onnqq"]
 [ext_resource type="Texture2D" uid="uid://dxk5kfouotv2t" path="res://assets/images/sprites/faraday.png" id="2_lgpjp"]
@@ -7,9 +7,6 @@
 [ext_resource type="Shader" uid="uid://dd7rmd8sh3kcx" path="res://assets/shaders/level_boss_entrance_effect.gdshader" id="5_2h1i8"]
 [ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="6_6norq"]
 [ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="7_elvlf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_40otd"]
-size = Vector2(607.645, 32.28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjphi"]
 size = Vector2(48, 48)
@@ -128,6 +125,9 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_onnqq"]
 resource_name = "attacking_eddy_current"
 
+[sub_resource type="Animation" id="Animation_wg1e2"]
+resource_name = "attacking_faraday_cage"
+
 [sub_resource type="Animation" id="Animation_mn02q"]
 resource_name = "attacking_made_in_ohio"
 length = 0.5
@@ -154,7 +154,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.5),
 "transitions": PackedFloat32Array(0.170755, 2.73208, 1),
 "update": 0,
-"values": [0.498872, -2.64243, -12.0672]
+"values": [0.498872, -2.64243, 0.499164]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -163,14 +163,11 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"mark_using_sword_attack"
-}, {
-"args": [],
-"method": &"mark_end_sword_attack"
+"method": &"made_in_ohio_deal_damage"
 }]
 }
 
@@ -190,7 +187,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.5, 1),
 "transitions": PackedFloat32Array(0.170755, 0.129408, 0.170755, 0.170755),
 "update": 0,
-"values": [Vector2(23, 27), Vector2(38.29, 11.01), Vector2(-13.065, 10.965), Vector2(23, 27)]
+"values": [Vector2(23, 27), Vector2(0, 11.01), Vector2(35.79, 10.965), Vector2(23, 27)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -199,10 +196,10 @@ tracks/1/path = NodePath("Sprite2D/SwordOfOhio:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 1),
-"transitions": PackedFloat32Array(0.170755, 0.164939, 0.138696, 0.170755),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.170755, 0.138696, 0.170755),
 "update": 0,
-"values": [0.498872, 2.94263, 3.1957, 0.498872]
+"values": [0.498872, -0.0610865, 0.498872]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -211,14 +208,11 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"mark_using_sword_attack"
-}, {
-"args": [],
-"method": &"mark_end_sword_attack"
+"method": &"normal_attack_deal_damage"
 }]
 }
 
@@ -463,9 +457,6 @@ tracks/5/keys = {
 "values": [38.1983, 38.1983, 0.499164]
 }
 
-[sub_resource type="Animation" id="Animation_wg1e2"]
-resource_name = "attacking_faraday_cage"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0gkv8"]
 _data = {
 &"RESET": SubResource("Animation_0gkv8"),
@@ -500,6 +491,12 @@ shader_parameter/ADJUSTED_TIME = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_40otd"]
 radius = 590.054
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_onnqq"]
+radius = 91.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lgpjp"]
+radius = 92.1358
+
 [node name="Faraday" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
 motion_mode = 1
@@ -521,15 +518,6 @@ rotation = 0.499164
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_wg1e2")
 offset = Vector2(240, -3.05176e-05)
-
-[node name="SwordCollider" type="Area2D" parent="Sprite2D/SwordOfOhio"]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordOfOhio/SwordCollider"]
-position = Vector2(239.813, -0.354)
-shape = SubResource("RectangleShape2D_40otd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fjphi")
@@ -560,6 +548,22 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OhioBankaiCollider"]
 shape = SubResource("CircleShape2D_40otd")
+
+[node name="NormalAttackCollider" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalAttackCollider"]
+shape = SubResource("CircleShape2D_onnqq")
+
+[node name="MadeInOhioCollider" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MadeInOhioCollider"]
+shape = SubResource("CircleShape2D_lgpjp")
 
 [node name="SigmaStareRaycast" type="RayCast2D" parent="."]
 unique_name_in_owner = true

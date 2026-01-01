@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://kacc1joc7fwl"]
+[gd_scene load_steps=4 format=3 uid="uid://kacc1joc7fwl"]
 
 [ext_resource type="Script" uid="uid://b67n04i0ptq1p" path="res://scripts/player_summons/retarding_field.gd" id="1_lud47"]
+[ext_resource type="Texture2D" uid="uid://4ll8aphthi76" path="res://assets/images/sprites/items/charges.png" id="1_xb4x0"]
 
-[node name="RetardingField" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ouf4u"]
+radius = 507.279
+
+[node name="RetardingField" type="Sprite2D"]
+texture = ExtResource("1_xb4x0")
 script = ExtResource("1_lud47")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ouf4u")

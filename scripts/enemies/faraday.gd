@@ -67,10 +67,6 @@ extends Enemy2D
 	"faraday_cage": faraday_cage_initial_cooldown,
 }
 
-var using_sword_attack := false
-## Debounce the player collision during sword-based attacks
-var hit_player := false
-
 var cutting_magnetic_flux_time := INF
 
 func _ready() -> void:
@@ -81,14 +77,6 @@ func _process(delta: float) -> void:
 	super(delta)
 	for key in cooldowns.keys():
 		cooldowns[key] -= delta
-	
-	if using_sword_attack and not hit_player:
-		if %SwordCollider.overlaps_body(player):
-			if animation_player.is_playing() and animation_player.current_animation == "attacking_made_in_ohio":
-				player.take_damage(stats.atk * made_in_ohio_damage_multiplier)
-			else:
-				player.take_damage(stats.atk)
-			hit_player = true
 	
 	if animation_player.is_playing() and animation_player.current_animation == "attacking_sigma_stare":
 		%SigmaStareRaycast.target_position = (player.global_position - global_position).normalized() * sigma_stare_range
@@ -109,10 +97,6 @@ func _process(delta: float) -> void:
 		health += player.velocity.length() * magnetic_flux_cutting_effect_strength * delta
 
 func update_state_machine() -> void:
-	#print("thinking")
-	using_sword_attack = false
-	hit_player = false
-	
 	if player.global_position.distance_to(global_position) > catch_up_distance:
 		state = State.Moving
 		return
@@ -125,15 +109,12 @@ func update_state_machine() -> void:
 	state = State.Moving
 
 func attack() -> void:
-	#print("attacking")
 	var least_cooldown: String = cooldowns.keys()[0]
 	
 	for key in cooldowns.keys():
 		var value = cooldowns[key]
 		if value < cooldowns[least_cooldown]:
 			least_cooldown = key
-	
-	#print(least_cooldown)
 	
 	match least_cooldown:
 		"normal_attack":
@@ -164,35 +145,38 @@ func attack() -> void:
 			faraday_cage()
 			cooldowns.faraday_cage = faraday_cage_cooldown
 
-func mark_using_sword_attack() -> void:
-	using_sword_attack = true
-
-func mark_end_sword_attack() -> void:
-	using_sword_attack = false
-
 func normal_attack() -> void:
-	#print("normal attack")
 	animation_player.play("attacking_normal")
 
+func normal_attack_deal_damage() -> void:
+	for body in %NormalAttackCollider.get_overlapping_bodies():
+		if body is Player2D:
+			body.take_damage(stats.atk)
+			return
+
 func made_in_ohio() -> void:
-	#print("made in ohio")
 	# raycast to get suitable point behind player
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(
 		player.global_position,
-		player.global_position - Vector2.from_angle(player.attack_direction) * 100.0,
+		player.global_position - Vector2.from_angle(player.attack_direction) * 50.0,
 		1
 	)
 	var result = space_state.intersect_ray(query).get("position")
 	if result != null:
 		global_position = result
 	else:
-		global_position = player.global_position - Vector2.from_angle(player.attack_direction) * 100.0
+		global_position = player.global_position - Vector2.from_angle(player.attack_direction) * 50.0
 	
 	animation_player.play("attacking_made_in_ohio")
 
+func made_in_ohio_deal_damage() -> void:
+	for body in %MadeInOhioCollider.get_overlapping_bodies():
+		if body is Player2D:
+			body.take_damage(stats.atk * made_in_ohio_damage_multiplier)
+			return
+
 func ohio_bankai() -> void:
-	#print("ohio bankai")
 	animation_player.play("attacking_ohio_bankai")
 
 func ohio_bankai_deal_damage() -> void:
@@ -200,7 +184,6 @@ func ohio_bankai_deal_damage() -> void:
 		player.take_damage(stats.atk * ohio_bankai_damage_multiplier)
 
 func sigma_stare() -> void:
-	#print("sigma stare")
 	animation_player.play("attacking_sigma_stare")
 	%SigmaStareRaycast.enabled = true
 
@@ -217,7 +200,6 @@ func star_platinum() -> void:
 	)
 
 func wonder_of_ohio() -> void:
-	#print("wonder_of_ohio")
 	animation_player.play("attacking_wonder_of_ohio")
 	create_summon(
 		"res://scenes/components/enemy_summons/jupiter.tscn",

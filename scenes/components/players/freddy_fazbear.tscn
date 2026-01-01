@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cky3g0tnsog07"]
+[gd_scene load_steps=19 format=3 uid="uid://cky3g0tnsog07"]
 
 [ext_resource type="Script" uid="uid://cvwm7xhyjf0k3" path="res://scripts/players/freddy_fazbear.gd" id="1_0foew"]
 [ext_resource type="Texture2D" uid="uid://ctbs75scaw5v6" path="res://assets/images/sprites/freddy_fazbear.jpg" id="1_opr48"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bcbe6qyvjj5hi" path="res://assets/images/sprites/items/electric_guitar.png" id="3_or3cr"]
 [ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_ppehj"]
 [ext_resource type="Texture2D" uid="uid://baloy08q4kumo" path="res://assets/images/player_attack_charge_effect.svg" id="6_pa3da"]
+[ext_resource type="Texture2D" uid="uid://14elqs0hnxve" path="res://assets/images/was_that_the_bite_of_87.png" id="7_q66wk"]
+[ext_resource type="AudioStream" uid="uid://dmwt832hieukj" path="res://assets/audio/sound_effects/was_that_the_bite_of_87.mp3" id="8_26drk"]
+[ext_resource type="AudioStream" uid="uid://b5xtxtsepe4uk" path="res://assets/audio/sound_effects/fnaf_4_bite_sound.mp3" id="9_t0ch6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0foew"]
 size = Vector2(48, 48)
@@ -215,15 +218,14 @@ size = Vector2(135, 108)
 size = Vector2(905, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q66wk"]
-radius = 251.448
+radius = 55.1453
 
 [node name="FreddyFazbear" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_0foew")
-skills_sp_cost = Array[int]([8, 18, 24])
+skills_sp_cost = Array[int]([8, 18, 40])
 character_name = "Freddy Fazbear"
-_max_health = 1e+08
 _atk = 3600.0
 _def = 400.0
 animation_player = NodePath("AnimationPlayer")
@@ -296,3 +298,29 @@ shape = SubResource("CircleShape2D_q66wk")
 visible = false
 position = Vector2(345, 0)
 texture = ExtResource("6_pa3da")
+
+[node name="WasThatTheBiteOf87" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Control" type="Control" parent="WasThatTheBiteOf87"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="WasThatTheBiteOf87/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_q66wk")
+
+[node name="BiteOf87SoundEffect" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_26drk")
+volume_db = 15.0
+
+[node name="BiteSoundEffect" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_t0ch6")
+volume_db = 6.0

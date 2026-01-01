@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://crymub1dgblay"]
+
+[ext_resource type="Texture2D" uid="uid://dlkem3l02s113" path="res://assets/images/sprites/items/exploding_crystal.png" id="1_ju0tw"]
+[ext_resource type="Script" uid="uid://cex7oar8lvyx8" path="res://scripts/player_summons/exploding_crystal.gd" id="1_lombh"]
+[ext_resource type="Texture2D" uid="uid://c16db35aukabc" path="res://assets/images/atk_hint_circle.png" id="3_vwl7f"]
+[ext_resource type="PackedScene" uid="uid://cqsx6mn41w8uq" path="res://scenes/components/shockwave_large.tscn" id="4_jptue"]
+[ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="5_1b02b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vwl7f"]
+radius = 509.943
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lyiat"]
+radius = 60.075
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pumm0"]
+resource_local_to_scene = true
+shader = ExtResource("5_1b02b")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
+
+[node name="ExplodingCrystal" type="Sprite2D"]
+texture = ExtResource("1_ju0tw")
+script = ExtResource("1_lombh")
+metadata/_custom_type_script = "uid://dntbmtovvq66n"
+
+[node name="DetectOther" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectOther"]
+shape = SubResource("CircleShape2D_vwl7f")
+
+[node name="DetectEnemy" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectEnemy"]
+shape = SubResource("CircleShape2D_lyiat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_vwl7f")
+
+[node name="ShockwaveLarge" parent="." instance=ExtResource("4_jptue")]
+visible = false
+material = SubResource("ShaderMaterial_pumm0")

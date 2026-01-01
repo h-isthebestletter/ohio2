@@ -45,8 +45,8 @@ var level: Level2D
 
 func _set_health(val: float) -> void:
 	var old_health = health
-	if val < 0:
-		health = 0
+	if val <= 0.0 and health > 0.0:
+		health = 0.0
 		Signals.entity_died.emit(self)
 	else:
 		health = min(stats.max_health, val)

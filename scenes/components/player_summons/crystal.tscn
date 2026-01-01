@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2ulbj40sxelf"]
+
+[ext_resource type="Texture2D" uid="uid://e067hw5gg6gd" path="res://assets/images/sprites/items/crystal.png" id="1_xbngx"]
+[ext_resource type="Script" uid="uid://ds2h6yr7df10d" path="res://scripts/player_summons/crystal.gd" id="2_n2c6h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8q1a"]
+radius = 55.0
+
+[node name="Crystal" type="Sprite2D"]
+texture = ExtResource("1_xbngx")
+script = ExtResource("2_n2c6h")
+metadata/_custom_type_script = "uid://dntbmtovvq66n"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_i8q1a")
