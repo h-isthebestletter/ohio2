@@ -2,6 +2,10 @@ extends Enemy2D
 
 @export var fireball_speed := 700.0
 
+func _ready() -> void:
+	super()
+	print(player)
+
 func update_state_machine() -> void:
 	if state == State.Attacking:
 		state = State.Moving

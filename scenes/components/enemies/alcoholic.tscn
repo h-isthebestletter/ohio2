@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d37ldxf51ffy8"]
+[gd_scene load_steps=14 format=3 uid="uid://d37ldxf51ffy8"]
 
 [ext_resource type="Script" uid="uid://bei52310yr70o" path="res://scripts/enemies/alcoholic.gd" id="1_t7hos"]
 [ext_resource type="Texture2D" uid="uid://bayyb4n5m0aql" path="res://assets/images/sprites/alcoholic.png" id="2_8la6t"]
@@ -36,7 +36,10 @@ _data = {
 &"spawning": SubResource("Animation_qu51u")
 }
 
-[node name="Alcoholic" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu51u"]
+size = Vector2(48, 48)
+
+[node name="Alcoholic" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite", "damage_tile_hitbox")]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_t7hos")
@@ -47,6 +50,7 @@ _atk = 500.0
 _def = 100.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+damage_tile_hitbox = NodePath("DamageTileHitbox")
 metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -71,3 +75,10 @@ target = NodePath("..")
 [node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_g4mpj")]
 position = Vector2(0, -43)
 target = NodePath("..")
+
+[node name="DamageTileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTileHitbox"]
+shape = SubResource("RectangleShape2D_qu51u")

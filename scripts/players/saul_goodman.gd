@@ -1,8 +1,5 @@
 extends Player2D
 
-@export_category("Normal attack")
-@export var dash_distance := 200.0
-
 @export_category("Skill 1")
 @export var skill_1_freeze_duration := 4.0
 ## How many SP to generate per second

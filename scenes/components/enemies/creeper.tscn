@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://v7g2b4vyohs5"]
+[gd_scene load_steps=15 format=3 uid="uid://v7g2b4vyohs5"]
 
 [ext_resource type="Script" uid="uid://dy5pb6p000iw7" path="res://scripts/enemies/creeper.gd" id="1_7rbq0"]
 [ext_resource type="Texture2D" uid="uid://dyxxjh0huqunq" path="res://assets/images/sprites/creeper.png" id="2_7rbq0"]
@@ -89,7 +89,10 @@ _data = {
 &"spawning": SubResource("Animation_7rbq0")
 }
 
-[node name="Creeper" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2uwj"]
+size = Vector2(48, 48)
+
+[node name="Creeper" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite", "damage_tile_hitbox")]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_7rbq0")
@@ -101,6 +104,7 @@ _def = 100.0
 _movement_speed = 750.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+damage_tile_hitbox = NodePath("DamageTileHitbox")
 metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -132,3 +136,10 @@ target = NodePath("..")
 [node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_nrx3e")]
 position = Vector2(0, -43)
 target = NodePath("..")
+
+[node name="DamageTileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTileHitbox"]
+shape = SubResource("RectangleShape2D_r2uwj")

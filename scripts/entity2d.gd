@@ -34,6 +34,7 @@ class Stats:
 @export_category("Mechanics")
 @export var animation_player: AnimationPlayer
 @export var sprite: Sprite2D
+@export var damage_tile_hitbox: Area2D
 
 @onready var base_stats := Stats.new(_max_health, _atk, _def, _attack_speed, _movement_speed)
 @onready var stats = base_stats
@@ -89,6 +90,9 @@ func _process(delta: float) -> void:
 	if has_status_effect(StatusEffect.Kind.Poisoned):
 		# lose 300 HP per second
 		health -= 300 * delta
+	
+	if damage_tile_hitbox != null and damage_tile_hitbox.has_overlapping_bodies():
+		health -= 400.0 * delta
 
 	health = min(health, stats.max_health)
 	

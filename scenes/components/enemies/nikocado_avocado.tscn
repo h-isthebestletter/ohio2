@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bhcj4ooxui064"]
+[gd_scene load_steps=20 format=3 uid="uid://bhcj4ooxui064"]
 
 [ext_resource type="Script" uid="uid://cjacqnpeuat1s" path="res://scripts/enemies/nikocado_avocado.gd" id="1_nbwmj"]
 [ext_resource type="Texture2D" uid="uid://bsje3ygmqsi38" path="res://assets/images/sprites/nikocado_avocado.png" id="2_m5x27"]
@@ -94,7 +94,10 @@ shader_parameter/ADJUSTED_TIME = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mrxk"]
 radius = 320.077
 
-[node name="NikocadoAvocado" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lu3x"]
+size = Vector2(48, 48)
+
+[node name="NikocadoAvocado" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite", "damage_tile_hitbox")]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_nbwmj")
@@ -105,6 +108,7 @@ _atk = 3800.0
 _movement_speed = 300.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+damage_tile_hitbox = NodePath("DamageTileHitbox")
 metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -139,3 +143,10 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8mrxk")
+
+[node name="DamageTileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTileHitbox"]
+shape = SubResource("RectangleShape2D_5lu3x")

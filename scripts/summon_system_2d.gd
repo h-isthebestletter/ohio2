@@ -4,8 +4,10 @@ class_name SummonSystem2D
 class Pool:
 	var packed_scene: PackedScene
 	var unused: Array[Summon2D]
+	var parent: Node
 	
-	func _init(parent: Node, _packed_scene: PackedScene, count: int) -> void:
+	func _init(_parent: Node, _packed_scene: PackedScene, count: int) -> void:
+		parent = _parent
 		packed_scene = _packed_scene
 		unused = []
 		
@@ -20,6 +22,7 @@ class Pool:
 		if unused.is_empty():
 			new_summon = packed_scene.instantiate()
 			new_summon.request_become_unused.connect(add_to_pool)
+			parent.add_child(new_summon)
 		else:
 			new_summon = unused.pop_back()
 		
@@ -31,7 +34,7 @@ class Pool:
 		
 		return new_summon
 	
-	func add_to_pool(summon: Summon2D) -> void:		
+	func add_to_pool(summon: Summon2D) -> void:
 		summon.hide()
 		summon.set_process(false)
 		summon.set_physics_process(false)

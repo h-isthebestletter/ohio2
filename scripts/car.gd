@@ -10,6 +10,8 @@ class_name Car
 
 var path_follow: PathFollow2D
 
+var old_global_position := Vector2(INF, INF)
+
 var time_since_last_collision := 0.0
 
 func _ready() -> void:
@@ -18,7 +20,7 @@ func _ready() -> void:
 	global_position = path_follow.global_position
 
 func _process(delta: float) -> void:
-	if velocity.x < 0.0:
+	if (global_position - old_global_position).x < 0.0:
 		sprite.flip_h = true
 	else:
 		sprite.flip_h = false
@@ -26,8 +28,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	time_since_last_collision += delta
 	
-	velocity = Vector2.from_angle(path_follow.rotation) * speed
+	old_global_position = global_position
+	
 	path_follow.progress += speed * delta
+	global_position = path_follow.global_position
 	
 	if time_since_last_collision > player_collision_cooldown:
 		for body in $Area2D.get_overlapping_bodies():

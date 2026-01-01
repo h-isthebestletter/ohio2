@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dw2dnt7cwkhpa"]
+[gd_scene load_steps=17 format=3 uid="uid://dw2dnt7cwkhpa"]
 
 [ext_resource type="Script" uid="uid://dedqlr205yssc" path="res://scripts/enemies/swat_defender.gd" id="1_ce38v"]
 [ext_resource type="Texture2D" uid="uid://c5nr1dhh6ofo4" path="res://assets/images/sprites/swat_shield.png" id="2_3vnk6"]
@@ -105,7 +105,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxomr"]
 radius = 169.434
 
-[node name="SwatDefender" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aun5t"]
+size = Vector2(48, 48)
+
+[node name="SwatDefender" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite", "damage_tile_hitbox")]
 collision_layer = 4
 motion_mode = 1
 script = ExtResource("1_ce38v")
@@ -117,6 +120,7 @@ _def = 1500.0
 _movement_speed = 600.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+damage_tile_hitbox = NodePath("DamageTileHitbox")
 metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="DEFBoostAOE" type="Sprite2D" parent="."]
@@ -157,3 +161,10 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeamingCircle"]
 shape = SubResource("CircleShape2D_cxomr")
+
+[node name="DamageTileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTileHitbox"]
+shape = SubResource("RectangleShape2D_aun5t")
