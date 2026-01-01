@@ -4,6 +4,8 @@ class_name Shockwave
 var animation_playing = false
 var time := 0.0
 
+signal animation_completed
+
 func start_animation() -> void:
 	visible = true
 	animation_playing = true
@@ -25,3 +27,4 @@ func _process(delta: float) -> void:
 	time += delta
 	if time > 1.0:
 		stop_animation()
+		animation_completed.emit()

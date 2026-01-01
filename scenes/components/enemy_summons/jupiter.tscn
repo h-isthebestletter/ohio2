@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://c62crhbwc8eps"]
+
+[ext_resource type="Texture2D" uid="uid://urfjs0yvlqks" path="res://assets/images/sprites/items/jupiter.png" id="1_e3pfv"]
+[ext_resource type="Script" uid="uid://dvbvs4mv5asrp" path="res://scripts/enemy_summons/jupiter.gd" id="2_e3pfv"]
+[ext_resource type="Texture2D" uid="uid://3mkfqogo2ef1" path="res://assets/images/attack_aoe_warn.png" id="3_o5ggi"]
+[ext_resource type="PackedScene" uid="uid://cqsx6mn41w8uq" path="res://scenes/components/shockwave_large.tscn" id="4_o5ggi"]
+[ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="5_7vf0y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdtng"]
+radius = 650.007
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jta8s"]
+resource_local_to_scene = true
+shader = ExtResource("5_7vf0y")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
+
+[node name="Jupiter" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_e3pfv")
+script = ExtResource("2_e3pfv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jdtng")
+
+[node name="AttackWarn" type="Sprite2D" parent="."]
+self_modulate = Color(0.76, 0.585453, 0.3572, 1)
+top_level = true
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("3_o5ggi")
+
+[node name="ShockwaveLarge" parent="." instance=ExtResource("4_o5ggi")]
+visible = false
+top_level = true
+material = SubResource("ShaderMaterial_jta8s")

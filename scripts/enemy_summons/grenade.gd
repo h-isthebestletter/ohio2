@@ -25,6 +25,7 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	attack_speed = args["attack_speed"]
 	
 	global_position = from
+	self_modulate = Color.TRANSPARENT
 	internal_position = from
 	final_target_position = null
 	time = 0.0

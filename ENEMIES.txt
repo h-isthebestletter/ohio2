@@ -1,0 +1,89 @@
+知己知彼，百战百胜。
+Know you know foe, fight all win all!!!
+- Sun Tzu (his English wasn't very good)
+
+Here's a list of enemies you will encounter along with their abilities:
+
+- Alcoholic
+	- Throws molotovs at you (can miss)
+
+- Car
+	- Moves along a predefined path
+	- Deals damage by running you over
+	- Cannot be killed and not counted towards enemy kill count
+	- Variants include Optimus Prime and Dababy Convertible, which do the same thing but have different hitboxes
+
+- Cluster Strike
+	- Sends a horde of rockets onto your location
+	- Cannot be killed and not counted towards enemy kill count
+
+- Creeper
+	- Runs up to you and explodes (can miss)
+
+- Dublinn Evocator
+	- Spawns a fireball that follows you
+	- Fireball will despawn after 60 seconds
+	- Deals damage if the fireball touches you
+
+- Holy Cow
+	- Shoots lasers
+	- Cannot shoot through walls, and will only shoot if there is a clear line of sight
+
+- Mafioso
+	- Shoots with a pistol
+	- Cannot shoot through walls, and will only shoot if there is a clear line of sight
+
+- Magma Cube
+	- Can only perform melee attacks
+	- Unlike the real magma cube from the popular video game "Minecraft", this one will not split into smaller ones upon death.
+	- However there are still 3 size variants which vary in speed and attack strength
+
+- Markiplier
+	- Throws hands
+	- He's angry he didn't get into the FNAF movie
+
+- Nikocado Avocado
+	- Jumps up and down, sending shockwaves
+
+- Pompeii
+	- Shoots fireballs that inflict poison (continuously lose HP)
+
+- Reed the Flame Shadow
+	- Considerably lags the game and destroys framer[ERROR] Uncaught exception: 999ms since last physics tick
+[ERROR] Cannot sync physics server with CPU tick, retrying...
+[ERROR] Physics server is uncontactable (forcibly shut down)
+[ERROR] Unable to receive next frame from GPU
+[CATASTROPHIC] Renderer unable to proceed (not enough RAM for application function)
+[INFO] Terminating application...- SWAT Attacker
+	- Shoots you with a rifle
+	- Cannot shoot through walls, and will only shoot if there is a clear line of sight
+	- If close to a SWAT Defender, gains a defence boost
+
+- SWAT Defender
+	- Attacks with a sword
+	- If close to a SWAT Attacker, gains an attack boost
+
+Boss enemies include:
+
+- Osama bin Laden
+	- Launches grenades (can miss)
+	- Gets enraged (gains attack speed) when HP drops below certain percentage
+
+- Ohio Final Boss
+	- Thrusts with sword
+	- Made in Ohio: teleports behind you and slashes
+	- Ohio Bankai: sword enlarges and performs a wide slash
+	- Sigma Stare: long-ranged attack
+	- Star Platinum za Ohio: freezes a random quarter of the map, you cannot move if you are inside
+	- Wonder of Ohio: crashes a planet into the ground (can miss)
+
+- Faraday
+	- Thrusts with sword
+	- Made in Ohio: teleports behind you and slashes
+	- Ohio Bankai: sword enlarges and performs a wide slash
+	- Sigma Stare: long-ranged attack
+	- Star Platinum za Ohio: freezes a random quarter of the map, you cannot move if you are inside
+	- Wonder of Ohio: crashes a planet into the ground (can miss)
+	- Eddy Current: slows you down
+	- Magnetic Flux Cutting: gains HP proportional to your current speed
+	- Faraday Cage: spawns a cage; you will continuously take damage if you don't go inside

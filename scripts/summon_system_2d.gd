@@ -23,7 +23,6 @@ class Pool:
 		else:
 			new_summon = unused.pop_back()
 		
-		
 		new_summon.initialize(args)
 		
 		new_summon.show()

@@ -376,7 +376,7 @@ _data = {
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a5lqm"]
 width = 1
 height = 1024
 noise = SubResource("FastNoiseLite_vu8xh")
@@ -384,7 +384,7 @@ noise = SubResource("FastNoiseLite_vu8xh")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qiwpg"]
 resource_local_to_scene = true
 shader = ExtResource("5_a5lqm")
-shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_a5lqm")
 shader_parameter/ADJUSTED_TIME = 0.0
 
 [node name="Osama" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]

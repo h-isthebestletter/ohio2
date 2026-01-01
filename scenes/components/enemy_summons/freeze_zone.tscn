@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://h25bm05vj1qs"]
+
+[ext_resource type="Script" uid="uid://b1bvdorhyan51" path="res://scripts/enemy_summons/freeze_zone.gd" id="1_ibgr1"]
+[ext_resource type="Shader" uid="uid://cr6mw501b0w8x" path="res://assets/shaders/grayscale.gdshader" id="2_ibgr1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lh7b"]
+shader = ExtResource("2_ibgr1")
+shader_parameter/ADJUSTED_TIME = 0.0
+shader_parameter/STRENGTH = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibgr1"]
+size = Vector2(10000, 10000)
+
+[node name="FreezeZone" type="Sprite2D"]
+script = ExtResource("1_ibgr1")
+metadata/_custom_type_script = "uid://cu7nyaoa7wula"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6lh7b")
+offset_right = 10000.0
+offset_bottom = 10000.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5000, 5000)
+shape = SubResource("RectangleShape2D_ibgr1")
