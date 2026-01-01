@@ -5,7 +5,6 @@ class_name Level2D
 @export var player_spawn: Marker2D
 @export var enemy_spawn_points: Array[Marker2D]
 @export var enemy_scenes: Array[PackedScene]
-@export var paths: Array[Path2D]
 @export var timeline: AnimationPlayer
 @export var enemy_count: int
 
@@ -31,7 +30,6 @@ func spawn_enemy(enemy_id: int, spawn_point_index: int) -> Enemy2D:
 	var enemy: Enemy2D = enemy_scenes[enemy_id].instantiate()
 	enemy.level = self
 	enemy.player = player
-	enemy.paths = paths
 	enemy.global_position = enemy_spawn_points[spawn_point_index].global_position
 
 	add_child(enemy)

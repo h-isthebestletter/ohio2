@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ckotx0tbfksxe"]
 
-[ext_resource type="Script" uid="uid://bwyx28ybu6o71" path="res://scripts/enemies/car.gd" id="1_nafhq"]
+[ext_resource type="Script" uid="uid://b2xxcld1j6w5r" path="res://scripts/car.gd" id="1_nafhq"]
 [ext_resource type="Texture2D" uid="uid://dqku20lbpiw16" path="res://assets/images/sprites/optimus_prime.png" id="2_nafhq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukn7x"]
@@ -34,15 +34,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d1oly"]
 size = Vector2(120, 95)
 
-[node name="OptimusPrime" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
+[node name="OptimusPrime" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_nafhq")
-character_name = "OptimusPrime"
-_max_health = 5000.0
-_movement_speed = 1500.0
-animation_player = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite2D")
-metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nafhq")

@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmwpyi1ibgqta"]
+[gd_scene load_steps=10 format=3 uid="uid://cx5kaq6xccuhl"]
 
-[ext_resource type="Script" uid="uid://bwyx28ybu6o71" path="res://scripts/enemies/car.gd" id="1_80rfb"]
-[ext_resource type="Texture2D" uid="uid://bttk157hpsicj" path="res://assets/images/sprites/dababy_convertible.png" id="2_80rfb"]
+[ext_resource type="Script" uid="uid://b2xxcld1j6w5r" path="res://scripts/car.gd" id="1_j1ne7"]
+[ext_resource type="Texture2D" uid="uid://ds7dcrty5ay88" path="res://assets/images/sprites/car.png" id="2_j1ne7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukn7x"]
-size = Vector2(120, 62)
+size = Vector2(120, 44)
 
 [sub_resource type="Animation" id="Animation_33jea"]
 resource_name = "attacking"
@@ -31,21 +31,12 @@ _data = {
 &"spawning": SubResource("Animation_j1ne7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1oly"]
-size = Vector2(120, 62)
-
-[node name="DababyConvertible" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
+[node name="Car" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_80rfb")
-character_name = "Dababy Convertible"
-_max_health = 5000.0
-_movement_speed = 1500.0
-animation_player = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite2D")
-metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+script = ExtResource("1_j1ne7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_80rfb")
+texture = ExtResource("2_j1ne7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ukn7x")
@@ -60,4 +51,4 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_d1oly")
+shape = SubResource("RectangleShape2D_ukn7x")

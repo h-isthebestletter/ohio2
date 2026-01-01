@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://c1lr2wp17wdgn" path="res://scenes/components/shockwave.tscn" id="5_5lu3x"]
 [ext_resource type="Shader" uid="uid://bnlaxo3ma66s8" path="res://assets/shaders/shockwave.gdshader" id="6_frrhc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3ttt"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5lu3x"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_m32ej"]
 length = 0.001
@@ -111,7 +111,7 @@ metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 texture = ExtResource("2_m5x27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_a3ttt")
+shape = SubResource("CircleShape2D_5lu3x")
 
 [node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_4kxce")]
 position = Vector2(0, 33)

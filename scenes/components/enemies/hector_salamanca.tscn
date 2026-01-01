@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://v7g2b4vyohs5"]
+[gd_scene load_steps=15 format=3 uid="uid://baf5egd0oi0t"]
 
-[ext_resource type="Script" uid="uid://dy5pb6p000iw7" path="res://scripts/enemies/creeper.gd" id="1_7rbq0"]
-[ext_resource type="Texture2D" uid="uid://dyxxjh0huqunq" path="res://assets/images/sprites/creeper.png" id="2_7rbq0"]
-[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_r2uwj"]
-[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_nrx3e"]
+[ext_resource type="Script" uid="uid://dy5pb6p000iw7" path="res://scripts/enemies/creeper.gd" id="1_6qe1o"]
+[ext_resource type="Texture2D" uid="uid://ve7ieitjxqaj" path="res://assets/images/sprites/hector_salamanca.png" id="2_6qe1o"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_e6ind"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_uu57p"]
+[ext_resource type="AudioStream" uid="uid://cnonbtlwru78d" path="res://assets/audio/sound_effects/ding.mp3" id="5_gwlg1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r2uwj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwlg1"]
 radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7rbq0"]
@@ -89,12 +90,12 @@ _data = {
 &"spawning": SubResource("Animation_7rbq0")
 }
 
-[node name="Creeper" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+[node name="HectorSalamanca" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
 motion_mode = 1
-script = ExtResource("1_7rbq0")
+script = ExtResource("1_6qe1o")
 navigation_agent = NodePath("NavigationAgent2D")
-character_name = "Creeper"
+character_name = "HectorSalamanca"
 _max_health = 300.0
 _atk = 4800.0
 _def = 100.0
@@ -104,10 +105,10 @@ sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_r2uwj")
+shape = SubResource("CircleShape2D_gwlg1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_7rbq0")
+texture = ExtResource("2_6qe1o")
 
 [node name="ExplosionArea2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -125,10 +126,15 @@ libraries = {
 path_desired_distance = 10.0
 target_desired_distance = 40.0
 
-[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r2uwj")]
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_e6ind")]
 position = Vector2(0, 33)
 target = NodePath("..")
 
-[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_nrx3e")]
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_uu57p")]
 position = Vector2(0, -43)
 target = NodePath("..")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gwlg1")
+volume_db = 16.0
+autoplay = true

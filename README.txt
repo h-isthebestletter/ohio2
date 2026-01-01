@@ -5,8 +5,8 @@ Controls:
 - Space to perform Skill 1
 - Q to perform Skill 2
 - E to perform Skill 3
-
-Using skills will consume SP (skill points). If you don't have enough skill points, you cannot perform the skill.
+	- Using skills will consume SP (skill points). If you don't have enough skill points, you cannot perform the skill.
+	- You cannot use skills while an attack animation is playing.
 
 Here's a list of playable characters and their abilities:
 
@@ -73,6 +73,7 @@ Here's a list of enemies you will encounter along with their abilities:
 
 - Creeper
 	- Runs up to you and explodes (can miss)
+	- Variants include Hector Salamanca, who keeps slapping his bell to announce his presence
 
 - Dublinn Evocator
 	- Spawns a fireball that follows you

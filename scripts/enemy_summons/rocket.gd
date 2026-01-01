@@ -4,7 +4,7 @@ var spread: float
 var approach_angle: float
 var to: Vector2
 var speed: float
-var damage_player_function: Callable
+var atk: float
 
 var from: Vector2
 
@@ -24,8 +24,9 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	from = args["to"] - Vector2(10000.0, 0.0).rotated(approach_angle) + position_offset
 	to = args["to"] + position_offset
 	speed = args["speed"]
-	damage_player_function = args["damage_player_function"]
+	atk = args["atk"]
 	
+	$Area2D.global_position = args["to"]
 	global_position = from
 	rotation = approach_angle
 	
@@ -37,5 +38,10 @@ func _process(delta: float) -> void:
 		return
 
 func detonate() -> void:
-	damage_player_function.call()
+	var bodies = $Area2D.get_overlapping_bodies()
+	for body in bodies:
+		if body is Player2D:
+			body.take_damage(atk)
+			break
+			
 	request_become_unused.emit(self)

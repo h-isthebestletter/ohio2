@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4bht3vmyp1h1"]
+[gd_scene load_steps=9 format=3 uid="uid://d4bht3vmyp1h1"]
 
 [ext_resource type="Script" uid="uid://cvr14iktsa2aj" path="res://scripts/enemies/cluster_strike.gd" id="1_uhsfe"]
 [ext_resource type="Texture2D" uid="uid://3mkfqogo2ef1" path="res://assets/images/attack_aoe_warn.png" id="2_qpec6"]
@@ -116,9 +116,6 @@ _data = {
 &"spawning": SubResource("Animation_8s3ct")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qpec6"]
-radius = 330.0
-
 [node name="ClusterStrike" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
 motion_mode = 1
 script = ExtResource("1_uhsfe")
@@ -136,10 +133,3 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.846667, 0.54, 1, 1)
 texture = ExtResource("2_qpec6")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_qpec6")

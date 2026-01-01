@@ -12,6 +12,8 @@ class_name Player2D
 
 @export var skills_sp_cost: Array[int] = [100, 100, 100]
 
+@export var damage_tile_hitbox: Area2D
+
 var attack_animations: Array[StringName]
 
 enum State {
@@ -54,6 +56,14 @@ func _process(delta: float) -> void:
 	if time - _last_time_skill_point_given > skill_point_regenerate_interval:
 		_last_time_skill_point_given += skill_point_regenerate_interval
 		skill_points += 1
+	
+	if damage_tile_hitbox.has_overlapping_bodies():
+		health -= 400.0 * delta
+	
+	if animation_player.is_playing() and animation_player.current_animation in attack_animations:
+		animation_player.speed_scale = stats.attack_speed
+	else:
+		animation_player.speed_scale = 1.0
 
 func _physics_process(delta: float) -> void:
 	if state != State.ALIVE: return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btutgu38itlyg"]
+[gd_scene load_steps=13 format=3 uid="uid://btutgu38itlyg"]
 
 [ext_resource type="Script" uid="uid://beoxrd1ubur3i" path="res://scripts/players/saul_goodman.gd" id="1_141ki"]
 [ext_resource type="Texture2D" uid="uid://c78k5342fyxws" path="res://assets/images/sprites/saul_goodman.png" id="2_wokun"]
@@ -106,11 +106,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rv183"]
 size = Vector2(96, 67)
 
-[node name="SaulGoodman" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjgbl"]
+size = Vector2(48, 48)
+
+[node name="SaulGoodman" type="CharacterBody2D" node_paths=PackedStringArray("damage_tile_hitbox", "animation_player", "sprite")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_141ki")
 skills_sp_cost = Array[int]([4, 10, 12])
+damage_tile_hitbox = NodePath("DamageTileHitbox")
 character_name = "Saul Goodman"
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
@@ -158,3 +162,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/NormalAttackHitbox"]
 position = Vector2(38, 0.5)
 shape = SubResource("RectangleShape2D_rv183")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="DamageTileHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageTileHitbox"]
+shape = SubResource("RectangleShape2D_cjgbl")

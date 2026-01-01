@@ -48,6 +48,8 @@ func _set_health(val: float) -> void:
 	if val <= 0.0 and health > 0.0:
 		health = 0.0
 		Signals.entity_died.emit(self)
+	elif val <= 0.0:
+		health = 0.0
 	else:
 		health = min(stats.max_health, val)
 		

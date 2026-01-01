@@ -34,8 +34,8 @@ _data = {
 &"spawning": SubResource("Animation_gqobf")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqobf"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0rl5"]
+radius = 24.0
 
 [node name="ReedTheFlameShadow" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
 collision_layer = 4
@@ -61,7 +61,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gqobf")
+shape = SubResource("CircleShape2D_r0rl5")
 
 [node name="LagNodesContainer" type="Node2D" parent="."]
 unique_name_in_owner = true

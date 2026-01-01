@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_ag5ff"]
 [ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_8niox"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48lcf"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gg2jq"]
+radius = 24.0
 
 [sub_resource type="Animation" id="Animation_gjkil"]
 resource_name = "RESET"
@@ -55,7 +55,7 @@ metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
 texture = ExtResource("2_gg2jq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_48lcf")
+shape = SubResource("CircleShape2D_gg2jq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0

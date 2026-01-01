@@ -26,6 +26,7 @@ window/size/mode=2
 
 [global_group]
 
+walls_and_damage_tiles=""
 walls=""
 
 [gui]
@@ -78,9 +79,12 @@ player_attack={
 [layer_names]
 
 2d_physics/layer_1="level"
+2d_navigation/layer_1="walls_and_damage_tiles"
 2d_physics/layer_2="player"
+2d_navigation/layer_2="walls_only"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="summon"
+2d_physics/layer_5="damage_tiles"
 
 [physics]
 
