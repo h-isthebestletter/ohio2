@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj1u1oyjsywd5"]
+
+[ext_resource type="Texture2D" uid="uid://hveuuufvocam" path="res://assets/images/sprites/items/fried_chicken.png" id="1_nr2in"]
+[ext_resource type="Script" uid="uid://bgwnecxjyn8uj" path="res://scripts/player_summons/fried_chicken.gd" id="1_qq47g"]
+
+[node name="FriedChicken" type="Sprite2D"]
+texture = ExtResource("1_nr2in")
+script = ExtResource("1_qq47g")
+metadata/_custom_type_script = "uid://dntbmtovvq66n"

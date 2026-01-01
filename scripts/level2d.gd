@@ -44,10 +44,10 @@ func get_all_enemies() -> Array:
 	return get_children().filter(func (x): return x is Enemy2D)
 
 func get_all_player_summons() -> Array:
-	return get_children().filter(func (x): return x is PlayerSummon2D)
+	return $SummonSystem2D.get_all_player_summons()
 
 func get_all_enemy_summons() -> Array:
-	return get_children().filter(func (x): return x is EnemySummon2D)
+	return $SummonSystem2D.get_all_enemy_summons()
 
 func _ready() -> void:
 	super()

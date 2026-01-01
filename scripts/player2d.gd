@@ -12,7 +12,7 @@ class_name Player2D
 
 @export var skills_sp_cost: Array[int] = [100, 100, 100]
 
-var skill_animations: Array[StringName]
+var attack_animations: Array[StringName]
 
 enum State {
 	ALIVE,
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	$PlayerDirectionSelect.rotation = attack_direction
 	$Hitboxes.rotation = attack_direction
 	
-	if time - _last_time_skill_point_given> skill_point_regenerate_interval:
+	if time - _last_time_skill_point_given > skill_point_regenerate_interval:
 		_last_time_skill_point_given += skill_point_regenerate_interval
 		skill_points += 1
 
@@ -67,13 +67,12 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if state != State.ALIVE: return
+	if animation_player.is_playing() and animation_player.current_animation in attack_animations:
+		return
+	
 	if Input.is_action_just_pressed("player_attack"):
 		if not has_status_effect(StatusEffect.Kind.Stunned):
 			attack()
-	
-	
-	if animation_player.is_playing() and animation_player.current_animation in skill_animations:
-		return
 	
 	if Input.is_action_just_pressed("player_use_skill_1"):
 		if not is_skill_active(1) and can_afford_skill(1):

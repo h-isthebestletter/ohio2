@@ -11,27 +11,34 @@ Using skills will consume SP (skill points). If you don't have enough skill poin
 Here's a list of playable characters and their abilities:
 
 - Freddy Fazbear
-	- Normal attack: smash people with guitar (AoE damage)
-	- Skill 1: dash attack (AoE damage)
-	- Skill 2: creates an electric field
+	- Normal attack: Smash people with guitar (AoE damage)
+	- Skill 1: Dash attack (AoE damage)
+	- Skill 2: Creates an electric field
 		- Enemies that are in it are slowed, and Freddy Fazbear receives healing proportional to their total speed
-	- Skill 3: bite off the frontal lobe of one enemy and permanently stun them
+	- Skill 3: Bite off the frontal lobe of one enemy and permanently stun them
 		- FNaF fans will argue that this is not lore accurate, but the lion does not concern himself with the opinions of sheep
 
 - Saul Goodman
-	- Normal attack: smash people with a massive gavel (judge hammer) (not AoE attack)
-	- Skill 1: freezes self to cook crystal and obtain SP over a period of time
-	- Skill 2: places crystal on the floor
+	- Normal attack: Smash people with a massive gavel (judge hammer) (not AoE attack)
+	- Skill 1: Freezes self to cook crystal and obtain SP over a period of time
+	- Skill 2: Places crystal on the floor
 		- When enemies pass by the crystal they consume it and get poisoned and slowed for a period of time
-	- Skill 3: places exploding crystal on the floor
+	- Skill 3: Places exploding crystal on the floor
 		- When enemies step on the exploding crystal, it blows up
 		- When the exploding crystal blows up, it damages enemies and causes other exploding crystals in its range to blow up too
 
 - Don Pollo, King of Ohio
 	- Normal attack:
-	- Skill 1: 
-	- Skill 2: 
-	- Skill 3: 
+		- Melee: Swings the 金箍棒 (Monkey King staff) (I don't know how he got it) (AoE attack)
+		- Ranged: Throw fried chicken at enemy (at 80% of full ATK)
+			- Range is limited to the highlighted area
+			- Any fried chicken thrown at enemies outside the highlighted area will miss
+			- Any fried chicken thrown at enemies inside the highlighted area will definitely hit the enemy (aimbot)
+		- Automatically differentiates between melee and ranged attacks: only use ranged attack if there are no enemies in melee range
+	- Skill 1: Gains movement speed for a period of time to run from debt collectors
+	- Skill 2: Deletes all enemy summons and clears all negative status effects (slowed, frozen, stunned, poisoned)
+	- Skill 3: Attack Range expands, ATK +60%, ASPD +25, and ranged attacks no longer deal reduced damage
+		- Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount
 
 Here's a list of status effects:
 - Poisoned (icon: 3 green bubbles)

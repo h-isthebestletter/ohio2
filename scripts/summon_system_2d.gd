@@ -59,3 +59,9 @@ func new_summon(
 	var pool = pools[summon_packed_scene_path]
 	var summon = pool.get_new_node(args)
 	return summon
+
+func get_all_player_summons() -> Array:
+	return get_children().filter(func (x): return x is PlayerSummon2D)
+
+func get_all_enemy_summons() -> Array:
+	return get_children().filter(func (x): return x is EnemySummon2D)

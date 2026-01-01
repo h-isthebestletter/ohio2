@@ -19,6 +19,10 @@ extends Player2D
 var skill_1_time := INF
 var skill_1_receive_sp_time := INF
 
+func _ready() -> void:
+	super()
+	attack_animations = [&"attacking_normal"]
+
 func _process(delta: float) -> void:
 	super(delta)
 	skill_1_time += delta

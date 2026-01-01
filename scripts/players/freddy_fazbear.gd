@@ -10,7 +10,7 @@ extends Player2D
 
 func _ready() -> void:
 	super()
-	skill_animations = [&"skill_1"]
+	attack_animations = [&"attacking_normal", &"skill_1"]
 	%BiteOf87SoundEffect.finished.connect(func ():
 		%WasThatTheBiteOf87.hide()
 	)
