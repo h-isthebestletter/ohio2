@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="2_fb5ex"]
 [ext_resource type="PackedScene" uid="uid://bhcj4ooxui064" path="res://scenes/components/enemies/nikocado_avocado.tscn" id="3_10ji3"]
 [ext_resource type="PackedScene" uid="uid://c3wigp72r86jh" path="res://scenes/components/enemies/markiplier.tscn" id="4_dacd6"]
-[ext_resource type="AudioStream" uid="uid://cyferfh4bvc3n" path="res://assets/audio/nikkit2020.ogg" id="5_10ji3"]
+[ext_resource type="AudioStream" uid="uid://b0pj05jqr6qmj" path="res://assets/audio/fnaf1.ogg" id="5_10ji3"]
 [ext_resource type="AudioStream" uid="uid://du6b3l407xd5r" path="res://assets/audio/g.ogg" id="6_dacd6"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="6_qd754"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="7_vvsgr"]

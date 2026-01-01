@@ -162,4 +162,5 @@ func take_damage(atk: float) -> void:
 	health -= max(atk - stats.def, 0.0)
 
 func take_healing(atk: float) -> void:
-	health += atk
+	if health > 0.0:
+		health += atk

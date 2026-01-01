@@ -39,6 +39,12 @@ class EnemySpawner:
 	func update(delta: float) -> void:
 		if spawned == count:
 			return
+		
+		if duration == 0.0:
+			while spawned < count:
+				spawned += 1
+				spawner.call(enemy_id, at, distance_offset)
+			return
 			
 		time += delta
 		var time_between_enemy_spawns := duration / float(count)

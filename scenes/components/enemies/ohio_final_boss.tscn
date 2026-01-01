@@ -477,7 +477,7 @@ shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
 shader_parameter/ADJUSTED_TIME = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40otd"]
-radius = 712.001
+radius = 626.001
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onnqq"]
 radius = 73.0616

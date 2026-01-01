@@ -26,6 +26,6 @@ func save() -> void:
 	var error := ResourceSaver.save(game_save, SAVE_PATH)
 	if error != OK:
 		push_error("Failed to save game: " + error_string(error))
-	else:
-		print("Game saved.")
+	#else:
+		#print("Game saved.")
 	
