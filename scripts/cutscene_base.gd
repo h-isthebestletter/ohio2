@@ -2,7 +2,7 @@ extends Scene
 class_name CutsceneBase
 
 @export var story_id := 0
-@onready var data: Array = load("res://resources/dialogue.json").data[story_id]
+@onready var data: Array = load("res://resources/dialogue.json").data[str(story_id)]
 @onready var dialogue_characters: Dictionary = load("res://resources/dialogue_characters.json").data
 
 var character_idx := 0
@@ -16,15 +16,14 @@ var next_scene_requested := false
 func load_image_onto_slot(file_path) -> void:
 	if file_path == null: return
 	if file_path in slots: return
-	var image := Image.load_from_file(file_path)
 	if active_slot == 1:
 		slots[0] = file_path
-		%Person1Image.texture = ImageTexture.create_from_image(image)
+		%Person1Image.texture = load(file_path)
 		active_slot = 2
 		%Slot1.visible = true
 	else:
 		slots[1] = file_path
-		%Person2Image.texture = ImageTexture.create_from_image(image)
+		%Person2Image.texture = load(file_path)
 		active_slot = 1
 		%Slot2.visible = true
 

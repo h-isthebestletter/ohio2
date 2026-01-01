@@ -1,17 +1,132 @@
 [
 	{
-		"name": "STAGE TEST",
-		"description": "stage test 1",
-		"label": "TEST-1",
+		"label": "S-0",
+		"description": "",
+		"name": "",
 	},
 	{
-		"name": "STAGE TEST 2",
-		"description": "stage test 2",
-		"label": "TEST-2",
+		"label": "KO-1",
+		"description": "",
+		"name": "",
 	},
 	{
-		"name": "STAGE TEST 3",
-		"description": "stage test 3",
-		"label": "TEST-3",
+		"label": "KO-2",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "KO-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "KO-4",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "KO-5",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "KO-6",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "FA-1",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "FA-2",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "FA-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "OS-1",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "OS-2",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "OS-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "JR-1",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "JR-2",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "JR-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "JR-4",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "S-1",
+		"description": "Behold, the Twilight Comes",
+		"name": "",
+	},
+	{
+		"label": "S-2",
+		"description": "",
+		"name": "Arise, Treading Through Flames",
+	},
+	{
+		"label": "S-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "S-4",
+		"description": "",
+		"name": "Credits",
+	},
+	{
+		"label": "C-1",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "C-2",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "C-3",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "C-4",
+		"description": "",
+		"name": "",
+	},
+	{
+		"label": "C-5",
+		"description": "",
+		"name": "",
 	}
 ]

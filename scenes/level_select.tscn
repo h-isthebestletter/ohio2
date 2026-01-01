@@ -1,13 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://duce4xq0dcdkf"]
+[gd_scene load_steps=14 format=3 uid="uid://duce4xq0dcdkf"]
 
 [ext_resource type="Script" uid="uid://coept2654spo8" path="res://scripts/level_select.gd" id="1_r77uv"]
-[ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="1_rif6e"]
+[ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="1_rif6e"]
 [ext_resource type="Script" uid="uid://dxdic2j78gicg" path="res://scripts/level_select_map.gd" id="2_chg43"]
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_ckc44"]
 [ext_resource type="PackedScene" uid="uid://b8d3geo843qq6" path="res://scenes/components/level_select_level_button.tscn" id="3_chg43"]
 [ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_o2xx4"]
 [ext_resource type="Script" uid="uid://y2gr44xlxrvl" path="res://scripts/level_select_level_details.gd" id="5_r77uv"]
-[ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="6_4nqmc"]
 [ext_resource type="FontFile" uid="uid://bdnke3q8dg81c" path="res://assets/fonts/Roboto_Condensed-Regular.ttf" id="6_r77uv"]
 [ext_resource type="Texture2D" uid="uid://dqluo1g0gf22d" path="res://assets/images/level_play_bg.png" id="8_ckc44"]
 [ext_resource type="PackedScene" uid="uid://fon3rmsdc3jp" path="res://scenes/components/back_button.tscn" id="11_htctk"]
@@ -99,14 +98,7 @@ theme_override_constants/margin_bottom = 50
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelDetails/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelDetails/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="LevelDetails/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_4nqmc")
-
-[node name="Title" type="Label" parent="LevelDetails/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="LevelDetails/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_r77uv")
@@ -119,13 +111,6 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "Description"
-
-[node name="EnemyPreview" type="Tree" parent="LevelDetails/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-allow_search = false
-hide_root = true
-scroll_horizontal_enabled = false
 
 [node name="Play" type="TextureButton" parent="LevelDetails/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

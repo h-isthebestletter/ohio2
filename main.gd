@@ -5,6 +5,8 @@ var current_level_id
 var _next_scene_resporce_path := ""
 var _next_cutscene_target_level_id := -1
 
+@onready var dialogue_data: Dictionary = preload("res://resources/dialogue.json").data
+
 func _ready() -> void:
 	Signals.request_change_scene.connect(replace_scene_with_animation)
 	Signals.request_change_bgm.connect(replace_bgm)
@@ -53,15 +55,25 @@ func replace_bgm(new_bgm: AudioStream) -> void:
 		%AudioStreamPlayer.play()
 
 func _on_request_load_cutscene(cutscene_id: int) -> void:
-	_next_cutscene_target_level_id = cutscene_id
-	replace_scene_with_animation("res://scenes/cutscene_base.tscn")
+	if dialogue_data.get(str(cutscene_id)) != null:
+		_next_cutscene_target_level_id = cutscene_id
+		replace_scene_with_animation("res://scenes/cutscene_base.tscn")
+	else:
+		# load level directly if level doesn't come with a cutscene
+		_on_request_load_level(cutscene_id)
 
 func _on_request_load_level(level_id: int) -> void:
 	current_level_id = level_id
 	var path = "res://scenes/levels/{id}.tscn".format({
 		"id": level_id
 	})
-	replace_scene_with_animation(path)
+	if FileAccess.file_exists(path):
+		replace_scene_with_animation(path)
+	else:
+		# count stage as completed since there's no level
+		_on_level_won()
+		# load level select screen directly if cutscene doesn't come with a level
+		replace_scene_with_animation("res://scenes/level_select.tscn")
 
 func _on_level_won() -> void:
 	if current_level_id != null:
