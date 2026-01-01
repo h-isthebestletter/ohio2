@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxpgfwsg2gqa7"
-path="res://.godot/imported/bin_laden.jpg-e83e1db234eb88b445acc2a461fbe378.ctex"
+uid="uid://c3hf778ruqwtg"
+path="res://.godot/imported/king_of_ohio.png-037124305aec13db94fc87b1ef55ab7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/sprites/bin_laden.jpg"
-dest_files=["res://.godot/imported/bin_laden.jpg-e83e1db234eb88b445acc2a461fbe378.ctex"]
+source_file="res://assets/images/sprites/king_of_ohio.png"
+dest_files=["res://.godot/imported/king_of_ohio.png-037124305aec13db94fc87b1ef55ab7d.ctex"]
 
 [params]
 

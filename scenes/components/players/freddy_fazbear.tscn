@@ -221,10 +221,10 @@ radius = 251.448
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_0foew")
-character_name = "Freddy Fazbear"
 skills_sp_cost = Array[int]([8, 18, 24])
+character_name = "Freddy Fazbear"
 _atk = 3600.0
-_def = 1000.0
+_def = 400.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 

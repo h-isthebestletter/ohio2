@@ -5,6 +5,8 @@ class_name Enemy2D
 @export_category("Enemy Mechanics")
 @export var navigation_agent: NavigationAgent2D
 
+var player: Player2D
+
 # state machine
 enum State {
 	Spawning,

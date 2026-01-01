@@ -18,6 +18,9 @@ class Stats:
 		self.attack_speed = attack_speed
 		self.movement_speed = movement_speed
 
+# character stats
+@export var character_name := "Generic Entity"
+
 @export_category("Stats")
 @export var _max_health := 10000.0
 @export var _atk := 2700.0

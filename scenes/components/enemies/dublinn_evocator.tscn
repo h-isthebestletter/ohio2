@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2knf600uc0kn"]
+
+[ext_resource type="Script" uid="uid://cn14k55igewyp" path="res://scripts/enemies/dublinn_evocator.gd" id="1_jftx6"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="2_cnofq"]
+[ext_resource type="Texture2D" uid="uid://djmy1c5xg3m6k" path="res://assets/images/sprites/dublinn_evocator.png" id="2_jftx6"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="3_jftx6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrj2p"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_jftx6"]
+resource_name = "spawning"
+
+[sub_resource type="Animation" id="Animation_nrj2p"]
+resource_name = "attacking"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.05, 1),
+"update": 0,
+"values": [Color(2.751, 2.651, 1.659, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_46ix3"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_r6th5"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_7e2cc"]
+resource_name = "moving"
+length = 3.0
+
+[sub_resource type="Animation" id="Animation_5vubp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vubp"]
+_data = {
+&"RESET": SubResource("Animation_5vubp"),
+&"attacking": SubResource("Animation_nrj2p"),
+&"dying": SubResource("Animation_46ix3"),
+&"idle": SubResource("Animation_r6th5"),
+&"moving": SubResource("Animation_7e2cc"),
+&"spawning": SubResource("Animation_jftx6")
+}
+
+[node name="DublinnEvocator" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_jftx6")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Dublinn Evocator"
+_max_health = 7000.0
+_atk = 1600.0
+_def = 500.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nrj2p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jftx6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 40.0
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_cnofq")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_jftx6")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5vubp")
+}

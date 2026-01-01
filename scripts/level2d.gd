@@ -2,7 +2,8 @@ extends Scene
 class_name Level2D
 
 @export var player_scene: PackedScene
-@export var player_initial_position: Vector2
+@export var player_spawn: Marker2D
+@export var enemy_spawn_points: Array[Marker2D]
 @export var enemy_scenes: Array[PackedScene]
 @export var timeline: AnimationPlayer
 @export var enemy_count: int
@@ -12,7 +13,7 @@ var player: Player2D
 func spawn_player() -> Player2D:
 	player = player_scene.instantiate()
 	add_child(player)
-	player.global_position = player_initial_position
+	player.global_position = player_spawn.global_position
 	
 	Signals.player_spawned.emit(
 		player.character_name,
@@ -23,10 +24,11 @@ func spawn_player() -> Player2D:
 	
 	return player
 
-func spawn_enemy(enemy_id: int, at: Vector2) -> Enemy2D:
+func spawn_enemy(enemy_id: int, spawn_point_index: int) -> Enemy2D:
 	var enemy: Enemy2D = enemy_scenes[enemy_id].instantiate()
 	add_child(enemy)
-	enemy.global_position = at
+	enemy.global_position = enemy_spawn_points[spawn_point_index].global_position
+	enemy.player = player
 	
 	Signals.enemy_spawned.emit(enemy)
 	

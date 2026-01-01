@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxowjn26h81uo"]
+[gd_scene load_steps=5 format=3 uid="uid://cxowjn26h81uo"]
 
 [ext_resource type="Script" uid="uid://befykui5swnt6" path="res://scripts/title.gd" id="1_p6dhs"]
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_b3w7a"]
 [ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="2_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_4rr2b"]
-[ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="3_b3w7a"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -43,10 +42,6 @@ offset_right = 64.0
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("3_b3w7a")
 
 [node name="LevelSelect" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true

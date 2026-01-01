@@ -1,9 +1,6 @@
 extends Entity2D
 class_name Player2D
 
-# character stats
-@export var character_name := "Generic Player"
-
 ## Initial skill points.
 @export var skill_points := 20:
 	set(val):

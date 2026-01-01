@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://i1ks8a8ou02h"]
 
 [ext_resource type="Script" uid="uid://b6nch2kvk0ib7" path="res://scripts/enemies/osama.gd" id="1_g7bo1"]
-[ext_resource type="Texture2D" uid="uid://dxpgfwsg2gqa7" path="res://assets/images/sprites/bin_laden.jpg" id="1_n6xro"]
+[ext_resource type="Texture2D" uid="uid://beidscow35fgo" path="res://assets/images/sprites/bin_laden.png" id="2_a5lqm"]
 [ext_resource type="Texture2D" uid="uid://m8afj5fp5r52" path="res://assets/images/sprites/items/grenade_launcher.png" id="2_ku5mc"]
 [ext_resource type="PackedScene" uid="uid://4tm6aprqxxfe" path="res://scenes/components/level_boss_entrance.tscn" id="4_cd1xg"]
 [ext_resource type="Shader" uid="uid://dd7rmd8sh3kcx" path="res://assets/shaders/level_boss_entrance_effect.gdshader" id="5_a5lqm"]
@@ -391,14 +391,13 @@ shader_parameter/ADJUSTED_TIME = 0.0
 collision_layer = 4
 script = ExtResource("1_g7bo1")
 navigation_agent = NodePath("NavigationAgent2D")
-_max_health = 1.0
-_atk = 5e+07
+character_name = "Osama bin Laden"
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_n6xro")
+texture = ExtResource("2_a5lqm")
 
 [node name="GrenadeLauncher1" type="Sprite2D" parent="Sprite2D"]
 visible = false
