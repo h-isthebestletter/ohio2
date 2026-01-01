@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3erxx55mtjqy"]
+
+[ext_resource type="Script" uid="uid://cr4px65icpofv" path="res://scripts/level_entity_status_effect_indicator.gd" id="1_dkc7i"]
+[ext_resource type="Texture2D" uid="uid://vuer0ibllbpm" path="res://assets/images/icons/enraged.png" id="1_wkxur"]
+[ext_resource type="Texture2D" uid="uid://w3adsvl6j7w" path="res://assets/images/icons/regenerating.png" id="2_dkc7i"]
+[ext_resource type="Texture2D" uid="uid://ragi12scc5ry" path="res://assets/images/icons/slowed.png" id="3_81xse"]
+[ext_resource type="Texture2D" uid="uid://d2kn32tmfbg5x" path="res://assets/images/icons/invincible.png" id="4_jc214"]
+[ext_resource type="Texture2D" uid="uid://bcdgyucpfxjb6" path="res://assets/images/icons/frozen.png" id="5_q2epl"]
+[ext_resource type="Texture2D" uid="uid://m3ighgxcc1q1" path="res://assets/images/icons/tenacious.png" id="6_2l1wi"]
+[ext_resource type="Texture2D" uid="uid://bpjcfowlfc1xa" path="res://assets/images/icons/poisoned.png" id="7_xvckh"]
+[ext_resource type="Texture2D" uid="uid://7nxvpvovkh0w" path="res://assets/images/icons/stunned.png" id="8_ackao"]
+
+[node name="LevelEntityStatusEffectIndicator" type="Node2D"]
+z_index = 1
+script = ExtResource("1_dkc7i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = -52.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Enraged" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("1_wkxur")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Regenerating" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("2_dkc7i")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Slowed" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("3_81xse")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Invincible" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("4_jc214")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Frozen" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("5_q2epl")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Tenacious" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("6_2l1wi")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Poisoned" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("7_xvckh")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Stunned" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("8_ackao")
+expand_mode = 2
+stretch_mode = 4

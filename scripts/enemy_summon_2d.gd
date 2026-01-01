@@ -1,0 +1,2 @@
+extends Summon2D
+class_name EnemySummon2D

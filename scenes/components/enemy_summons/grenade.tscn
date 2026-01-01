@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://yr5t6kesd1m1"]
+
+[ext_resource type="Texture2D" uid="uid://yi64qli56wsx" path="res://assets/images/sprites/items/grenade.png" id="1_y5rqg"]
+[ext_resource type="Script" uid="uid://dbu3xe0tdkk6r" path="res://scripts/enemy_summons/grenade.gd" id="2_jdtng"]
+[ext_resource type="Texture2D" uid="uid://3mkfqogo2ef1" path="res://assets/images/attack_aoe_warn.png" id="3_y5rqg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdtng"]
+radius = 197.023
+
+[node name="Grenade" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_y5rqg")
+script = ExtResource("2_jdtng")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jdtng")
+
+[node name="AttackWarn" type="Sprite2D" parent="."]
+modulate = Color(0.955679, 0.301903, 0.358623, 1)
+top_level = true
+scale = Vector2(0.595703, 0.595703)
+texture = ExtResource("3_y5rqg")

@@ -1,0 +1,19 @@
+extends Scene
+
+@onready var map := %Map
+@onready var level_details := %LevelDetails
+
+var level_id: int
+
+func _ready() -> void:
+	var level_buttons = map.get_children()
+	for button: LevelSelectLevelButton in level_buttons:
+		button.level_selected.connect(func (level_id: int):
+			level_details.open()
+			level_details.set_level(level_id)
+			level_id = level_id
+		)
+	
+	%Play.pressed.connect(func ():
+		Signals.request_load_cutscene.emit(level_id)
+	)

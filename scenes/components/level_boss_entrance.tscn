@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://4tm6aprqxxfe"]
+
+[ext_resource type="Shader" uid="uid://dd7rmd8sh3kcx" path="res://assets/shaders/level_boss_entrance_effect.gdshader" id="1_fwlyq"]
+[ext_resource type="Script" uid="uid://d3napp85atp0x" path="res://scripts/level_boss_entrance.gd" id="1_vu8xh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vu8xh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04inw"]
+width = 1
+height = 1024
+noise = SubResource("FastNoiseLite_vu8xh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwlyq"]
+shader = ExtResource("1_fwlyq")
+shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
+shader_parameter/ADJUSTED_TIME = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fwlyq"]
+size = Vector2(100, 100)
+
+[sub_resource type="Animation" id="Animation_ly7l6"]
+resource_name = "spawn_boss"
+length = 5.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.2, 5.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"emit_spawn_boss_signal"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vu8xh"]
+_data = {
+&"spawn_boss": SubResource("Animation_ly7l6")
+}
+
+[node name="LevelBossEntrance" type="Polygon2D"]
+material = SubResource("ShaderMaterial_fwlyq")
+texture = SubResource("PlaceholderTexture2D_fwlyq")
+polygon = PackedVector2Array(-2375.92, -2375.92, 2375.92, -2375.92, 2375.92, 2375.92, -2375.92, 2375.92)
+uv = PackedVector2Array(7.62939e-06, 0, 100, 0, 100, 100, 7.62939e-06, 100)
+script = ExtResource("1_vu8xh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vu8xh")
+}

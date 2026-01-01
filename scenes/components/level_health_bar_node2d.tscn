@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpmfnaff2tt0y"]
+
+[ext_resource type="Script" uid="uid://muvy6jeonxpt" path="res://scripts/level_health_bar_node2d.gd" id="1_s3y7r"]
+[ext_resource type="Shader" uid="uid://bethbi36ayyvm" path="res://assets/shaders/level_health_bar_node2d.gdshader" id="1_yfxj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3y7r"]
+shader = ExtResource("1_yfxj2")
+shader_parameter/fraction = 1.0
+
+[sub_resource type="Gradient" id="Gradient_yfxj2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3y7r"]
+gradient = SubResource("Gradient_yfxj2")
+height = 8
+
+[node name="LevelHealthBarNode2D" type="Node2D"]
+script = ExtResource("1_s3y7r")
+
+[node name="ProgressBar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_s3y7r")
+texture = SubResource("GradientTexture2D_s3y7r")
+region_rect = Rect2(0, 0, 64, 10)

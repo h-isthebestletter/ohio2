@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm7u14isl64ct"]
+
+[ext_resource type="Shader" uid="uid://bmew1kl5nj6a1" path="res://assets/shaders/level_projectile_handler_projectile_uv.gdshader" id="1_fp5e3"]
+[ext_resource type="Texture2D" uid="uid://cknvklp18l57" path="res://assets/images/projectile_atlas.png" id="2_13gq2"]
+[ext_resource type="Script" uid="uid://cxgn206u3au38" path="res://scripts/level_projectile_system_2d.gd" id="3_13gq2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13gq2"]
+shader = ExtResource("1_fp5e3")
+shader_parameter/ATLAS_WIDTH = 2
+shader_parameter/ATLAS_HEIGHT = 2
+shader_parameter/ATLAS = ExtResource("2_13gq2")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_13gq2"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-16, -16, 0, 32, 32, 0),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 34393296913,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 2, 0, 1, 0, 0, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 128, 193, 0, 0, 128, 193, 0, 0, 128, 193, 0, 0, 128, 65, 0, 0, 128, 65, 0, 0, 128, 65, 0, 0, 128, 65, 0, 0, 128, 193)
+}]
+
+[sub_resource type="MultiMesh" id="MultiMesh_dxyiv"]
+use_custom_data = true
+mesh = SubResource("ArrayMesh_13gq2")
+
+[node name="LevelProjectileSystem2D" type="MultiMeshInstance2D"]
+material = SubResource("ShaderMaterial_13gq2")
+multimesh = SubResource("MultiMesh_dxyiv")
+script = ExtResource("3_13gq2")
+should_projectile_face_velocity = Array[bool]([false, false, false, false])
+should_projectile_ascend = Array[bool]([true, false, false, false])

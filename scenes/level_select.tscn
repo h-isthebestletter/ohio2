@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://duce4xq0dcdkf"]
+
+[ext_resource type="Script" uid="uid://coept2654spo8" path="res://scripts/level_select.gd" id="1_r77uv"]
+[ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="1_rif6e"]
+[ext_resource type="Script" uid="uid://dxdic2j78gicg" path="res://scripts/level_select_map.gd" id="2_chg43"]
+[ext_resource type="PackedScene" uid="uid://b8d3geo843qq6" path="res://scenes/components/level_select_level_button.tscn" id="3_chg43"]
+[ext_resource type="Script" uid="uid://y2gr44xlxrvl" path="res://scripts/level_select_level_details.gd" id="5_r77uv"]
+[ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="6_4nqmc"]
+[ext_resource type="FontFile" uid="uid://bdnke3q8dg81c" path="res://assets/fonts/Roboto_Condensed-Regular.ttf" id="6_r77uv"]
+[ext_resource type="Texture2D" uid="uid://dqluo1g0gf22d" path="res://assets/images/level_play_bg.png" id="8_ckc44"]
+
+[sub_resource type="Gradient" id="Gradient_rif6e"]
+colors = PackedColorArray(0, 0, 0, 0.431373, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_chg43"]
+gradient = SubResource("Gradient_rif6e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r77uv"]
+texture = SubResource("GradientTexture1D_chg43")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_r77uv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_rif6e")
+expand_mode = 1
+
+[node name="Map" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_chg43")
+
+[node name="LevelSelectLevelButton" parent="Map" instance=ExtResource("3_chg43")]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 246.0
+offset_right = 632.0
+offset_bottom = 347.0
+
+[node name="LevelDetails" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -360.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_r77uv")
+script = ExtResource("5_r77uv")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelDetails"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelDetails/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="LevelDetails/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_4nqmc")
+
+[node name="Title" type="Label" parent="LevelDetails/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_r77uv")
+theme_override_font_sizes/font_size = 40
+text = "Test Level"
+
+[node name="Description" type="RichTextLabel" parent="LevelDetails/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Description"
+
+[node name="EnemyPreview" type="Tree" parent="LevelDetails/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+allow_search = false
+hide_root = true
+scroll_horizontal_enabled = false
+
+[node name="Play" type="TextureButton" parent="LevelDetails/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("8_ckc44")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="LevelDetails/MarginContainer/VBoxContainer/Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1

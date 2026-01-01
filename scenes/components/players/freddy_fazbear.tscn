@@ -1,0 +1,296 @@
+[gd_scene load_steps=16 format=3 uid="uid://cky3g0tnsog07"]
+
+[ext_resource type="Script" uid="uid://cvwm7xhyjf0k3" path="res://scripts/players/freddy_fazbear.gd" id="1_0foew"]
+[ext_resource type="Texture2D" uid="uid://ctbs75scaw5v6" path="res://assets/images/sprites/freddy_fazbear.jpg" id="1_opr48"]
+[ext_resource type="PackedScene" uid="uid://p7yifh6r3rcs" path="res://scenes/components/player_direction_select.tscn" id="2_vkoy2"]
+[ext_resource type="Texture2D" uid="uid://bcbe6qyvjj5hi" path="res://assets/images/sprites/items/electric_guitar.png" id="3_or3cr"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_ppehj"]
+[ext_resource type="Texture2D" uid="uid://baloy08q4kumo" path="res://assets/images/player_attack_charge_effect.svg" id="6_pa3da"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0foew"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_vkoy2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Guitar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.261799]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Guitar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(60, 15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitboxes/AttackEffects/Skill1Effect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitboxes/AttackEffects/Skill1Effect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ppehj"]
+resource_name = "attacking_normal"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Guitar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8, 1.3),
+"transitions": PackedFloat32Array(0.267943, 3, 1, 0.420448, 1),
+"update": 0,
+"values": [-0.261799, -0.29147, 3.22886, 3.35452, 18.5878]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Guitar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 0.8, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 3, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(60, 15), Vector2(20, 21), Vector2(10, 20), Vector2(10, 20), Vector2(30, 20), Vector2(60, 15)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"normal_attack_deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pa3da"]
+resource_name = "dying"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Guitar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(3.03143, 1.86559, 1),
+"update": 0,
+"values": [Vector2(30, 12), Vector2(30, 20), Vector2(30, 48.175)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Guitar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1.86, 1),
+"update": 0,
+"values": [-0.421919, -0.421919, 0.0837758]
+}
+
+[sub_resource type="Animation" id="Animation_q66wk"]
+resource_name = "skill_1"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Guitar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.2, 1.6),
+"transitions": PackedFloat32Array(0.535887, 1, 0.535887, 1),
+"update": 0,
+"values": [-0.261799, 12.4791, 12.4791, 24.8709]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Guitar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 1, 1.6, 2),
+"transitions": PackedFloat32Array(0.420448, 0.0853775, 0.0853775, 1, 0.554785, 1),
+"update": 0,
+"values": [Vector2(60, 15), Vector2(12.215, 15), Vector2(12.215, 15), Vector2(95, 15), Vector2(95, 15), Vector2(60, 15)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"skill_1_effect"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitboxes/AttackEffects/Skill1Effect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(2.07053, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitboxes/AttackEffects/Skill1Effect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pa3da"]
+_data = {
+&"RESET": SubResource("Animation_vkoy2"),
+&"attacking_normal": SubResource("Animation_ppehj"),
+&"dying": SubResource("Animation_pa3da"),
+&"skill_1": SubResource("Animation_q66wk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkoy2"]
+size = Vector2(135, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa3da"]
+size = Vector2(605, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q66wk"]
+radius = 251.448
+
+[node name="FreddyFazbear" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "sprite")]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_0foew")
+character_name = "Freddy Fazbear"
+skills_sp_cost = Array[int]([8, 18, 24])
+_atk = 3600.0
+_def = 1000.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="PlayerDirectionSelect" parent="." instance=ExtResource("2_vkoy2")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_opr48")
+
+[node name="Guitar" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(60, 15)
+rotation = -0.261799
+texture = ExtResource("3_or3cr")
+offset = Vector2(-40, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0foew")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.02
+drag_top_margin = 0.02
+drag_right_margin = 0.02
+drag_bottom_margin = 0.02
+
+[node name="LevelEntityStatusEffectIndicator" parent="." instance=ExtResource("4_ppehj")]
+position = Vector2(0, -43)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pa3da")
+}
+
+[node name="Hitboxes" type="Node2D" parent="."]
+
+[node name="NormalAttackHitbox" type="Area2D" parent="Hitboxes"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/NormalAttackHitbox"]
+position = Vector2(57.5, 0)
+shape = SubResource("RectangleShape2D_vkoy2")
+
+[node name="Skill1AttackHitbox" type="Area2D" parent="Hitboxes"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Skill1AttackHitbox"]
+position = Vector2(292.5, 0)
+shape = SubResource("RectangleShape2D_pa3da")
+
+[node name="Skill3AttackHitbox" type="Area2D" parent="Hitboxes"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Skill3AttackHitbox"]
+shape = SubResource("CircleShape2D_q66wk")
+
+[node name="AttackEffects" type="Node2D" parent="Hitboxes"]
+
+[node name="Skill1Effect" type="Sprite2D" parent="Hitboxes/AttackEffects"]
+visible = false
+position = Vector2(345, 0)
+texture = ExtResource("6_pa3da")

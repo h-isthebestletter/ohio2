@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://p7yifh6r3rcs"]
+
+[ext_resource type="Texture2D" uid="uid://23q4i1msk2wc" path="res://assets/images/player_attack_direction.svg" id="1_c26yl"]
+
+[node name="PlayerDirectionSelect" type="Sprite2D"]
+texture = ExtResource("1_c26yl")

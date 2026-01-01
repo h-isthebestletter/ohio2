@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://185aohf4e04c"]
+
+[ext_resource type="FontFile" uid="uid://ciot2iu0f4vmy" path="res://assets/fonts/SymbolsNerdFont-Regular.ttf" id="2_ry7pk"]
+[ext_resource type="PackedScene" uid="uid://cagt4iq4rb4d8" path="res://scenes/components/level_health_bar_ui.tscn" id="3_fhkyp"]
+[ext_resource type="Script" uid="uid://bwnvj3f6kmwyn" path="res://scripts/level_player_sp_label.gd" id="4_kjr5d"]
+
+[node name="LevelGUI" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TopRow" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/UI/MarginContainer/TopRow"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ry7pk")
+text = " 󰩈 "
+
+[node name="BottomRow" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PlayerHealthBar" parent="CanvasLayer/UI/MarginContainer/BottomRow" instance=ExtResource("3_fhkyp")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PlayerSPLabel" type="Label" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "0 SP"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_kjr5d")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI/MarginContainer/BottomRow/PlayerSPLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="PlayerSkill1Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SKILL 1"
+
+[node name="PlayerSkill2Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SKILL 2"
+
+[node name="PlayerSkill3Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SKILL 3"

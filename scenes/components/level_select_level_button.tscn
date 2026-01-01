@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8d3geo843qq6"]
+
+[ext_resource type="Texture2D" uid="uid://dt8mt3c6x883m" path="res://assets/images/operasi.png" id="1_2urii"]
+[ext_resource type="Script" uid="uid://by24k0sk1nn2p" path="res://scripts/level_select_level_button.gd" id="2_hbrr5"]
+[ext_resource type="Theme" uid="uid://gqx43j21git2" path="res://assets/themes/level_button_label_theme.tres" id="2_p560q"]
+
+[node name="LevelSelectLevelButton" type="TextureButton"]
+offset_right = 291.0
+offset_bottom = 101.0
+texture_normal = ExtResource("1_2urii")
+script = ExtResource("2_hbrr5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p560q")
+text = "S-0"
+horizontal_alignment = 1
+vertical_alignment = 1
