@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_wk5vn"]
 [ext_resource type="PackedScene" uid="uid://cky3g0tnsog07" path="res://scenes/components/players/freddy_fazbear.tscn" id="2_kt1qv"]
 [ext_resource type="PackedScene" uid="uid://i1ks8a8ou02h" path="res://scenes/components/enemies/osama.tscn" id="3_fnalb"]
-[ext_resource type="AudioStream" uid="uid://dq4ht3tgyebtt" path="res://assets/audio/the_hot_wind_blowing.mp3" id="4_sipdq"]
+[ext_resource type="AudioStream" uid="uid://bckxbrd0f5gou" path="res://assets/audio/talulah.mp3" id="4_kt1qv"]
 [ext_resource type="Shader" uid="uid://cdunlpljajhj6" path="res://assets/shaders/level_desert.gdshader" id="5_ci58i"]
 [ext_resource type="AudioStream" uid="uid://vkwx7ogj3k17" path="res://assets/audio/g.mp3" id="5_kt1qv"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="6_hakhg"]
@@ -70,7 +70,7 @@ player_initial_position = Vector2(100, 100)
 enemy_scenes = Array[PackedScene]([ExtResource("3_fnalb")])
 timeline = NodePath("Timeline")
 enemy_count = 1
-bgm = ExtResource("4_sipdq")
+bgm = ExtResource("4_kt1qv")
 chinese_bgm = ExtResource("5_kt1qv")
 
 [node name="ShaderCanvasLayer" type="CanvasLayer" parent="."]
