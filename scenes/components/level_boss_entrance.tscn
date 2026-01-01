@@ -11,6 +11,7 @@ height = 1024
 noise = SubResource("FastNoiseLite_vu8xh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwlyq"]
+resource_local_to_scene = true
 shader = ExtResource("1_fwlyq")
 shader_parameter/NOISE = SubResource("NoiseTexture2D_04inw")
 shader_parameter/ADJUSTED_TIME = 0.0

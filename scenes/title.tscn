@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://befykui5swnt6" path="res://scripts/title.gd" id="1_p6dhs"]
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_b3w7a"]
-[ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="2_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="2_pyl7j"]
 [ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_4rr2b"]
 [ext_resource type="Texture2D" uid="uid://c2m23hj5qyrax" path="res://icon.svg" id="3_b3w7a"]
 

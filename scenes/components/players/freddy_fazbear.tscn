@@ -212,7 +212,7 @@ _data = {
 size = Vector2(135, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pa3da"]
-size = Vector2(605, 44)
+size = Vector2(905, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q66wk"]
 radius = 251.448
@@ -278,7 +278,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/Skill1AttackHitbox"]
-position = Vector2(292.5, 0)
+position = Vector2(442.5, 0)
 shape = SubResource("RectangleShape2D_pa3da")
 
 [node name="Skill3AttackHitbox" type="Area2D" parent="Hitboxes"]

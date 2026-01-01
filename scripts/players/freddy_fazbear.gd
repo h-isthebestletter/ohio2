@@ -30,7 +30,7 @@ func skill_1_effect() -> void:
 		global_position = result
 	else:
 		global_position += Vector2.from_angle(attack_direction) * 300.0
-
+	
 	for body in %Skill1AttackHitbox.get_overlapping_bodies():
 		if body is Enemy2D:
 			body.take_damage(stats.atk * 1.8)

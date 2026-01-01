@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://co8ebwssnuv4p"]
+
+[ext_resource type="Script" uid="uid://m8p3nwgintfq" path="res://scripts/enemies/reed_the_flame_shadow.gd" id="1_dl81d"]
+[ext_resource type="Texture2D" uid="uid://b6ehr0cioojjo" path="res://assets/images/sprites/reed_the_flame_shadow.png" id="2_gqobf"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_r0rl5"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_uhd5f"]
+
+[sub_resource type="Animation" id="Animation_gqobf"]
+resource_name = "spawning"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_3aql0"]
+resource_name = "attacking"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_r0rl5"]
+resource_name = "dying"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_uhd5f"]
+resource_name = "idle"
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_g8onl"]
+resource_name = "moving"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h46hw"]
+_data = {
+&"attacking": SubResource("Animation_3aql0"),
+&"dying": SubResource("Animation_r0rl5"),
+&"idle": SubResource("Animation_uhd5f"),
+&"moving": SubResource("Animation_g8onl"),
+&"spawning": SubResource("Animation_gqobf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqobf"]
+size = Vector2(48, 48)
+
+[node name="ReedTheFlameShadow" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+script = ExtResource("1_dl81d")
+navigation_agent = NodePath("NavigationAgent2D")
+_max_health = 1.0
+_atk = 0.0
+_def = 0.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gqobf")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h46hw")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gqobf")
+
+[node name="LagNodesContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r0rl5")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_uhd5f")]
+position = Vector2(0, -43)
+target = NodePath("..")

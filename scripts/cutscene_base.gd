@@ -48,6 +48,10 @@ func advance_dialogue() -> bool:
 func _ready() -> void:
 	super()
 	# load first thing
+	%SkipDialogueButton.pressed.connect(func ():
+		Signals.request_load_level.emit(story_id)
+		next_scene_requested = true
+	)
 	finished = advance_dialogue()
 
 func _input(event: InputEvent) -> void:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1uy8ove1u4ed"
-path="res://.godot/imported/ohio2.png-d5302cb3a288edc50b6af9f648121fe8.ctex"
+uid="uid://b6ehr0cioojjo"
+path="res://.godot/imported/reed_the_flame_shadow.png-54943c8ac879da91c33448070268cd35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ohio2.png"
-dest_files=["res://.godot/imported/ohio2.png-d5302cb3a288edc50b6af9f648121fe8.ctex"]
+source_file="res://assets/images/sprites/reed_the_flame_shadow.png"
+dest_files=["res://.godot/imported/reed_the_flame_shadow.png-54943c8ac879da91c33448070268cd35.ctex"]
 
 [params]
 

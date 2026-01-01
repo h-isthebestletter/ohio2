@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://c8tecmsarddix" path="res://assets/audio/ricochet_love.mp3" id="2_r6d6q"]
 [ext_resource type="AudioStream" uid="uid://dhjlx43ypw2tc" path="res://assets/audio/wsqszsq.mp3" id="3_6wm04"]
 [ext_resource type="PackedScene" uid="uid://fon3rmsdc3jp" path="res://scenes/components/back_button.tscn" id="4_f4mfi"]
-[ext_resource type="Texture2D" uid="uid://ctiu6vbu1ftae" path="res://assets/images/ohio2.png" id="5_es4n0"]
+[ext_resource type="Texture2D" uid="uid://d1uy8ove1u4ed" path="res://assets/images/ohio2.png" id="5_es4n0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es4n0"]
 bg_color = Color(0.17, 0.17, 0.17, 0.741176)

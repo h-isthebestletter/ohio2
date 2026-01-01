@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://bethbi36ayyvm" path="res://assets/shaders/level_health_bar_node2d.gdshader" id="1_yfxj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s3y7r"]
+resource_local_to_scene = true
 shader = ExtResource("1_yfxj2")
 shader_parameter/fraction = 1.0
 
