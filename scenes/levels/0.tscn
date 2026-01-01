@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cvvcyh7cnnvwp"]
+[gd_scene load_steps=41 format=4 uid="uid://cvvcyh7cnnvwp"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_8fg7k"]
 [ext_resource type="PackedScene" uid="uid://fmcbus76veia" path="res://scenes/components/players/don_pollo.tscn" id="2_jxjte"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://yvch42kxiakp" path="res://assets/audio/sszyh.ogg" id="23_0yj4v"]
 [ext_resource type="PackedScene" uid="uid://cxjmfyk0wnps3" path="res://scenes/components/enemies/faraday.tscn" id="23_jxjte"]
 [ext_resource type="Shader" uid="uid://cdunlpljajhj6" path="res://assets/shaders/level_desert.gdshader" id="24_n1qqs"]
+[ext_resource type="PackedScene" uid="uid://brn5hva8lou5h" path="res://scenes/components/enemies/nikocado_avocado_huge.tscn" id="24_tfxs8"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="25_76amn"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="26_1ft85"]
 [ext_resource type="PackedScene" uid="uid://185aohf4e04c" path="res://scenes/components/level_gui.tscn" id="27_3nokl"]
@@ -73,7 +74,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.966667, 1.64),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [20, 1],
+"args": [21, 1],
 "method": &"spawn_enemy"
 }, {
 "args": [10, 1],
@@ -98,7 +99,7 @@ script = ExtResource("1_8fg7k")
 player_scene = ExtResource("2_jxjte")
 player_spawn = NodePath("SpawnPoints/PlayerSpawn")
 enemy_spawn_points = [NodePath("SpawnPoints/EnemySpawn1"), NodePath("SpawnPoints/EnemySpawn2")]
-enemy_scenes = Array[PackedScene]([ExtResource("3_sikc3"), ExtResource("4_3y4pe"), ExtResource("5_k8nic"), ExtResource("6_uko7y"), ExtResource("7_c3tqq"), ExtResource("8_a5ylg"), ExtResource("9_frvj0"), ExtResource("10_d62j2"), ExtResource("11_3gj0y"), ExtResource("12_l6qxm"), ExtResource("13_oqsfr"), ExtResource("14_e5vxr"), ExtResource("15_qf8v7"), ExtResource("16_mfh77"), ExtResource("17_n13iu"), ExtResource("18_4p525"), ExtResource("19_l43ru"), ExtResource("20_jq08h"), ExtResource("21_0jl6j"), ExtResource("22_35c4k"), ExtResource("23_jxjte")])
+enemy_scenes = Array[PackedScene]([ExtResource("3_sikc3"), ExtResource("4_3y4pe"), ExtResource("5_k8nic"), ExtResource("6_uko7y"), ExtResource("7_c3tqq"), ExtResource("8_a5ylg"), ExtResource("9_frvj0"), ExtResource("10_d62j2"), ExtResource("11_3gj0y"), ExtResource("12_l6qxm"), ExtResource("13_oqsfr"), ExtResource("14_e5vxr"), ExtResource("15_qf8v7"), ExtResource("16_mfh77"), ExtResource("17_n13iu"), ExtResource("18_4p525"), ExtResource("19_l43ru"), ExtResource("20_jq08h"), ExtResource("21_0jl6j"), ExtResource("22_35c4k"), ExtResource("23_jxjte"), ExtResource("24_tfxs8")])
 paths = [NodePath("Paths/CarPath1")]
 timeline = NodePath("Timeline")
 enemy_count = 2

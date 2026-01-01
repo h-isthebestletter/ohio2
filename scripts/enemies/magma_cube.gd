@@ -1,7 +1,9 @@
 extends Enemy2D
 
+@export var attack_range := 60.0
+
 func update_state_machine() -> void:
-	if player.global_position.distance_to(global_position) < 60.0:
+	if player.global_position.distance_to(global_position) < attack_range:
 		state = State.Attacking
 	else:
 		state = State.Moving

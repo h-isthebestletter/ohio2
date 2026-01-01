@@ -1,7 +1,7 @@
 extends Enemy2D
 
 func update_state_machine() -> void:
-	if player.global_position.distance_to(global_position) < 300.0:
+	if player.global_position.distance_to(global_position) < 2300:
 		state = State.Attacking
 	else:
 		state = State.Moving

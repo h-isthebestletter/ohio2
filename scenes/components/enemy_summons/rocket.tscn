@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7fxv7certs07"]
 
 [ext_resource type="Texture2D" uid="uid://bufejboavndvr" path="res://assets/images/sprites/saturn_v.png" id="1_27xio"]
-[ext_resource type="Script" uid="uid://cmcdhqu1lah1a" path="res://scripts/enemies/rocket.gd" id="2_27xio"]
+[ext_resource type="Script" uid="uid://cmcdhqu1lah1a" path="res://scripts/enemy_summons/rocket.gd" id="2_27xio"]
 
 [node name="Rocket" type="Sprite2D"]
 texture = ExtResource("1_27xio")

@@ -2,6 +2,7 @@ extends Enemy2D
 
 @export var attack_range := 2000.0
 @export_range(0.0, 1.0) var enraged_threshold := 0.4
+@export var grenade_speed := 1600.0
 
 func _ready() -> void:
 	super()
@@ -29,7 +30,7 @@ func attack() -> void:
 		"from": global_position,
 		"to": target_position,
 		"player_velocity": target_velocity,
-		"speed": 1600.0,
+		"speed": grenade_speed,
 		"atk": stats.atk,
 		"attack_speed": stats.attack_speed,
 	})
