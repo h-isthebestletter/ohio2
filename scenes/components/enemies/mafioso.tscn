@@ -1,0 +1,115 @@
+[gd_scene load_steps=14 format=3 uid="uid://dysn71o0cn48b"]
+
+[ext_resource type="Script" uid="uid://dmqvp668vvwoa" path="res://scripts/enemies/mafioso.gd" id="1_kpgpp"]
+[ext_resource type="Texture2D" uid="uid://cck2os0d5qf18" path="res://assets/images/sprites/mafioso.png" id="2_10ioo"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_bre6t"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_kpgpp"]
+[ext_resource type="Texture2D" uid="uid://dxa5lu5lcjuoc" path="res://assets/images/sprites/items/gun.png" id="5_kpgpp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp4p8"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_bre6t"]
+resource_name = "spawning"
+
+[sub_resource type="Animation" id="Animation_kpgpp"]
+resource_name = "attacking"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Gun/Line2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xwjcu"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_qwc6g"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_p65l1"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_1s8b3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Gun/Line2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1s8b3"]
+_data = {
+&"RESET": SubResource("Animation_1s8b3"),
+&"attacking": SubResource("Animation_kpgpp"),
+&"dying": SubResource("Animation_xwjcu"),
+&"idle": SubResource("Animation_qwc6g"),
+&"moving": SubResource("Animation_p65l1"),
+&"spawning": SubResource("Animation_bre6t")
+}
+
+[node name="Mafioso" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_kpgpp")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Mafioso"
+_max_health = 2000.0
+_atk = 620.0
+_def = 100.0
+_movement_speed = 550.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lp4p8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_10ioo")
+
+[node name="Gun" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(26, 21)
+texture = ExtResource("5_kpgpp")
+
+[node name="Line2D" type="Line2D" parent="Sprite2D/Gun"]
+unique_name_in_owner = true
+position = Vector2(11, -9)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.980392, 0.984314, 0.760784, 1)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 40.0
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_bre6t")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_kpgpp")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1s8b3")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3

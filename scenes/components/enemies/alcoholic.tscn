@@ -8,14 +8,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48lcf"]
 size = Vector2(48, 48)
 
-[sub_resource type="Animation" id="Animation_qu51u"]
-resource_name = "spawning"
+[sub_resource type="Animation" id="Animation_gjkil"]
+resource_name = "RESET"
 
 [sub_resource type="Animation" id="Animation_g4mpj"]
 resource_name = "attacking"
-
-[sub_resource type="Animation" id="Animation_xq48d"]
-resource_name = "moving"
 
 [sub_resource type="Animation" id="Animation_75h3x"]
 resource_name = "dying"
@@ -23,8 +20,11 @@ resource_name = "dying"
 [sub_resource type="Animation" id="Animation_o0fjk"]
 resource_name = "idle"
 
-[sub_resource type="Animation" id="Animation_gjkil"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_xq48d"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_qu51u"]
+resource_name = "spawning"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gjkil"]
 _data = {

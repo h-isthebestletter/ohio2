@@ -28,8 +28,8 @@ func _think(_anim_name: StringName = &"") -> void:
 	
 	if state == State.Dying:
 		queue_free()
-	elif health == 0:
-		state = State.Dying
+	#elif health == 0:
+		#state = State.Dying
 	else:
 		update_state_machine()
 	
@@ -73,12 +73,25 @@ func _ready() -> void:
 	_stun_ended.connect(_think)
 	Signals.player_moved.connect(_on_player_moved)
 
+func _process(delta: float) -> void:
+	super(delta)
+	if health == 0 and state != State.Dying:
+		animation_player.stop()
+		state = State.Dying
+		_act()
+
 func _physics_process(delta: float) -> void:
 	if state == State.Moving:
 		navigation_agent.target_position = target_position
-		velocity = (
-			navigation_agent.get_next_path_position() - global_position
-		).normalized() * stats.movement_speed
+		# idk why but you have to call this function in order for
+		# is_target_reached() to report the actual reached status
+		navigation_agent.get_final_position()
+		if navigation_agent.is_target_reached():
+			velocity = Vector2.ZERO
+		else:
+			velocity = (
+				navigation_agent.get_next_path_position() - global_position
+			).normalized() * stats.movement_speed
 		move_and_slide()
 
 func update_state_machine() -> void:

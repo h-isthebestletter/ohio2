@@ -74,21 +74,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_kjr5d")
 
-[node name="PlayerSkill1Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SKILL 1"
-
-[node name="PlayerSkill2Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SKILL 2"
-
-[node name="PlayerSkill3Button" type="Button" parent="CanvasLayer/UI/MarginContainer/BottomRow"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SKILL 3"
-
 [node name="Control" type="Control" parent="CanvasLayer/UI"]
 process_mode = 3
 visible = false

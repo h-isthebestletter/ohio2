@@ -1,0 +1,131 @@
+[gd_scene load_steps=13 format=3 uid="uid://bbvgks10oid0m"]
+
+[ext_resource type="Script" uid="uid://hjglwh110r8n" path="res://scripts/enemies/holy_cow.gd" id="1_76usy"]
+[ext_resource type="Texture2D" uid="uid://cn8etd4hpfhf0" path="res://assets/images/sprites/holy_cow.png" id="2_76usy"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_rlc4a"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_waeug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bte34"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_jxso7"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rlc4a"]
+resource_name = "attacking"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gacas"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_vsijc"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_waeug"]
+resource_name = "moving"
+length = 6.0
+
+[sub_resource type="Animation" id="Animation_76usy"]
+resource_name = "spawning"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.03, 1),
+"update": 0,
+"values": [Color(8, 8, 8, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mauq7"]
+_data = {
+&"RESET": SubResource("Animation_jxso7"),
+&"attacking": SubResource("Animation_rlc4a"),
+&"dying": SubResource("Animation_gacas"),
+&"idle": SubResource("Animation_vsijc"),
+&"moving": SubResource("Animation_waeug"),
+&"spawning": SubResource("Animation_76usy")
+}
+
+[node name="HolyCow" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_76usy")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Holy Cow"
+_max_health = 4000.0
+_atk = 1000.0
+_movement_speed = 400.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_76usy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bte34")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 40.0
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_rlc4a")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_waeug")]
+position = Vector2(0, -43)
+target = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mauq7")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0.979444, 0.983722, 0.762688, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://nqx4wgn7rvba"]
+[gd_scene load_steps=28 format=4 uid="uid://nqx4wgn7rvba"]
 
 [ext_resource type="Script" uid="uid://bgfnnrd0qrt0u" path="res://scripts/level2d.gd" id="1_adcy7"]
 [ext_resource type="TileSet" uid="uid://dn6rf5tjeqb32" path="res://resources/minetest_tileset.tres" id="1_cwocv"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://co8ebwssnuv4p" path="res://scenes/components/enemies/reed_the_flame_shadow.tscn" id="6_rc0dk"]
 [ext_resource type="PackedScene" uid="uid://dded8567w36tp" path="res://scenes/components/summon_system_2d.tscn" id="7_b1hel"]
 [ext_resource type="PackedScene" uid="uid://c2knf600uc0kn" path="res://scenes/components/enemies/dublinn_evocator.tscn" id="7_rc0dk"]
+[ext_resource type="PackedScene" uid="uid://bbvgks10oid0m" path="res://scenes/components/enemies/holy_cow.tscn" id="8_jf0s2"]
+[ext_resource type="PackedScene" uid="uid://dysn71o0cn48b" path="res://scenes/components/enemies/mafioso.tscn" id="9_vv56a"]
+[ext_resource type="PackedScene" uid="uid://wgm6he3kjbtp" path="res://scenes/components/enemies/magma_cube.tscn" id="10_6kgux"]
+[ext_resource type="PackedScene" uid="uid://d3u11i0aubdbl" path="res://scenes/components/enemies/magma_cube_small.tscn" id="11_5dpwo"]
+[ext_resource type="PackedScene" uid="uid://ue5u07ixbfwq" path="res://scenes/components/enemies/magma_cube_large.tscn" id="12_4v5sm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bjs1v"]
 
@@ -36,16 +41,17 @@ shader_parameter/DISTORT_NOISE = SubResource("NoiseTexture2D_2v7b3")
 shader_parameter/SAND_NOISE = SubResource("NoiseTexture2D_8n3nq")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_cwocv"]
-vertices = PackedVector2Array(4382, 2974, 4382, 1762, 8034, 94, 8034, 7010, 94, 7010, 674, 2974, 94, 94, 674, 546, 4382, 546, 4258, 1762, 4258, 2850, 3102, 2850, 3806, 1886, 3102, 1886, 3806, 1762, 4126, 1246, 4258, 1246, 798, 670, 2018, 670, 2018, 1378, 1314, 1378, 798, 2850, 1314, 2014, 1438, 2014, 1438, 1502, 2402, 1502, 2402, 2338, 1314, 2338, 1314, 2462, 2978, 2850, 2526, 2462, 2978, 1762, 2526, 1378, 2142, 1378, 2142, 670, 3106, 670, 3106, 1246, 4126, 1122, 3230, 1122, 3230, 670, 4258, 670, 4382, 1246)
+vertices = PackedVector2Array(4400, 2992, 4400, 1744, 8016, 112, 8016, 6992, 112, 6992, 656, 2992, 112, 112, 656, 528, 4400, 528, 4240, 1744, 4240, 2832, 3120, 2832, 3824, 1904, 3120, 1904, 3824, 1744, 4144, 1264, 4240, 1264, 816, 688, 2000, 688, 2000, 1360, 1296, 1360, 816, 2832, 1296, 2032, 1456, 2032, 1456, 1520, 2384, 1520, 2384, 2320, 1296, 2320, 1296, 2480, 2960, 2832, 2544, 2480, 2960, 1744, 2544, 1360, 2160, 1360, 2160, 688, 3088, 688, 3088, 1264, 4144, 1104, 3248, 1104, 3248, 688, 4240, 688, 4400, 1264)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 2, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(11, 13, 12), PackedInt32Array(9, 12, 14, 15, 16), PackedInt32Array(17, 18, 19, 20), PackedInt32Array(21, 17, 20, 22), PackedInt32Array(23, 24, 25, 26), PackedInt32Array(23, 26, 27, 22), PackedInt32Array(21, 22, 27), PackedInt32Array(21, 27, 28), PackedInt32Array(29, 21, 28, 30), PackedInt32Array(31, 29, 30, 32), PackedInt32Array(32, 33, 34, 35, 36), PackedInt32Array(14, 31, 32, 36, 15), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(37, 40, 16, 15), PackedInt32Array(1, 9, 16, 41), PackedInt32Array(2, 1, 41), PackedInt32Array(8, 2, 41)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(37, 28, 8100, 38, 8106, 7080, 29, 7065)])
 source_geometry_mode = 2
 source_geometry_group_name = &"level_test_navigation"
-agent_radius = 30.0
+agent_radius = 48.0
 
 [sub_resource type="Animation" id="Animation_2v7b3"]
 resource_name = "level_test_timeline"
 length = 60.0
+step = 1.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.966667),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [4, 0],
+"args": [5, 1],
 "method": &"spawn_enemy"
 }]
 }
@@ -72,7 +78,7 @@ script = ExtResource("1_adcy7")
 player_scene = ExtResource("2_2fkbp")
 player_spawn = NodePath("SpawnPoints/PlayerSpawn")
 enemy_spawn_points = [NodePath("SpawnPoints/EnemySpawn1"), NodePath("SpawnPoints/EnemySpawn2")]
-enemy_scenes = Array[PackedScene]([ExtResource("3_bjs1v"), ExtResource("4_i6aa5"), ExtResource("5_2kv86"), ExtResource("6_rc0dk"), ExtResource("7_rc0dk")])
+enemy_scenes = Array[PackedScene]([ExtResource("3_bjs1v"), ExtResource("4_i6aa5"), ExtResource("5_2kv86"), ExtResource("6_rc0dk"), ExtResource("7_rc0dk"), ExtResource("8_jf0s2"), ExtResource("9_vv56a"), ExtResource("10_6kgux"), ExtResource("11_5dpwo"), ExtResource("12_4v5sm")])
 timeline = NodePath("Timeline")
 enemy_count = 4
 bgm = ExtResource("2_u5gin")

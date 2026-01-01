@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://ue5u07ixbfwq"]
+
+[ext_resource type="Script" uid="uid://cu4ls8aweww4o" path="res://scripts/enemies/magma_cube.gd" id="1_31mcs"]
+[ext_resource type="Texture2D" uid="uid://r43hd4eagppk" path="res://assets/images/sprites/magma_cube_large.png" id="2_31mcs"]
+[ext_resource type="PackedScene" uid="uid://cpmfnaff2tt0y" path="res://scenes/components/level_health_bar_node2d.tscn" id="3_qh8ys"]
+[ext_resource type="PackedScene" uid="uid://c3erxx55mtjqy" path="res://scenes/components/level_entity_status_effect_indicator.tscn" id="4_y8ceb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe1pi"]
+size = Vector2(48, 48)
+
+[sub_resource type="Animation" id="Animation_jw2uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_er2hq"]
+resource_name = "attacking"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(0.3, 3.333, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_galij"]
+resource_name = "dying"
+
+[sub_resource type="Animation" id="Animation_3jdeq"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_7kpbw"]
+resource_name = "moving"
+
+[sub_resource type="Animation" id="Animation_bfsm0"]
+resource_name = "spawning"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sfqoc"]
+_data = {
+&"RESET": SubResource("Animation_jw2uf"),
+&"attacking": SubResource("Animation_er2hq"),
+&"dying": SubResource("Animation_galij"),
+&"idle": SubResource("Animation_3jdeq"),
+&"moving": SubResource("Animation_7kpbw"),
+&"spawning": SubResource("Animation_bfsm0")
+}
+
+[node name="MagmaCubeLarge" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent", "animation_player", "sprite")]
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_31mcs")
+navigation_agent = NodePath("NavigationAgent2D")
+character_name = "Large Magma Cube"
+_max_health = 2000.0
+_atk = 640.0
+_def = 200.0
+_movement_speed = 560.0
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://bc1wltw0v0x3n"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_31mcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pe1pi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sfqoc")
+}
+
+[node name="LevelHealthBarNode2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_qh8ys")]
+position = Vector2(0, 33)
+target = NodePath("..")
+
+[node name="LevelEntityStatusEffectIndicator" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_y8ceb")]
+position = Vector2(0, -43)
+target = NodePath("..")
