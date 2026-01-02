@@ -490,6 +490,7 @@ collision_layer = 4
 collision_mask = 33
 motion_mode = 1
 script = ExtResource("1_i13cl")
+catch_up_distance = 500.0
 made_in_ohio_cooldown = 10.0
 ohio_bankai_initial_cooldown = 10.0
 ohio_bankai_cooldown = 5.0
@@ -499,7 +500,7 @@ wonder_of_ohio_initial_cooldown = 1.0
 wonder_of_ohio_cooldown = 2.0
 navigation_agent = NodePath("NavigationAgent2D")
 character_name = "Ohio Final Boss"
-_max_health = 20000.0
+_max_health = 70000.0
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 

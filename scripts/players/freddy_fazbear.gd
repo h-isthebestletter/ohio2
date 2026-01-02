@@ -25,7 +25,7 @@ func normal_attack_deal_damage() -> void:
 
 func use_skill_1() -> void:
 	super()
-	set_skill_duration(1, 3.0)
+	set_skill_duration(1, 2.0)
 	animation_player.play("skill_1")
 
 func skill_1_effect() -> void:

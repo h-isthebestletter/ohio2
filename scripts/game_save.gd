@@ -22,7 +22,9 @@ class Setting:
 
 @export var level_completion: Array[bool] = [
 	# allocate enough space for 30 levels
+	# mark challenge mode stages as completed as they were not intended to be
+	# possible to beat
 	false, false, false, false, false, false, false, false, false, false,
 	false, false, false, false, false, false, false, false, false, false,
-	false, false, false, false, false, false, false, false, false, false,
+	true , true , true , true , true , false, false, false, false, false,
 ]

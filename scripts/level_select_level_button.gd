@@ -7,17 +7,10 @@ class_name LevelSelectLevelButton
 
 signal level_selected(level_id: int)
 
-func get_last_completed_level_id() -> int:
-	var last_completed_level_id := -1
-	while last_completed_level_id < len(completion_data):
-		if not completion_data[last_completed_level_id + 1]:
-			return last_completed_level_id
-		last_completed_level_id += 1
-		
-	return last_completed_level_id
-
 func _ready() -> void:
-	if level_id > get_last_completed_level_id() + 1:
+	if level_id == 0 or completion_data[level_id - 1] == true:
+		show()
+	else:
 		hide()
 	
 	$Label.text = level_data[level_id].label

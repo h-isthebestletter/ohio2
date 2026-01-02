@@ -26,6 +26,7 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	$ShockwaveLarge.global_position = to
 	$ShockwaveLarge.stop_animation()
 	$AttackWarn.global_position = to
+	$Area2D.global_position = to
 	
 func _process(delta: float) -> void:
 	time += delta
@@ -40,7 +41,6 @@ func _process(delta: float) -> void:
 
 func detonate() -> void:
 	if detonated: return
-	# print("detonate")
 	detonated = true
 	
 	self_modulate = Color.TRANSPARENT

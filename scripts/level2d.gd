@@ -48,7 +48,7 @@ class EnemySpawner:
 			
 		time += delta
 		var time_between_enemy_spawns := duration / float(count)
-		while time_between_enemy_spawns * float(spawned + 1) <= time and spawned <= count:
+		while time_between_enemy_spawns * float(spawned + 1) <= time and spawned < count:
 			spawned += 1
 			spawner.call(enemy_id, at, distance_offset)
 			

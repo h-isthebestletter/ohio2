@@ -66,7 +66,6 @@ tile_set = ExtResource("4_gahsn")
 
 [node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_b4ptv")
-enabled = false
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(642, 1439)
