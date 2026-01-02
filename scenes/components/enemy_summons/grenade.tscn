@@ -13,6 +13,7 @@ texture = ExtResource("1_y5rqg")
 script = ExtResource("2_jdtng")
 
 [node name="Area2D" type="Area2D" parent="."]
+top_level = true
 collision_layer = 8
 collision_mask = 2
 

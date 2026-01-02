@@ -30,14 +30,15 @@ func initialize(args: Dictionary[String, Variant]) -> void:
 	final_target_position = null
 	time = 0.0
 	
-	$AttackWarn.global_position = aim_ahead(to, player_velocity)
+	var end_position := aim_ahead(to, player_velocity)
+	$AttackWarn.global_position = end_position
+	$Area2D.global_position = end_position
 
 func _process(delta: float) -> void:
 	time += delta
 	# only fire the grenade after 0.8s
 	# (sync with Osama's attack animation)
 	if time < 0.8 / attack_speed:
-		$AttackWarn.global_position = aim_ahead(to, player_velocity)
 		return
 	
 	if final_target_position == null:
