@@ -12,18 +12,18 @@ Here's a list of playable characters and their abilities:
 
 - Freddy Fazbear
 	- Normal attack: Smash people with guitar (AoE damage)
-	- Skill 1: Dash attack (AoE damage)
-	- Skill 2: Creates an electric field
+	- Skill 1 (8 SP): Dash attack (AoE damage)
+	- Skill 2 (18 SP): Creates an electric field
 		- Enemies that are in it are slowed, and Freddy Fazbear receives healing proportional to their total speed
-	- Skill 3: Bite off the frontal lobe of one enemy and permanently stun them
+	- Skill 3 (40 SP): Bite off the frontal lobe of one enemy and permanently stun them
 		- FNaF fans will argue that this is not lore accurate, but the lion does not concern himself with the opinions of sheep
 
 - Saul Goodman
 	- Normal attack: Smash people with a massive gavel (judge hammer) (not AoE attack)
-	- Skill 1: Freezes self to cook crystal and obtain SP over a period of time
-	- Skill 2: Places crystal on the floor
+	- Skill 1 (4 SP): Freezes self to cook crystal and obtain SP over a period of time
+	- Skill 2 (10 SP): Places crystal on the floor
 		- When enemies pass by the crystal they consume it and get poisoned and slowed for a period of time
-	- Skill 3: Places exploding crystal on the floor
+	- Skill 3 (12 SP): Places exploding crystal on the floor
 		- When enemies step on the exploding crystal, it blows up
 		- When the exploding crystal blows up, it damages enemies and causes other exploding crystals in its range to blow up too
 
@@ -35,9 +35,9 @@ Here's a list of playable characters and their abilities:
 			- Any fried chicken thrown at enemies outside the highlighted area will miss
 			- Any fried chicken thrown at enemies inside the highlighted area will definitely hit the enemy (aimbot)
 		- Automatically differentiates between melee and ranged attacks: only use ranged attack if there are no enemies in melee range
-	- Skill 1: Gains movement speed for a period of time to run from debt collectors
-	- Skill 2: Deletes all enemy summons and clears all negative status effects (slowed, frozen, stunned, poisoned)
-	- Skill 3: Attack Range expands, ATK +60%, ASPD +25, and ranged attacks no longer deal reduced damage
+	- Skill 1 (10 SP): Gains movement speed for a period of time to run from debt collectors
+	- Skill 2 (20 SP): Deletes all enemy summons and clears all negative status effects (slowed, frozen, stunned, poisoned)
+	- Skill 3 (60 SP): Attack Range expands, ATK +60%, ASPD +25, and ranged attacks no longer deal reduced damage
 		- Upon the second activation of this skill and afterwards, this skill has unlimited duration, and its bonuses are twice the base amount
 
 Here's a list of status effects:
@@ -60,12 +60,6 @@ Here's a list of enemies you will encounter along with their abilities:
 
 - Alcoholic
 	- Throws molotovs at you (can miss)
-
-- Car (unused)
-	- Moves along a predefined path
-	- Deals damage by running you over
-	- Cannot be killed and not counted towards enemy kill count
-	- Variants include Optimus Prime and Dababy Convertible, which do the same thing but have different hitboxes
 
 - Cluster Strike
 	- Sends a horde of rockets onto your location
